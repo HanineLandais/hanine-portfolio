@@ -2,7 +2,7 @@
 <html lang="fr" data-lang="fr">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width"/>
+  <meta name="viewport" content="width=device-width initial-scale=1.0"/>
   <title>Hanine Landais — Portfolio BUT GEA</title>
   
   <link rel="icon" href="fleur.png">
@@ -71,16 +71,16 @@
     
     .badge-float{position:absolute;z-index:4;background:var(--white);border:1px solid var(--sand);border-radius:16px;padding:10px 16px;font-size:12px;color:var(--espresso);box-shadow:0 8px 28px rgb(58 39 24 / 10%);display:flex;align-items:center;gap:8px;white-space:nowrap;}
     
-    .b1{bottom:35%;left:-70px;animation:f1 4s ease-in-out infinite;}
-    .b2{top:5%;right:-40px;animation:f2 5s ease-in-out infinite;}
-    .b3{bottom:-5%;right:60px;animation:f1 6s ease-in-out infinite;}
-    .b4{top:-10%;left:50px;animation:f2 7s ease-in-out infinite;}
-    .b5{top:50%;right:-80px;animation:f1 5s ease-in-out infinite;}
-    .b6{top:20%;left:-80px;animation:f2 6.5s ease-in-out infinite;}
-    .b7{bottom:10%;right:-60px;animation:f1 5.5s ease-in-out infinite;}
-    .b8{top:42%;left:-45px;animation:f2 5.2s ease-in-out infinite;}
-    .b9{bottom:-15%;left:40px;animation:f1 6.2s ease-in-out infinite;}
-    .b10{top:-5%;right:90px;animation:f2 4.8s ease-in-out infinite;}
+    .b1{bottom:25%;left:-20px;animation:f1 4s ease-in-out infinite;}
+    .b2{top:15%;right:-10px;animation:f2 5s ease-in-out infinite;}
+    .b3{bottom:5%;right:10px;animation:f1 6s ease-in-out infinite;}
+    .b4{top:5%;left:20px;animation:f2 7s ease-in-out infinite;}
+    .b5{top:45%;right:-25px;animation:f1 5s ease-in-out infinite;}
+    .b6{top:25%;left:-25px;animation:f2 6.5s ease-in-out infinite;}
+    .b7{bottom:15%;right:-15px;animation:f1 5.5s ease-in-out infinite;}
+    .b8{top:60%;left:-10px;animation:f2 5.2s ease-in-out infinite;}
+    .b9{bottom:-5%;left:30px;animation:f1 6.2s ease-in-out infinite;}
+    .b10{top:0%;right:30px;animation:f2 4.8s ease-in-out infinite;}
     
     @keyframes f1{0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);}}
     @keyframes f2{0%{transform:translateY(0);}50%{transform:translateY(10px);}100%{transform:translateY(0);}}
@@ -99,9 +99,6 @@
     .stat-num{font-family:'Playfair Display';font-size:36px;font-weight:400;color:var(--mocha);}
     .stat-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--brown);margin-top:4px;}
     .about-text p{font-size:15px;line-height:1.9;color:var(--brown);margin-bottom:18px;}
-    .quote-block{border-left:3px solid var(--rose);padding:18px 24px;margin:28px 0;background:var(--beige);border-radius:0 12px 12px 0;transition:all 0.3s ease;}
-    .quote-block:hover{transform:translateX(10px);}
-    .quote-block p{font-family:'Playfair Display';font-size:19px;font-style:italic;color:var(--espresso);line-height:1.5;}
     .pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px;}
     .pill{padding:7px 16px;border-radius:24px;background:var(--cream);border:1px solid var(--sand);font-size:12px;color:var(--brown);transition:all 0.3s ease;}
     .pill:hover{background:var(--beige);transform:translateY(-2px);}
@@ -441,8 +438,8 @@
         <div class="stat-card">
           <div class="stat-num">3</div>
           <div class="stat-label">
-            <span class="fr">SAÉ S1 réalisées</span>
-            <span class="en">S1 Projects done</span>
+            <span class="fr">SAÉ réalisées</span>
+            <span class="en">Projects done</span>
             <span class="ar">مشاريع منجزة</span>
           </div>
         </div>
@@ -505,9 +502,9 @@
     <span class="ar">أعمال أكاديمية</span>
   </div>
   <h2>
-    <span class="fr">Mes SAÉ <em>du Semestre 1</em></span>
-    <span class="en">My <em>Semester 1</em> Projects</span>
-    <span class="ar">مشاريع <em>الفصل الأول</em></span>
+    <span class="fr">Mes SAÉ <em>de première année</em></span>
+    <span class="en">My <em>First Year</em> Projects</span>
+    <span class="ar">مشاريع <em>السنة الأولى</em></span>
   </h2>
   
   <div class="sae-grid">
@@ -628,9 +625,9 @@
   <div class="modal">
     <button class="modal-close" onclick="closeModal('sae1')">✕</button>
     <div class="sae-cat">
-      <span class="fr">SAÉ S1 · Analyse · RSE</span>
-      <span class="en">S1 Project · Analysis · CSR</span>
-      <span class="ar">مشروع الفصل الأول · تحليل · مسؤولية اجتماعية</span>
+      <span class="fr">SAÉ · Analyse · RSE</span>
+      <span class="en">Project · Analysis · CSR</span>
+      <span class="ar">مشروع · تحليل · مسؤولية اجتماعية</span>
     </div>
     <h3 class="fr">Situer une organisation dans son environnement</h3>
     <h3 class="en">Positioning an organization in its environment</h3>
@@ -679,9 +676,9 @@
   <div class="modal">
     <button class="modal-close" onclick="closeModal('sae2')">✕</button>
     <div class="sae-cat">
-      <span class="fr">SAÉ S1 · Comptabilité · SI</span>
-      <span class="en">S1 Project · Accounting · IS</span>
-      <span class="ar">مشروع الفصل الأول · محاسبة · نظام المعلومات</span>
+      <span class="fr">SAÉ · Comptabilité · SI</span>
+      <span class="en">Project · Accounting · IS</span>
+      <span class="ar">مشروع · محاسبة · نظام المعلومات</span>
     </div>
     <h3 class="fr">SI Comptable</h3>
     <h3 class="en">Accounting IS</h3>
@@ -729,9 +726,9 @@
   <div class="modal">
     <button class="modal-close" onclick="closeModal('sae3')">✕</button>
     <div class="sae-cat">
-      <span class="fr">SAÉ S1 · Communication</span>
-      <span class="en">S1 Project · Communication</span>
-      <span class="ar">مشروع الفصل الأول · تواصل</span>
+      <span class="fr">SAÉ · Communication</span>
+      <span class="en">Project · Communication</span>
+      <span class="ar">مشروع · تواصل</span>
     </div>
     <h3 class="fr">Pitch Pro</h3>
     <h3 class="en">Pro Pitch</h3>
