@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hanine Landais — Portfolio BUT GEA</title>
   
   <link rel="icon" href="fleur.png">
@@ -57,11 +57,13 @@
     .photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
     
     .badge-float{position:absolute;z-index:4;background:var(--white);border:1px solid var(--sand);border-radius:16px;padding:10px 16px;font-size:12px;color:var(--espresso);box-shadow:0 8px 28px rgb(58 39 24 / 10%);display:flex;align-items:center;gap:8px;white-space:nowrap;}
-    .b1{bottom:20%;left:-10px;animation:f1 4s ease-in-out infinite;}
-    .b2{top:18%;right:10px;animation:f2 5s ease-in-out infinite;}
-    .b3{top:55%;left:-20px;animation:f1 6s ease-in-out infinite;}
-    .b4{top:10%;left:20px;animation:f2 7s ease-in-out infinite;}
-    .b5{bottom:15%;right:-20px;animation:f1 5s ease-in-out infinite;}
+    .b1{bottom:20%;left:-20px;animation:f1 4s ease-in-out infinite;}
+    .b2{top:15%;right:10px;animation:f2 5s ease-in-out infinite;}
+    .b3{bottom:5%;right:0px;animation:f1 6s ease-in-out infinite;}
+    .b4{top:5%;left:10px;animation:f2 7s ease-in-out infinite;}
+    .b5{top:45%;right:-30px;animation:f1 5s ease-in-out infinite;}
+    .b6{top:35%;left:-35px;animation:f2 6.5s ease-in-out infinite;}
+    .b7{bottom:35%;right:-10px;animation:f1 5.5s ease-in-out infinite;}
     @keyframes f1{0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);}}
     @keyframes f2{0%{transform:translateY(0);}50%{transform:translateY(10px);}100%{transform:translateY(0);}}
 
@@ -245,6 +247,8 @@
     <div class="badge-float b3">📊 BUT GEA · 2025–2028</div>
     <div class="badge-float b4">💡 Gestion d'entreprise</div>
     <div class="badge-float b5">📈 Finance</div>
+    <div class="badge-float b6">🤝 Esprit d'équipe</div>
+    <div class="badge-float b7">🚀 Motivation</div>
   </div>
 </section>
 
@@ -547,7 +551,6 @@
   <div class="contact-links">
     <a href="https://www.linkedin.com/in/haninelandais/" target="_blank" class="clink">💼 LinkedIn</a>
     <a href="mailto:hanine.landais50@gmail.com" class="clink">✉️ Email</a>
-    <a href="#" class="clink">📄 Mon CV</a>
     <a href="#" class="clink">📍 Caen Normandie</a>
   </div>
 </section>
@@ -576,13 +579,13 @@
       if(!modal.classList.contains('open')) {
         modal.style.display = 'none';
       }
-    }, 400);
+    } 400);
   }
-  window.addEventListener('keydown', function(e) {
+  window.addEventListener('keydown' function(e) {
     if (e.key === 'Escape') {
       const modals = document.querySelectorAll('.modal-overlay.open');
       modals.forEach(function(m) {
-        closeModal(m.id.replace('modal-', ''));
+        closeModal(m.id.replace('modal-' ''));
       });
     }
   });
