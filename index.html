@@ -48,13 +48,11 @@
     .ring1{position:absolute;width:440px;height:440px;animation:spin 50s linear infinite;pointer-events:none;}
     .ring2{position:absolute;width:320px;height:320px;animation:spin 30s linear infinite reverse;pointer-events:none;}
     @keyframes spin{to{transform:rotate(360deg);}}
-    .photo-wrap{position:relative;z-index:3;width:290px;height:350px;border-radius:175px 175px 140px 140px;overflow:hidden;border:3px solid rgba(255,255,255,.7);box-shadow:0 30px 80px rgba(58,39,24,.18);cursor:pointer; transition: transform 0.4s ease;}
+    
+    .photo-wrap{position:relative;z-index:3;width:290px;height:350px;border-radius:175px 175px 140px 140px;overflow:hidden;border:3px solid rgba(255,255,255,.7);box-shadow:0 30px 80px rgba(58,39,24,.18); transition: transform 0.4s ease;}
     .photo-wrap:hover{transform: scale(1.03);}
     .photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
-    .ph-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(160deg,var(--sand),var(--mocha));}
-    .ph-placeholder svg{opacity:.3;}
-    .ph-placeholder p{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);opacity:.7;text-align:center;padding:0 20px;}
-    #photo-file{display:none;}
+    
     .badge-float{position:absolute;z-index:4;background:var(--white);border:1px solid var(--sand);border-radius:16px;padding:10px 16px;font-size:12px;color:var(--espresso);box-shadow:0 8px 28px rgba(58,39,24,.1);display:flex;align-items:center;gap:8px;white-space:nowrap;}
     .b1{bottom:20%;left:-10px;animation:f1 4s ease-in-out infinite;}
     .b2{top:18%;right:10px;animation:f2 5s ease-in-out infinite;}
@@ -242,14 +240,9 @@
       <circle cx="11" cy="11" r="1.5" fill="var(--brown)"/>
     </svg>
 
-    <div class="photo-wrap" id="photo-wrap" onclick="document.getElementById('photo-file').click()" title="Cliquez pour ajouter votre photo">
-      <div class="ph-placeholder" id="ph-placeholder">
-        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="12" stroke="white" stroke-width="1.5"/><path d="M6 54c0-13.3 48-13.3 48 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <p>Cliquer pour<br/>ajouter ma photo</p>
-      </div>
-      <img id="ph-img" src="" alt="Hanine Landais" style="display:none;"/>
+    <div class="photo-wrap">
+      <img src="hanine.jpeg" alt="Hanine Landais" style="width:100%; height:100%; object-fit:cover; display:block;"/>
     </div>
-    <input type="file" id="photo-file" accept="image/*" onchange="loadPhoto(event)"/>
 
     <div class="badge-float b1">📍 Caen Normandie</div>
     <div class="badge-float b2">✨ Alternance 3ᵉ année</div>
@@ -381,7 +374,7 @@
     <h4>Bilan d'activité</h4>
     <p>La principale difficulté a été la quantité d’information à traiter pour une présentation de cinq minutes. Nous avons trié les informations et simplifié le contenu afin d’aller à l’essentiel. Ces compétences me seront très utiles pour analyser une entreprise pendant mon futur stage.</p>
     
-    <video controls>
+    <video controls preload="metadata">
       <source src="diaporama-sonorise.mp4" type="video/mp4">
       Votre navigateur ne supporte pas la vidéo.
     </video>
@@ -570,18 +563,6 @@
 </footer>
 
 <script>
-  function loadPhoto(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      const img = document.getElementById('ph-img');
-      document.getElementById('ph-placeholder').style.display = 'none';
-      img.src = ev.target.result;
-      img.style.display = 'block';
-    };
-    reader.readAsDataURL(file);
-  }
   function openModal(id) {
     document.getElementById('modal-' + id).classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -590,7 +571,7 @@
     document.getElementById('modal-' + id).classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.addEventListener('keydown', e => {
+  document.addEventListener('keydown' e => {
     if (e.key === 'Escape') {
       document.querySelectorAll('.modal-overlay.open').forEach(m => {
         m.classList.remove('open');
