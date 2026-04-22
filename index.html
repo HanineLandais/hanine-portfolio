@@ -2,12 +2,10 @@
 <html lang="fr" data-lang="fr">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hanine Landais — Portfolio BUT GEA</title>
-  
   <link rel="icon" href="fleur.png">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Jost&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --cream:#F7F3EC; --beige:#EDE5D8; --sand:#DDD0BF;
@@ -16,41 +14,44 @@
     }
     *{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;overflow-x:hidden;}
-    body{background:var(--cream);color:var(--espresso);font-family:'Jost';font-weight:300;overflow-x:hidden;}
-    
-    [data-lang="fr"] .en { display: none !important; }
-    [data-lang="fr"] .ar { display: none !important; }
-    [data-lang="en"] .fr { display: none !important; }
-    [data-lang="en"] .ar { display: none !important; }
-    [data-lang="ar"] .fr { display: none !important; }
-    [data-lang="ar"] .en { display: none !important; }
-    
-    [data-lang="ar"] { direction: rtl; text-align: right; }
-    [data-lang="ar"] .nav-links { flex-direction: row-reverse; }
-    [data-lang="ar"] .hero-left { padding: 80px 80px 80px 56px; }
-    [data-lang="ar"] .about-grid { grid-template-columns: 1.3fr 1fr; }
+    body{background:var(--cream);color:var(--espresso);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;}
 
-    #welcome-screen{position:fixed;inset:0;background:var(--cream);z-index:9999;display:flex;align-items:center;justify-content:center;animation:hideWelcome 1s ease 2.5s forwards;}
-    .welcome-text{font-family:'Playfair Display';font-size:36px;color:var(--mocha);text-align:center;animation:textPop 1.5s ease forwards;padding:20px;}
-    @keyframes hideWelcome{to{opacity:0;visibility:hidden;pointer-events:none;display:none;}}
-    @keyframes textPop{0%{opacity:0;transform:scale(0.8);}100%{opacity:1;transform:scale(1);}}
+    [data-lang="fr"] .en{display:none!important;}
+    [data-lang="fr"] .ar{display:none!important;}
+    [data-lang="en"] .fr{display:none!important;}
+    [data-lang="en"] .ar{display:none!important;}
+    [data-lang="ar"] .fr{display:none!important;}
+    [data-lang="ar"] .en{display:none!important;}
+    [data-lang="ar"]{direction:rtl;text-align:right;}
+    [data-lang="ar"] .nav-links{flex-direction:row-reverse;}
+    [data-lang="ar"] .hero-left{padding:80px 80px 80px 56px;}
+    [data-lang="ar"] .about-grid{grid-template-columns:1.3fr 1fr;}
 
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgb(247 243 236 / 90%);backdrop-filter:blur(14px);border-bottom:1px solid var(--sand);transition:all 0.3s ease;}
+    /* WELCOME */
+    #welcome-screen{position:fixed;inset:0;background:var(--cream);z-index:9999;display:flex;align-items:center;justify-content:center;animation:hideWelcome 1s ease 2.8s forwards;}
+    .welcome-text{font-family:'Playfair Display';font-size:32px;color:var(--mocha);text-align:center;animation:textPop 1.5s ease forwards;padding:20px;}
+    @keyframes hideWelcome{to{opacity:0;visibility:hidden;pointer-events:none;}}
+    @keyframes textPop{0%{opacity:0;transform:scale(0.85);}100%{opacity:1;transform:scale(1);}}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgb(247 243 236/93%);backdrop-filter:blur(14px);border-bottom:1px solid var(--sand);transition:all .3s ease;}
     .nav-logo{font-family:'Playfair Display';font-size:19px;letter-spacing:.04em;color:var(--espresso);}
-    .nav-links{display:flex;gap:30px;list-style:none;}
-    .nav-links a{text-decoration:none;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mocha);transition:all 0.3s ease;}
+    .nav-links{display:flex;gap:28px;list-style:none;}
+    .nav-links a{text-decoration:none;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mocha);transition:all .3s ease;}
     .nav-links a:hover{color:var(--espresso);}
 
-    .bg-pattern{position:fixed;inset:0;background-image:radial-gradient(var(--latte) 1px transparent 1px);background-size:30px 30px;opacity:0.15;pointer-events:none;z-index:0;}
+    /* BG PATTERN */
+    .bg-pattern{position:fixed;inset:0;background-image:radial-gradient(var(--latte) 1px,transparent 1px);background-size:30px 30px;opacity:.12;pointer-events:none;z-index:0;}
 
-    /* Animations d'arrière-plan */
-    .float-slow { animation: floatAnim 8s infinite alternate ease-in-out; }
-    .float-slower { animation: floatAnim2 12s infinite alternate ease-in-out; }
-    .pulse-slow { animation: pulseAnim 6s infinite alternate ease-in-out; }
-    @keyframes floatAnim { 0% { transform: translateY(0px) rotate(0deg); } 100% { transform: translateY(-30px) rotate(15deg); } }
-    @keyframes floatAnim2 { 0% { transform: translateX(0px) translateY(0px) rotate(0deg); } 100% { transform: translateX(20px) translateY(-20px) rotate(-15deg); } }
-    @keyframes pulseAnim { 0% { transform: scale(1); opacity:0.1; } 100% { transform: scale(1.1); opacity:0.25; } }
+    /* FLOAT ANIMATIONS */
+    .float-slow{animation:floatAnim 8s infinite alternate ease-in-out;}
+    .float-slower{animation:floatAnim2 12s infinite alternate ease-in-out;}
+    .pulse-slow{animation:pulseAnim 6s infinite alternate ease-in-out;}
+    @keyframes floatAnim{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(-28px) rotate(14deg);}}
+    @keyframes floatAnim2{0%{transform:translateX(0) translateY(0) rotate(0deg);}100%{transform:translateX(18px) translateY(-18px) rotate(-14deg);}}
+    @keyframes pulseAnim{0%{transform:scale(1);opacity:.1;}100%{transform:scale(1.1);opacity:.25;}}
 
+    /* HERO */
     .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:76px;overflow:hidden;position:relative;}
     .hero-bg-right{position:absolute;top:0;right:0;width:50%;height:100%;background:var(--blush);z-index:0;}
     .hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 56px 80px 80px;position:relative;z-index:2;}
@@ -62,197 +63,281 @@
     .hero-school{font-size:13px;color:var(--latte);margin-bottom:36px;letter-spacing:.05em;}
     .hero-desc{font-size:15px;line-height:1.9;color:var(--brown);max-width:400px;margin-bottom:44px;}
     .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
-    
-    .btn-dark{display:inline-block;padding:14px 34px;background:var(--espresso);color:var(--cream);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:all 0.3s ease;}
-    .btn-dark:hover{background:var(--brown);transform:translateY(-4px);box-shadow:0 12px 25px rgb(58 39 24 / 25%);}
-    .btn-light{display:inline-block;padding:13px 34px;border:1.5px solid var(--mocha);color:var(--mocha);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:all 0.3s ease;}
-    .btn-light:hover{background:var(--mocha);color:var(--cream);transform:translateY(-4px);box-shadow:0 12px 25px rgb(158 123 94 / 25%);}
+    .btn-dark{display:inline-block;padding:14px 34px;background:var(--espresso);color:var(--cream);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:all .3s ease;}
+    .btn-dark:hover{background:var(--brown);transform:translateY(-4px);box-shadow:0 12px 25px rgb(58 39 24/25%);}
+    .btn-light{display:inline-block;padding:13px 34px;border:1.5px solid var(--mocha);color:var(--mocha);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:all .3s ease;}
+    .btn-light:hover{background:var(--mocha);color:var(--cream);transform:translateY(-4px);box-shadow:0 12px 25px rgb(158 123 94/25%);}
 
     .hero-right{display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
     .ring1{position:absolute;width:440px;height:440px;animation:spin 50s linear infinite;pointer-events:none;}
     .ring2{position:absolute;width:320px;height:320px;animation:spin 30s linear infinite reverse;pointer-events:none;}
     @keyframes spin{to{transform:rotate(360deg);}}
-    
-    .photo-wrap{position:relative;z-index:3;width:290px;height:350px;border-radius:175px 175px 140px 140px;overflow:hidden;border:3px solid rgb(255 255 255 / 70%);box-shadow:0 30px 80px rgb(58 39 24 / 18%);transition:all 0.4s ease;}
+    .photo-wrap{position:relative;z-index:3;width:290px;height:350px;border-radius:175px 175px 140px 140px;overflow:hidden;border:3px solid rgb(255 255 255/70%);box-shadow:0 30px 80px rgb(58 39 24/18%);transition:all .4s ease;}
     .photo-wrap:hover{transform:scale(1.03);}
     .photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
-    
-    /* Nouvel arrangement en parenthèses des bulles autour de la photo */
-    .badge-float{position:absolute;z-index:4;background:var(--white);border:1px solid var(--sand);border-radius:16px;padding:10px 16px;font-size:12px;color:var(--espresso);box-shadow:0 8px 28px rgb(58 39 24 / 10%);display:flex;align-items:center;gap:8px;white-space:nowrap;}
-    
+
+    .badge-float{position:absolute;z-index:4;background:var(--white);border:1px solid var(--sand);border-radius:16px;padding:10px 16px;font-size:12px;color:var(--espresso);box-shadow:0 8px 28px rgb(58 39 24/10%);display:flex;align-items:center;gap:8px;white-space:nowrap;}
     .b1{top:10%;left:-40px;animation:f1 4s ease-in-out infinite;}
-    .b2{top:30%;left:-80px;animation:f2 5s ease-in-out infinite;}
-    .b3{top:50%;left:-90px;animation:f1 6s ease-in-out infinite;}
-    .b4{top:70%;left:-80px;animation:f2 7s ease-in-out infinite;}
-    .b5{top:90%;left:-40px;animation:f1 5s ease-in-out infinite;}
-    
+    .b2{top:25%;left:-85px;animation:f2 5s ease-in-out infinite;}
+    .b3{top:42%;left:-95px;animation:f1 6s ease-in-out infinite;}
+    .b4{top:60%;left:-85px;animation:f2 7s ease-in-out infinite;}
+    .b5{top:78%;left:-40px;animation:f1 5s ease-in-out infinite;}
     .b6{top:10%;right:-40px;animation:f2 6.5s ease-in-out infinite;}
-    .b7{top:30%;right:-80px;animation:f1 5.5s ease-in-out infinite;}
-    .b8{top:50%;right:-90px;animation:f2 5.2s ease-in-out infinite;}
-    .b9{top:70%;right:-80px;animation:f1 6.2s ease-in-out infinite;}
-    .b10{top:90%;right:-40px;animation:f2 4.8s ease-in-out infinite;}
-    
+    .b7{top:25%;right:-85px;animation:f1 5.5s ease-in-out infinite;}
+    .b8{top:42%;right:-95px;animation:f2 5.2s ease-in-out infinite;}
+    .b9{top:60%;right:-85px;animation:f1 6.2s ease-in-out infinite;}
+    .b10{top:78%;right:-40px;animation:f2 4.8s ease-in-out infinite;}
     @keyframes f1{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
     @keyframes f2{0%{transform:translateY(0);}50%{transform:translateY(8px);}100%{transform:translateY(0);}}
 
+    /* SECTIONS */
     section{padding:100px 80px;position:relative;z-index:2;}
     .section-tag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mocha);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
     .section-tag::after{content:'';width:36px;height:1px;background:var(--sand);}
     h2{font-family:'Playfair Display';font-size:40px;font-weight:400;line-height:1.1;color:var(--espresso);margin-bottom:48px;}
     h2 em{font-style:italic;color:var(--mocha);}
 
+    /* ABOUT */
     .about{background:var(--white);}
     .about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:start;}
     .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
-    .stat-card{background:var(--cream);border:1px solid var(--sand);border-radius:16px;padding:20px;text-align:center;transition:all 0.4s ease;}
-    .stat-card:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 15px 30px rgb(58 39 24 / 8%);}
+    .stat-card{background:var(--cream);border:1px solid var(--sand);border-radius:16px;padding:20px;text-align:center;transition:all .4s ease;}
+    .stat-card:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 15px 30px rgb(58 39 24/8%);}
     .stat-num{font-family:'Playfair Display';font-size:36px;font-weight:400;color:var(--mocha);}
     .stat-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--brown);margin-top:4px;}
     .about-text p{font-size:15px;line-height:1.9;color:var(--brown);margin-bottom:18px;}
     .pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px;}
-    .pill{padding:7px 16px;border-radius:24px;background:var(--cream);border:1px solid var(--sand);font-size:12px;color:var(--brown);transition:all 0.3s ease;}
+    .pill{padding:7px 16px;border-radius:24px;background:var(--cream);border:1px solid var(--sand);font-size:12px;color:var(--brown);transition:all .3s ease;cursor:default;}
     .pill:hover{background:var(--beige);transform:translateY(-2px);}
     .pill.active{background:var(--mocha);color:var(--cream);border-color:var(--mocha);}
 
+    /* SAE SECTION */
     .sae-section{background:var(--beige);overflow:hidden;}
-    .sae-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;}
-    .sae-card{background:var(--white);border-radius:20px;border:1px solid var(--sand);overflow:hidden;transition:all 0.4s ease;cursor:pointer;}
-    .sae-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 35px 65px rgb(58 39 24 / 18%);}
-    .sae-top{height:140px;display:flex;align-items:center;justify-content:center;position:relative;transition:all 0.5s ease;background:var(--sand);}
-    .sae-card:hover .sae-top{filter:brightness(0.95);}
-    .sae-body{padding:24px 22px 28px;}
+    .sae-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;}
+    .sae-card{background:var(--white);border-radius:20px;border:1px solid var(--sand);overflow:hidden;transition:all .4s ease;cursor:pointer;}
+    .sae-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 35px 65px rgb(58 39 24/18%);}
+    .sae-top{height:160px;display:flex;align-items:center;justify-content:center;position:relative;transition:all .5s ease;background:var(--sand);}
+    .sae-card:hover .sae-top{filter:brightness(.95);}
+    .sae-body{padding:26px 24px 30px;}
     .sae-cat{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:8px;}
-    .sae-card h3{font-family:'Playfair Display';font-size:19px;font-weight:400;color:var(--espresso);margin-bottom:10px;transition:all 0.3s ease;}
+    .sae-card h3{font-family:'Playfair Display';font-size:19px;font-weight:400;color:var(--espresso);margin-bottom:10px;transition:all .3s ease;}
     .sae-card:hover h3{color:var(--mocha);}
     .sae-card p{font-size:13px;line-height:1.7;color:var(--brown);word-wrap:break-word;}
     .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
     .tag{font-size:10px;padding:4px 11px;border-radius:20px;background:var(--beige);color:var(--brown);letter-spacing:.06em;border:1px solid var(--sand);}
-    .click-hint{font-size:10px;color:var(--latte);letter-spacing:.08em;margin-top:14px;transition:all 0.3s ease;}
-    .sae-card:hover .click-hint{transform:translateX(5px);color:var(--mocha);}
+    .click-hint{font-size:10px;color:var(--latte);letter-spacing:.08em;margin-top:16px;transition:all .3s ease;display:flex;align-items:center;gap:6px;}
+    .click-hint::before{content:'';display:inline-block;width:18px;height:1px;background:var(--latte);transition:all .3s ease;}
+    .sae-card:hover .click-hint{color:var(--mocha);}
+    .sae-card:hover .click-hint::before{width:28px;background:var(--mocha);}
 
-    .modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgb(58 39 24 / 85%);backdrop-filter:blur(6px);align-items:center;justify-content:center;opacity:0;transition:all 0.3s ease;}
-    .modal-overlay.open{display:flex;opacity:1;}
-    .modal{background:var(--white);border-radius:24px;max-width:740px;width:92%;max-height:85vh;overflow-y:auto;padding:42px;position:relative;box-shadow:0 40px 100px rgb(58 39 24 / 25%);transform:scale(0.95) translateY(20px);opacity:0;transition:all 0.4s ease;}
-    .modal-overlay.open .modal{transform:scale(1) translateY(0);opacity:1;}
-    .modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--mocha);transition:all 0.3s ease;}
-    .modal-close:hover{transform:rotate(90deg);}
-    
-    .btn-close-bottom{display:block;width:100%;margin-top:30px;padding:16px;background:var(--mocha);color:var(--cream);text-align:center;border-radius:8px;font-weight:500;font-size:14px;border:none;cursor:pointer;transition:all 0.3s ease;}
-    .btn-close-bottom:hover{background:var(--espresso);transform:translateY(-2px);}
-
-    .modal h3{font-family:'Playfair Display';font-size:26px;font-weight:400;color:var(--espresso);margin-bottom:6px;}
-    .modal-sub{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:22px;}
-    .modal p{font-size:14px;line-height:1.85;color:var(--brown);margin-bottom:14px;text-align:justify;}
-    .modal h4{font-family:'Playfair Display';font-size:17px;font-weight:400;color:var(--espresso);margin-bottom:8px;}
+    /* MODAL — CORRIGÉ */
+    .modal-overlay{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      background:rgba(58,39,24,0.88);
+      backdrop-filter:blur(8px);
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      transition:opacity .35s ease;
+    }
+    .modal-overlay.open{
+      display:flex;
+      opacity:1;
+    }
+    .modal{
+      background:var(--white);
+      border-radius:24px;
+      max-width:820px;
+      width:94%;
+      max-height:90vh;
+      overflow-y:auto;
+      padding:50px 48px;
+      position:relative;
+      box-shadow:0 40px 100px rgb(58 39 24/30%);
+      transform:scale(.96) translateY(24px);
+      opacity:0;
+      transition:transform .4s ease, opacity .4s ease;
+    }
+    .modal-overlay.open .modal{
+      transform:scale(1) translateY(0);
+      opacity:1;
+    }
+    .modal-close{
+      position:absolute;
+      top:18px;
+      right:22px;
+      background:none;
+      border:none;
+      font-size:22px;
+      cursor:pointer;
+      color:var(--mocha);
+      transition:all .3s ease;
+      z-index:10;
+      width:36px;
+      height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+    }
+    .modal-close:hover{transform:rotate(90deg);background:var(--beige);}
+    .modal h3{font-family:'Playfair Display';font-size:28px;font-weight:400;color:var(--espresso);margin-bottom:6px;}
+    .modal-sub{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--sand);}
+    .modal-section{margin-bottom:28px;}
+    .modal-section-title{font-family:'Playfair Display';font-size:17px;font-weight:400;color:var(--espresso);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+    .modal-section-title::before{content:'';width:20px;height:2px;background:var(--mocha);}
+    .modal p{font-size:14px;line-height:1.9;color:var(--brown);margin-bottom:12px;text-align:justify;}
     .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;}
-    .comp-item{font-size:12px;padding:8px 14px;background:var(--cream);border-radius:8px;border:1px solid var(--sand);color:var(--brown);transition:all 0.3s ease;}
-    .comp-item:hover{transform:scale(1.03);background:var(--beige);}
-    
-    .btn-download{display:inline-block;margin:15px 0 10px 0;padding:12px 24px;background:var(--mocha);color:var(--cream);text-decoration:none;border-radius:8px;font-size:13px;font-weight:500;transition:all 0.3s ease;text-align:center;box-shadow:0 4px 15px rgb(158 123 94 / 30%);}
-    .btn-download:hover{background:var(--brown);transform:translateY(-3px);box-shadow:0 8px 20px rgb(107 79 56 / 40%);}
-    video{width:100%;border-radius:12px;margin-top:15px;background:#000;box-shadow:0 10px 25px rgb(58 39 24 / 15%);transition:all 0.3s ease;}
-    video:hover{transform:scale(1.01);}
-    .video-fallback{display:block;text-align:center;margin-top:10px;font-size:12px;color:var(--mocha);text-decoration:underline;}
+    .comp-item{font-size:12px;padding:10px 16px;background:var(--cream);border-radius:10px;border:1px solid var(--sand);color:var(--brown);transition:all .3s ease;line-height:1.4;}
+    .comp-item:hover{transform:scale(1.02);background:var(--beige);}
+    .comp-item strong{display:block;font-size:11px;color:var(--mocha);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;}
+    .composantes-block{background:var(--cream);border-radius:12px;padding:18px 20px;border-left:3px solid var(--mocha);margin-top:12px;}
+    .composantes-block p{margin-bottom:6px;font-size:13px;}
+    .composantes-block ul{padding-left:18px;margin-top:6px;}
+    .composantes-block li{font-size:13px;line-height:1.7;color:var(--brown);margin-bottom:4px;}
+    .bilan-block{background:linear-gradient(135deg,var(--blush),var(--cream));border-radius:14px;padding:22px 24px;margin-top:14px;}
+    .bilan-block p{font-size:14px;line-height:1.85;color:var(--brown);margin-bottom:10px;}
+    .btn-close-bottom{display:block;width:100%;margin-top:32px;padding:16px;background:var(--mocha);color:var(--cream);text-align:center;border-radius:10px;font-weight:500;font-size:14px;border:none;cursor:pointer;transition:all .3s ease;letter-spacing:.05em;}
+    .btn-close-bottom:hover{background:var(--espresso);transform:translateY(-2px);}
+    .btn-download{display:inline-flex;align-items:center;gap:8px;margin:12px 0;padding:12px 24px;background:var(--mocha);color:var(--cream);text-decoration:none;border-radius:10px;font-size:13px;font-weight:500;transition:all .3s ease;box-shadow:0 4px 15px rgb(158 123 94/30%);}
+    .btn-download:hover{background:var(--brown);transform:translateY(-3px);box-shadow:0 8px 20px rgb(107 79 56/40%);}
+    video{width:100%;border-radius:12px;margin-top:12px;background:#000;box-shadow:0 10px 25px rgb(58 39 24/15%);}
+    .video-fallback{display:block;text-align:center;margin-top:8px;font-size:12px;color:var(--mocha);text-decoration:underline;}
 
-    .skills{background:var(--cream);position:relative;z-index:3;}
+    /* SKILLS */
+    .skills{background:var(--cream);}
     .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-    .skill-card{background:var(--white);border-radius:18px;padding:26px 24px;border:1px solid var(--sand);transition:all 0.4s ease;position:relative;overflow:hidden;word-wrap:break-word;}
-    .skill-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 45px rgb(58 39 24 / 12%);}
+    .skill-card{background:var(--white);border-radius:18px;padding:26px 24px;border:1px solid var(--sand);transition:all .4s ease;position:relative;overflow:hidden;word-wrap:break-word;}
+    .skill-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 45px rgb(58 39 24/12%);}
     .sk-top{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
-    .sk-icon{font-size:24px;transition:all 0.3s ease;}
+    .sk-icon{font-size:24px;transition:all .3s ease;}
     .skill-card:hover .sk-icon{transform:scale(1.2) rotate(5deg);}
     .skill-card h3{font-family:'Playfair Display';font-size:19px;font-weight:400;color:var(--espresso);}
     .skill-card p{font-size:13px;line-height:1.7;color:var(--brown);}
 
+    /* PARCOURS */
     .parcours{background:var(--white);}
     .parcours-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-    .tl-heading{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:28px;display:flex;align-items:center;gap:8px;}
+    .tl-heading{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:28px;}
     .timeline{position:relative;padding-left:28px;}
     .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--mocha),var(--sand));}
-    .tl-item{position:relative;margin-bottom:38px;padding-left:24px;transition:all 0.3s ease;}
+    .tl-item{position:relative;margin-bottom:38px;padding-left:24px;transition:all .3s ease;}
     .tl-item:hover{transform:translateX(8px);}
-    .tl-item::before{content:'';position:absolute;left:-32px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--mocha);border:2px solid var(--cream);box-shadow:0 0 0 3px var(--sand);transition:all 0.3s ease;}
+    .tl-item::before{content:'';position:absolute;left:-32px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--mocha);border:2px solid var(--cream);box-shadow:0 0 0 3px var(--sand);transition:all .3s ease;}
     .tl-item:hover::before{background:var(--brown);transform:scale(1.4);}
     .tl-date{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mocha);margin-bottom:5px;}
     .tl-title{font-family:'Playfair Display';font-size:20px;font-weight:400;color:var(--espresso);margin-bottom:3px;}
     .tl-sub{font-size:13px;font-style:italic;color:var(--brown);margin-bottom:8px;}
     .tl-desc{font-size:13px;line-height:1.8;color:var(--brown);max-width:340px;word-wrap:break-word;}
-    .tl-badge{display:inline-block;margin-top:8px;font-size:10px;padding:3px 12px;border-radius:20px;background:rgb(158 123 94 / 10%);color:var(--mocha);letter-spacing:.08em;border:1px solid rgb(158 123 94 / 20%);}
 
+    /* CONTACT */
     .contact{background:var(--espresso);color:var(--cream);text-align:center;}
     .contact .section-tag{color:var(--latte);justify-content:center;}
+    .contact .section-tag::after{background:rgb(255 255 255/15%);}
     .contact h2{color:var(--cream);}
     .contact h2 em{color:var(--blush);}
     .contact-desc{font-size:15px;color:var(--latte);max-width:440px;margin:0 auto 44px;line-height:1.8;}
     .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-    .clink{display:flex;align-items:center;gap:9px;padding:13px 28px;border:1px solid rgb(255 255 255 / 13%);border-radius:40px;color:var(--cream);text-decoration:none;font-size:12px;letter-spacing:.1em;transition:all 0.3s ease;}
-    .clink:hover{background:rgb(255 255 255 / 8%);border-color:var(--blush);transform:translateY(-4px);box-shadow:0 10px 20px rgb(0 0 0 / 20%);}
+    .clink{display:flex;align-items:center;gap:9px;padding:13px 28px;border:1px solid rgb(255 255 255/13%);border-radius:40px;color:var(--cream);text-decoration:none;font-size:12px;letter-spacing:.1em;transition:all .3s ease;}
+    .clink:hover{background:rgb(255 255 255/8%);border-color:var(--blush);transform:translateY(-4px);box-shadow:0 10px 20px rgb(0 0 0/20%);}
 
-    footer{background:var(--espresso);border-top:1px solid rgb(255 255 255 / 7%);padding:22px 80px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+    /* FOOTER */
+    footer{background:var(--espresso);border-top:1px solid rgb(255 255 255/7%);padding:22px 80px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
     .footer-left{display:flex;flex-direction:column;gap:5px;}
     .footer-left span{font-size:11px;color:var(--mocha);letter-spacing:.08em;}
-    
-    #lang-switcher{display:flex;gap:15px;background:rgb(255 255 255 / 5%);padding:8px 16px;border-radius:20px;}
-    .lang-btn{border:none;background:none;font-size:18px;cursor:pointer;transition:all 0.3s ease;filter:grayscale(30%);}
+    #lang-switcher{display:flex;gap:15px;background:rgb(255 255 255/5%);padding:8px 16px;border-radius:20px;}
+    .lang-btn{border:none;background:none;font-size:18px;cursor:pointer;transition:all .3s ease;filter:grayscale(30%);}
     .lang-btn:hover{transform:scale(1.2) translateY(-2px);filter:grayscale(0%);}
 
+    /* ENTRY ANIMATIONS */
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-    .hero-left>*{animation:fadeUp 0.8s ease forwards;opacity:0;}
-    .hero-right{animation:fadeUp 1s ease 0.5s forwards;opacity:0;}
+    .hero-left>*{animation:fadeUp .8s ease forwards;opacity:0;}
+    .hero-left>*:nth-child(1){animation-delay:.1s;}
+    .hero-left>*:nth-child(2){animation-delay:.2s;}
+    .hero-left>*:nth-child(3){animation-delay:.3s;}
+    .hero-left>*:nth-child(4){animation-delay:.4s;}
+    .hero-left>*:nth-child(5){animation-delay:.5s;}
+    .hero-left>*:nth-child(6){animation-delay:.6s;}
+    .hero-right{animation:fadeUp 1s ease .5s forwards;opacity:0;}
 
-    /* AJUSTEMENTS TÉLÉPHONE */
+    /* SCROLL REVEAL */
+    .reveal{opacity:0;transform:translateY(30px);transition:all .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* ───── RESPONSIVE ───── */
+    @media(max-width:1100px){
+      .sae-grid{grid-template-columns:1fr 1fr;}
+    }
     @media(max-width:900px){
       nav{padding:16px 20px;}
       .nav-links{display:none;}
-      
-      .hero{display:flex;flex-direction:column;padding-top:80px;min-height:auto;}
-      .hero-bg-right{width:100%;height:100%;top:0;left:0;}
-      .hero-right{order:1;height:380px;width:100%;margin-top:20px;}
+
+      .hero{display:flex;flex-direction:column;padding-top:72px;min-height:auto;}
+      .hero-bg-right{width:100%;height:50%;top:auto;bottom:0;}
+      .hero-right{order:1;height:360px;width:100%;}
       .photo-wrap{width:200px;height:240px;}
-      
-      .hero-left{order:2;padding:20px 24px 60px;align-items:center;text-align:center;}
+      .ring1{width:300px;height:300px;}
+      .ring2{width:220px;height:220px;}
+
+      /* Badges réduits et repositionnés sur mobile */
+      .badge-float{transform:scale(.78);font-size:11px;padding:5px 10px;transform-origin:left center;}
+      .b1,.b2,.b3,.b4,.b5{transform-origin:left center;}
+      .b6,.b7,.b8,.b9,.b10{transform-origin:right center;}
+      .b1{top:8%;left:4px;}
+      .b2{top:24%;left:-12px;}
+      .b3{top:42%;left:-18px;}
+      .b4{top:60%;left:-12px;}
+      .b5{top:78%;left:4px;}
+      .b6{top:8%;right:4px;}
+      .b7{top:24%;right:-12px;}
+      .b8{top:42%;right:-18px;}
+      .b9{top:60%;right:-12px;}
+      .b10{top:78%;right:4px;}
+
+      .hero-left{order:2;padding:30px 24px 60px;align-items:center;text-align:center;}
       .hero-eyebrow{justify-content:center;}
       .hero-eyebrow::before{display:none;}
+      h1{font-size:42px;}
       .hero-ctas{justify-content:center;}
-      
-      /* Redimensionnement des bulles pour ne pas couper */
-      .badge-float{display:flex !important;transform:scale(0.8);font-size:11px;padding:6px 10px;}
-      .b1{top:10%;left:5px;}
-      .b2{top:30%;left:-10px;}
-      .b3{top:50%;left:-20px;}
-      .b4{top:70%;left:-10px;}
-      .b5{top:90%;left:5px;}
-      .b6{top:10%;right:5px;}
-      .b7{top:30%;right:-10px;}
-      .b8{top:50%;right:-20px;}
-      .b9{top:70%;right:-10px;}
-      .b10{top:90%;right:5px;}
-      
-      section{padding:50px 24px;overflow:hidden;}
+
+      section{padding:60px 24px;overflow:hidden;}
       .about-grid{grid-template-columns:1fr;gap:40px;}
       .about-stats{grid-template-columns:1fr 1fr;}
       .parcours-grid{grid-template-columns:1fr;gap:40px;}
-      .sae-grid{grid-template-columns:1fr;gap:30px;}
-      .skills-grid{grid-template-columns:1fr;gap:15px;}
-      .skill-card{padding:20px 15px;}
-      footer{padding:30px 24px;flex-direction:column;gap:20px;text-align:center;}
-      .modal{padding:30px 20px;width:95%;}
-      #lang-switcher{position:relative;bottom:0;right:0;justify-content:center;margin-top:20px;}
+      .sae-grid{grid-template-columns:1fr;gap:24px;}
+      .skills-grid{grid-template-columns:1fr;gap:14px;}
+      footer{padding:28px 24px;flex-direction:column;gap:20px;text-align:center;}
+
+      .modal{padding:30px 20px;width:96%;max-height:92vh;}
+      .comp-grid{grid-template-columns:1fr;}
+      #lang-switcher{justify-content:center;}
+      h2{font-size:30px;}
+    }
+    @media(max-width:480px){
+      h1{font-size:34px;}
+      .modal{padding:24px 16px;}
+      .badge-float{display:none;}
+      .b1,.b5,.b6,.b10{display:flex!important;}/* garder 4 badges visibles sur très petit écran */
     }
   </style>
 </head>
 <body>
 
+<!-- WELCOME -->
 <div id="welcome-screen">
   <h2 class="welcome-text">
     <span class="fr">Bienvenue sur le portfolio de Hanine Landais</span>
-    <span class="en">Welcome to Hanine Landais Portfolio</span>
+    <span class="en">Welcome to Hanine Landais' Portfolio</span>
     <span class="ar">مرحبا بكم في ملف حنين لاندي</span>
   </h2>
 </div>
 
 <div class="bg-pattern"></div>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo">Hanine Landais</div>
   <ul class="nav-links">
@@ -264,35 +349,35 @@
   </ul>
 </nav>
 
+<!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="accueil">
   <div class="hero-bg-right"></div>
 
-  <svg class="float-slow" style="position:absolute;top:10%;left:5%;opacity:0.2;pointer-events:none;" width="40" height="40" viewBox="0 0 40 40">
-    <circle cx="20" cy="10" r="8" fill="var(--latte)"/>
-    <circle cx="20" cy="30" r="8" fill="var(--latte)"/>
-    <circle cx="10" cy="20" r="8" fill="var(--latte)"/>
-    <circle cx="30" cy="20" r="8" fill="var(--latte)"/>
-    <circle cx="20" cy="20" r="6" fill="var(--mocha)"/>
+  <!-- décorations BG gauche -->
+  <svg class="float-slow" style="position:absolute;top:12%;left:6%;opacity:.2;pointer-events:none;" width="44" height="44" viewBox="0 0 44 44">
+    <circle cx="22" cy="11" r="9" fill="var(--latte)"/><circle cx="22" cy="33" r="9" fill="var(--latte)"/>
+    <circle cx="11" cy="22" r="9" fill="var(--latte)"/><circle cx="33" cy="22" r="9" fill="var(--latte)"/>
+    <circle cx="22" cy="22" r="6" fill="var(--mocha)"/>
   </svg>
-
-  <svg class="pulse-slow" style="position:absolute;top:60%;left:8%;pointer-events:none;" width="110" height="110" viewBox="0 0 110 110">
-    <g fill="var(--mocha)">
-      <circle cx="10" cy="10" r="2.2"/><circle cx="30" cy="10" r="2.2"/><circle cx="50" cy="10" r="2.2"/><circle cx="70" cy="10" r="2.2"/>
-      <circle cx="10" cy="30" r="2.2"/><circle cx="30" cy="30" r="2.2"/><circle cx="50" cy="30" r="2.2"/><circle cx="70" cy="30" r="2.2"/>
-      <circle cx="10" cy="50" r="2.2"/><circle cx="30" cy="50" r="2.2"/><circle cx="50" cy="50" r="2.2"/><circle cx="70" cy="50" r="2.2"/>
-    </g>
+  <!-- calculatrice / GEA icon -->
+  <svg class="float-slower" style="position:absolute;top:60%;left:7%;opacity:.13;pointer-events:none;" width="56" height="64" viewBox="0 0 56 64">
+    <rect x="2" y="2" width="52" height="60" rx="6" fill="none" stroke="var(--mocha)" stroke-width="2"/>
+    <rect x="8" y="8" width="40" height="14" rx="3" fill="var(--mocha)" opacity=".3"/>
+    <rect x="8" y="28" width="10" height="8" rx="2" fill="var(--mocha)" opacity=".4"/>
+    <rect x="23" y="28" width="10" height="8" rx="2" fill="var(--mocha)" opacity=".4"/>
+    <rect x="38" y="28" width="10" height="8" rx="2" fill="var(--mocha)" opacity=".4"/>
+    <rect x="8" y="42" width="10" height="8" rx="2" fill="var(--mocha)" opacity=".4"/>
+    <rect x="23" y="42" width="10" height="8" rx="2" fill="var(--mocha)" opacity=".4"/>
+    <rect x="38" y="42" width="10" height="18" rx="2" fill="var(--mocha)" opacity=".6"/>
   </svg>
-
-  <svg class="float-slower" style="position:absolute;top:30%;left:40%;opacity:0.1;pointer-events:none;" width="40" height="40" viewBox="0 0 40 40">
-    <path d="M 20 0 L 20 40 M 0 20 L 40 20" stroke="var(--mocha)" stroke-width="2"/>
+  <!-- graphique montant -->
+  <svg class="pulse-slow" style="position:absolute;top:30%;left:40%;opacity:.08;pointer-events:none;" width="60" height="40" viewBox="0 0 60 40">
+    <polyline points="0,38 12,28 24,32 36,18 48,10 60,4" fill="none" stroke="var(--mocha)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="60" cy="4" r="3" fill="var(--mocha)"/>
   </svg>
-
-  <svg class="float-slow" style="position:absolute;bottom:20%;left:25%;opacity:0.15;pointer-events:none;" width="30" height="30" viewBox="0 0 30 30">
-    <rect x="5" y="5" width="20" height="20" fill="none" stroke="var(--brown)" stroke-width="2"/>
-  </svg>
-  
-  <svg class="float-slower" style="position:absolute;bottom:5%;left:45%;opacity:0.15;pointer-events:none;" width="60" height="60" viewBox="0 0 60 60">
-    <path d="M 30 0 C 46 0 60 13 60 30 C 60 46 46 60 30 60 C 13 60 0 46 0 30 C 0 13 13 0 30 0 Z" fill="none" stroke="var(--brown)" stroke-dasharray="4 6" stroke-width="2"/>
+  <!-- euro sign déco -->
+  <svg class="float-slow" style="position:absolute;bottom:22%;left:24%;opacity:.12;pointer-events:none;" width="36" height="36" viewBox="0 0 36 36">
+    <text x="4" y="28" font-size="28" fill="var(--brown)" font-family="Georgia,serif">€</text>
   </svg>
 
   <div class="hero-left">
@@ -317,20 +402,16 @@
       <span class="ar">تخصص الإدارة المحاسبية والضريبية والمالية</span>
     </div>
     <p class="hero-desc">
-      <span class="fr">Rigoureuse curieuse et impliquée je développe mes compétences en comptabilité et finance. Je recherche une alternance pour ma 3ᵉ année de BUT à partir de 2027.</span>
-      <span class="en">Rigorous curious and involved I am developing my skills in accounting and finance. I am looking for a work-study program for my 3rd year starting in 2027.</span>
-      <span class="ar">دقيقة فضولية وملتزمة أقوم بتطوير مهاراتي في المحاسبة والتمويل. أبحث عن برنامج دراسة وعمل لسنتي الثالثة بدءا من 2027.</span>
+      <span class="fr">Rigoureuse, curieuse et impliquée, je développe mes compétences en comptabilité et finance. Je recherche une alternance pour ma 3ᵉ année de BUT à partir de 2027.</span>
+      <span class="en">Rigorous, curious and involved, I am developing my skills in accounting and finance. Looking for a work-study program for my 3rd year starting in 2027.</span>
+      <span class="ar">دقيقة، فضولية وملتزمة، أطوّر مهاراتي في المحاسبة والتمويل. أبحث عن تدريب مهني لسنتي الثالثة بدءاً من 2027.</span>
     </p>
     <div class="hero-ctas">
       <a href="#sae" class="btn-dark">
-        <span class="fr">Voir mes SAÉ</span>
-        <span class="en">View Projects</span>
-        <span class="ar">عرض المشاريع</span>
+        <span class="fr">Voir mes SAÉ</span><span class="en">View Projects</span><span class="ar">عرض المشاريع</span>
       </a>
       <a href="#contact" class="btn-light">
-        <span class="fr">Me contacter</span>
-        <span class="en">Contact me</span>
-        <span class="ar">اتصل بي</span>
+        <span class="fr">Me contacter</span><span class="en">Contact me</span><span class="ar">اتصل بي</span>
       </a>
     </div>
   </div>
@@ -339,131 +420,58 @@
     <svg class="ring1" viewBox="0 0 440 440"><circle cx="220" cy="220" r="210" fill="none" stroke="var(--sand)" stroke-width="1" stroke-dasharray="8 14"/></svg>
     <svg class="ring2" viewBox="0 0 320 320"><circle cx="160" cy="160" r="152" fill="none" stroke="var(--latte)" stroke-width="1"/></svg>
 
-    <svg class="float-slower" style="position:absolute;top:16%;right:16%;width:36px;height:36px;opacity:0.3;pointer-events:none;" viewBox="0 0 36 36">
+    <!-- étoile déco -->
+    <svg class="float-slower" style="position:absolute;top:15%;right:15%;width:36px;height:36px;opacity:.3;pointer-events:none;" viewBox="0 0 36 36">
       <path d="M 18 2 L 20 14 L 32 18 L 20 22 L 18 34 L 16 22 L 4 18 L 16 14 Z" fill="var(--mocha)"/>
     </svg>
-    <svg class="pulse-slow" style="position:absolute;bottom:19%;left:19%;width:22px;height:22px;pointer-events:none;" viewBox="0 0 22 22">
-      <circle cx="11" cy="11" r="9" fill="none" stroke="var(--brown)" stroke-width="1.2"/>
-      <circle cx="11" cy="11" r="4" fill="none" stroke="var(--brown)" stroke-width="1.2"/>
-      <circle cx="11" cy="11" r="1.5" fill="var(--brown)"/>
+    <!-- cible déco -->
+    <svg class="pulse-slow" style="position:absolute;bottom:18%;left:18%;width:24px;height:24px;pointer-events:none;" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="var(--brown)" stroke-width="1.2"/>
+      <circle cx="12" cy="12" r="5" fill="none" stroke="var(--brown)" stroke-width="1.2"/>
+      <circle cx="12" cy="12" r="2" fill="var(--brown)"/>
     </svg>
 
     <div class="photo-wrap">
-      <img src="hanine.jpeg" alt="Hanine Landais" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+      <img src="hanine.jpeg" alt="Hanine Landais"/>
     </div>
 
-    <div class="badge-float b1">
-      <span class="fr">📊 Excel</span>
-      <span class="en">📊 Excel</span>
-      <span class="ar">📊 Excel</span>
-    </div>
-    <div class="badge-float b2">
-      <span class="fr">✨ Alternance 3ᵉ année</span>
-      <span class="en">✨ 3rd Year Work-Study</span>
-      <span class="ar">✨ تدريب مهني للسنة الثالثة</span>
-    </div>
-    <div class="badge-float b3">
-      <span class="fr">🎓 BUT GEA</span>
-      <span class="en">🎓 BUT GEA</span>
-      <span class="ar">🎓 إدارة الأعمال</span>
-    </div>
-    <div class="badge-float b4">
-      <span class="fr">💡 Gestion d'entreprise</span>
-      <span class="en">💡 Management</span>
-      <span class="ar">💡 إدارة</span>
-    </div>
-    <div class="badge-float b5">
-      <span class="fr">📈 Finance</span>
-      <span class="en">📈 Finance</span>
-      <span class="ar">📈 تمويل</span>
-    </div>
-    <div class="badge-float b6">
-      <span class="fr">🤝 Esprit d'équipe</span>
-      <span class="en">🤝 Teamwork</span>
-      <span class="ar">🤝 فريق</span>
-    </div>
-    <div class="badge-float b7">
-      <span class="fr">🚀 Motivation</span>
-      <span class="en">🚀 Motivation</span>
-      <span class="ar">🚀 تحفيز</span>
-    </div>
-    <div class="badge-float b8">
-      <span class="fr">🎯 Contrôle de gestion</span>
-      <span class="en">🎯 Management Control</span>
-      <span class="ar">🎯 مراقبة التسيير</span>
-    </div>
-    <div class="badge-float b9">
-      <span class="fr">💼 Monde du travail</span>
-      <span class="en">💼 Professional World</span>
-      <span class="ar">💼 عالم الاحتراف</span>
-    </div>
-    <div class="badge-float b10">
-      <span class="fr">📝 PowerPoint</span>
-      <span class="en">📝 PowerPoint</span>
-      <span class="ar">📝 PowerPoint</span>
-    </div>
+    <div class="badge-float b1"><span class="fr">📊 Excel</span><span class="en">📊 Excel</span><span class="ar">📊 Excel</span></div>
+    <div class="badge-float b2"><span class="fr">✨ Alternance 3ᵉ année</span><span class="en">✨ 3rd Year Work-Study</span><span class="ar">✨ تدريب مهني</span></div>
+    <div class="badge-float b3"><span class="fr">🎓 BUT GEA</span><span class="en">🎓 BUT GEA</span><span class="ar">🎓 إدارة الأعمال</span></div>
+    <div class="badge-float b4"><span class="fr">💡 Gestion d'entreprise</span><span class="en">💡 Management</span><span class="ar">💡 إدارة</span></div>
+    <div class="badge-float b5"><span class="fr">📈 Finance</span><span class="en">📈 Finance</span><span class="ar">📈 تمويل</span></div>
+    <div class="badge-float b6"><span class="fr">🤝 Esprit d'équipe</span><span class="en">🤝 Teamwork</span><span class="ar">🤝 فريق</span></div>
+    <div class="badge-float b7"><span class="fr">🚀 Motivation</span><span class="en">🚀 Motivation</span><span class="ar">🚀 تحفيز</span></div>
+    <div class="badge-float b8"><span class="fr">🎯 Contrôle de gestion</span><span class="en">🎯 Management Control</span><span class="ar">🎯 مراقبة التسيير</span></div>
+    <div class="badge-float b9"><span class="fr">💼 Monde du travail</span><span class="en">💼 Professional World</span><span class="ar">💼 عالم الاحتراف</span></div>
+    <div class="badge-float b10"><span class="fr">📝 PowerPoint</span><span class="en">📝 PowerPoint</span><span class="ar">📝 PowerPoint</span></div>
   </div>
 </section>
 
+<!-- ═══════════ ABOUT ═══════════ -->
 <section class="about" id="apropos">
   <svg class="pulse-slow" style="position:absolute;bottom:-70px;right:-70px;width:260px;height:260px;pointer-events:none;" viewBox="0 0 260 260">
     <circle cx="130" cy="130" r="120" fill="none" stroke="var(--mocha)" stroke-width="1.5"/>
-    <circle cx="130" cy="130" r="90" fill="none" stroke="var(--mocha)" stroke-width="0.8"/>
+    <circle cx="130" cy="130" r="90" fill="none" stroke="var(--mocha)" stroke-width=".8"/>
   </svg>
-
-  <svg class="float-slow" style="position:absolute;top:20px;left:40px;opacity:0.15;pointer-events:none;" width="40" height="40" viewBox="0 0 40 40">
-    <circle cx="20" cy="20" r="15" fill="none" stroke="var(--brown)" stroke-dasharray="2 4" stroke-width="2"/>
-  </svg>
-  
-  <svg class="float-slower" style="position:absolute;top:40%;right:10%;opacity:0.1;pointer-events:none;" width="40" height="40" viewBox="0 0 36 36">
-    <path d="M 18 2 L 20 14 L 32 18 L 20 22 L 18 34 L 16 22 L 4 18 L 16 14 Z" fill="var(--mocha)"/>
+  <!-- Dossier / classeur GEA -->
+  <svg class="float-slow" style="position:absolute;top:30px;left:50px;opacity:.12;pointer-events:none;" width="50" height="60" viewBox="0 0 50 60">
+    <rect x="2" y="10" width="46" height="48" rx="4" fill="none" stroke="var(--brown)" stroke-width="2"/>
+    <rect x="8" y="2" width="20" height="12" rx="3" fill="none" stroke="var(--brown)" stroke-width="2"/>
+    <line x1="10" y1="28" x2="40" y2="28" stroke="var(--mocha)" stroke-width="1.2" opacity=".6"/>
+    <line x1="10" y1="36" x2="40" y2="36" stroke="var(--mocha)" stroke-width="1.2" opacity=".6"/>
+    <line x1="10" y1="44" x2="30" y2="44" stroke="var(--mocha)" stroke-width="1.2" opacity=".6"/>
   </svg>
 
   <div class="about-grid">
     <div>
-      <div class="section-tag">
-        <span class="fr">Qui suis-je ?</span>
-        <span class="en">Who am I?</span>
-        <span class="ar">من أنا؟</span>
-      </div>
-      <h2>
-        <span class="fr">Chiffres &amp;<br/><em>ambitions</em></span>
-        <span class="en">Numbers &amp;<br/><em>ambitions</em></span>
-        <span class="ar">أرقام<br/><em>وطموحات</em></span>
-      </h2>
+      <div class="section-tag"><span class="fr">Qui suis-je ?</span><span class="en">Who am I?</span><span class="ar">من أنا؟</span></div>
+      <h2><span class="fr">Chiffres &amp;<br/><em>ambitions</em></span><span class="en">Numbers &amp;<br/><em>ambitions</em></span><span class="ar">أرقام<br/><em>وطموحات</em></span></h2>
       <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-num">1ʳᵉ</div>
-          <div class="stat-label">
-            <span class="fr">Année BUT GEA</span>
-            <span class="en">Year BUT GEA</span>
-            <span class="ar">السنة الأولى إدارة</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">3</div>
-          <div class="stat-label">
-            <span class="fr">SAÉ réalisées</span>
-            <span class="en">Projects done</span>
-            <span class="ar">مشاريع منجزة</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">AB</div>
-          <div class="stat-label">
-            <span class="fr">Mention Bac</span>
-            <span class="en">High School Honors</span>
-            <span class="ar">تقدير البكالوريا</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">500+</div>
-          <div class="stat-label">
-            <span class="fr">Relations LinkedIn</span>
-            <span class="en">LinkedIn Connections</span>
-            <span class="ar">علاقات لينكد إن</span>
-          </div>
-        </div>
+        <div class="stat-card"><div class="stat-num">1ʳᵉ</div><div class="stat-label"><span class="fr">Année BUT GEA</span><span class="en">Year BUT GEA</span><span class="ar">السنة الأولى</span></div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label"><span class="fr">SAÉ réalisées</span><span class="en">Projects done</span><span class="ar">مشاريع منجزة</span></div></div>
+        <div class="stat-card"><div class="stat-num">AB</div><div class="stat-label"><span class="fr">Mention Bac</span><span class="en">High School Honors</span><span class="ar">تقدير البكالوريا</span></div></div>
+        <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label"><span class="fr">Relations LinkedIn</span><span class="en">LinkedIn Connections</span><span class="ar">علاقات لينكد إن</span></div></div>
       </div>
     </div>
     <div class="about-text">
@@ -474,197 +482,267 @@
         <span class="pill"><span class="fr">Contrôle de gestion</span><span class="en">Management Control</span><span class="ar">مراقبة التسيير</span></span>
         <span class="pill"><span class="fr">Communication pro</span><span class="en">Pro Communication</span><span class="ar">تواصل مهني</span></span>
       </div>
-      <p class="fr">Je m'appelle Hanine Landais j'ai 18 ans et je suis étudiante en 1ʳᵉ année de BUT GEA à l'IUT Grand Ouest Normandie de Caen. Avant cette formation j'ai obtenu un baccalauréat général mention Assez-Bien avec les spécialités <strong>Mathématiques et Physique-Chimie</strong>.</p>
-      <p class="en">My name is Hanine Landais I am 18 years old and I am a 1st year BUT GEA student at the IUT Grand Ouest Normandy in Caen. Before this training I obtained a general high school diploma with honors majoring in <strong>Mathematics and Physics-Chemistry</strong>.</p>
-      <p class="ar">اسمي حنين لاندي عمري 18 سنة وأنا طالبة في السنة الأولى في إدارة الأعمال في معهد نورماندي في كان. قبل هذا التدريب حصلت على شهادة البكالوريا العامة بتقدير جيد مع تخصص <strong>الرياضيات والفيزياء والكيمياء</strong>.</p>
-      
-      <p class="fr">En 3ᵉ année je souhaite m'orienter vers le parcours <strong>GC2F</strong> et intégrer une entreprise en alternance. Très impliquée dans la vie lycéenne — CA CVL déléguée pendant 2 ans — j'aime prendre des responsabilités et m'investir collectivement.</p>
-      <p class="en">In my 3rd year I wish to move towards the <strong>GC2F</strong> path and join a company for a work-study program. Very involved in high school life I enjoy taking on responsibilities and getting collectively involved.</p>
-      <p class="ar">في سنتي الثالثة أرغب في التوجه نحو مسار الإدارة المالية والاندماج في شركة كمتدربة. شاركت كثيرا في الحياة المدرسية وأحب تحمل المسؤوليات والمشاركة الجماعية.</p>
+      <p class="fr">Je m'appelle Hanine Landais, j'ai 18 ans et je suis étudiante en 1ʳᵉ année de BUT GEA à l'IUT Grand Ouest Normandie de Caen. Avant cette formation, j'ai obtenu un baccalauréat général mention Assez-Bien avec les spécialités <strong>Mathématiques et Physique-Chimie</strong>.</p>
+      <p class="en">My name is Hanine Landais, I am 18 years old and I am a 1st year BUT GEA student at the IUT Grand Ouest Normandy in Caen. Before this training I obtained a general high school diploma with honors majoring in <strong>Mathematics and Physics-Chemistry</strong>.</p>
+      <p class="ar">اسمي حنين لاندي، عمري 18 سنة وأنا طالبة في السنة الأولى في إدارة الأعمال بالمعهد الجامعي التكنولوجي في كان. حصلت على شهادة البكالوريا العامة بتقدير جيد مع تخصص <strong>الرياضيات والفيزياء والكيمياء</strong>.</p>
+      <p class="fr">En 3ᵉ année, je souhaite m'orienter vers le parcours <strong>GC2F</strong> et intégrer une entreprise en alternance. Très impliquée dans la vie lycéenne — CA, CVL, déléguée pendant 2 ans — j'aime prendre des responsabilités et m'investir collectivement.</p>
+      <p class="en">In my 3rd year I wish to move towards the <strong>GC2F</strong> path and join a company for a work-study program. Very involved in high school life, I enjoy taking on responsibilities and getting collectively involved.</p>
+      <p class="ar">في سنتي الثالثة أرغب في التوجه نحو مسار <strong>GC2F</strong> والاندماج في شركة كمتدربة. شاركت كثيرا في الحياة المدرسية وأحب تحمل المسؤوليات والمشاركة الجماعية.</p>
     </div>
   </div>
 </section>
 
+<!-- ═══════════ SAE SECTION ═══════════ -->
 <section class="sae-section" id="sae">
-  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.08;" viewBox="0 0 1400 600" preserveAspectRatio="none">
+  <!-- décos BG -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.07;" viewBox="0 0 1400 600" preserveAspectRatio="none">
     <line x1="0" y1="200" x2="1400" y2="0" stroke="var(--brown)" stroke-width="1"/>
     <line x1="0" y1="600" x2="1400" y2="300" stroke="var(--brown)" stroke-width="1"/>
   </svg>
   <svg class="pulse-slow" style="position:absolute;top:-80px;right:6%;width:190px;height:190px;pointer-events:none;" viewBox="0 0 190 190">
     <circle cx="95" cy="95" r="87" fill="none" stroke="var(--mocha)" stroke-width="1" stroke-dasharray="4 8"/>
   </svg>
-  <svg class="float-slow" style="position:absolute;bottom:10%;left:5%;opacity:0.1;pointer-events:none;" width="70" height="70" viewBox="0 0 100 100">
-    <path d="M 50 50 m -40 0 a 40 40 0 1 1 80 0 a 40 40 0 1 1 -80 0 m 10 0 a 30 30 0 1 1 60 0 a 30 30 0 1 1 -60 0 m 10 0 a 20 20 0 1 1 40 0 a 20 20 0 1 1 -40 0" fill="none" stroke="var(--brown)" stroke-width="2"/>
+  <!-- Ampoule / idée -->
+  <svg class="float-slow" style="position:absolute;bottom:12%;left:4%;opacity:.1;pointer-events:none;" width="50" height="60" viewBox="0 0 50 60">
+    <circle cx="25" cy="22" r="18" fill="none" stroke="var(--brown)" stroke-width="2"/>
+    <path d="M 18 36 Q 18 42 25 44 Q 32 42 32 36" fill="none" stroke="var(--brown)" stroke-width="2"/>
+    <line x1="20" y1="48" x2="30" y2="48" stroke="var(--brown)" stroke-width="2"/>
+    <line x1="22" y1="52" x2="28" y2="52" stroke="var(--brown)" stroke-width="2"/>
+    <line x1="25" y1="2" x2="25" y2="6" stroke="var(--brown)" stroke-width="2"/>
+    <line x1="6" y1="8" x2="9" y2="11" stroke="var(--brown)" stroke-width="2"/>
+    <line x1="44" y1="8" x2="41" y2="11" stroke="var(--brown)" stroke-width="2"/>
   </svg>
 
-  <div class="section-tag">
-    <span class="fr">Travaux académiques</span>
-    <span class="en">Academic Works</span>
-    <span class="ar">أعمال أكاديمية</span>
-  </div>
-  <h2>
-    <span class="fr">Mes SAÉ <em>de première année</em></span>
-    <span class="en">My <em>First Year</em> Projects</span>
-    <span class="ar">مشاريع <em>السنة الأولى</em></span>
-  </h2>
-  
+  <div class="section-tag"><span class="fr">Travaux académiques</span><span class="en">Academic Works</span><span class="ar">أعمال أكاديمية</span></div>
+  <h2><span class="fr">Mes SAÉ <em>de première année</em></span><span class="en">My <em>First Year</em> Projects</span><span class="ar">مشاريع <em>السنة الأولى</em></span></h2>
+
   <div class="sae-grid">
-    <div class="sae-card" onclick="openModal('sae1')">
+    <!-- SAE 1 -->
+    <div class="sae-card reveal" onclick="openModal('sae1')">
       <div class="sae-top">
-        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-          <rect x="10" y="30" width="52" height="30" rx="4" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1.2"/>
-          <rect x="18" y="14" width="32" height="18" rx="3" fill="var(--beige)" stroke="var(--mocha)" stroke-width="1.2"/>
-          <rect x="28" y="44" width="16" height="16" rx="2" fill="var(--mocha)" opacity="0.35"/>
-          <circle cx="22" cy="24" r="2" fill="var(--mocha)" opacity="0.5"/>
-          <circle cx="34" cy="22" r="2" fill="var(--mocha)" opacity="0.5"/>
-          <circle cx="46" cy="24" r="2" fill="var(--mocha)" opacity="0.5"/>
-          <path d="M 8 38 Q 36 28 64 38" stroke="var(--mocha)" stroke-width="0.8" fill="none" opacity="0.3"/>
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <!-- Bâtiment entreprise avec territoire -->
+          <rect x="12" y="32" width="56" height="34" rx="4" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1.3"/>
+          <rect x="20" y="16" width="34" height="18" rx="3" fill="var(--beige)" stroke="var(--mocha)" stroke-width="1.3"/>
+          <rect x="30" y="46" width="20" height="20" rx="2" fill="var(--mocha)" opacity=".3"/>
+          <!-- fenêtres -->
+          <rect x="24" y="22" width="6" height="6" rx="1" fill="var(--mocha)" opacity=".5"/>
+          <rect x="37" y="22" width="6" height="6" rx="1" fill="var(--mocha)" opacity=".5"/>
+          <!-- arbres RSE -->
+          <circle cx="68" cy="38" r="5" fill="var(--mocha)" opacity=".4"/>
+          <line x1="68" y1="43" x2="68" y2="50" stroke="var(--brown)" stroke-width="1.5"/>
+          <circle cx="8" cy="38" r="5" fill="var(--mocha)" opacity=".4"/>
+          <line x1="8" y1="43" x2="8" y2="50" stroke="var(--brown)" stroke-width="1.5"/>
+          <!-- sol -->
+          <line x1="2" y1="66" x2="78" y2="66" stroke="var(--latte)" stroke-width="1" opacity=".6"/>
         </svg>
       </div>
       <div class="sae-body">
-        <div class="sae-cat">
-          <span class="fr">Analyse · RSE · Territoire normand</span>
-          <span class="en">Analysis · CSR · Normandy</span>
-          <span class="ar">تحليل · مسؤولية اجتماعية · نورماندي</span>
-        </div>
+        <div class="sae-cat"><span class="fr">SAÉ 1 · Analyse · RSE · Territoire normand</span><span class="en">Project 1 · Analysis · CSR · Normandy</span><span class="ar">مشروع 1 · تحليل · مسؤولية اجتماعية</span></div>
         <h3 class="fr">Situer une organisation dans son environnement</h3>
         <h3 class="en">Positioning an organization in its environment</h3>
         <h3 class="ar">تحديد موقع منظمة في بيئتها</h3>
-        <p class="fr">Analyse de la Biscuiterie de l'Abbaye — fonctionnement ancrage territorial et actions RSE. Diaporama sonorisé en groupe de 4.</p>
-        <p class="en">Analysis of the Biscuiterie de l'Abbaye — operation territorial anchoring and CSR actions. Sound slideshow in a group of 4.</p>
-        <p class="ar">تحليل شركة البسكويت — التشغيل التمركز الإقليمي وإجراءات المسؤولية الاجتماعية. عرض صوتي في مجموعة من 4.</p>
+        <p class="fr">Analyse de la Biscuiterie de l'Abbaye — fonctionnement, ancrage territorial et actions RSE. Diaporama sonorisé en groupe de 4.</p>
+        <p class="en">Analysis of the Biscuiterie de l'Abbaye — operation, territorial anchoring and CSR actions. Sound slideshow in a group of 4.</p>
+        <p class="ar">تحليل شركة البسكويت — التشغيل والتمركز الإقليمي وإجراءات المسؤولية الاجتماعية.</p>
         <div class="tags">
-          <span class="tag"><span class="fr">Analyse d'entreprise</span><span class="en">Business Analysis</span><span class="ar">تحليل الأعمال</span></span>
-          <span class="tag"><span class="fr">RSE</span><span class="en">CSR</span><span class="ar">المسؤولية الاجتماعية</span></span>
-          <span class="tag"><span class="fr">Groupe</span><span class="en">Group</span><span class="ar">مجموعة</span></span>
+          <span class="tag fr">Analyse d'entreprise</span><span class="tag en">Business Analysis</span><span class="tag ar">تحليل الأعمال</span>
+          <span class="tag fr">RSE</span><span class="tag en">CSR</span><span class="tag ar">مسؤولية اجتماعية</span>
+          <span class="tag fr">Groupe de 4</span><span class="tag en">Group of 4</span><span class="tag ar">مجموعة من 4</span>
         </div>
-        <div class="click-hint">
-          <span class="fr">+ Cliquer pour les détails</span>
-          <span class="en">+ Click for details</span>
-          <span class="ar">+ انقر للتفاصيل</span>
-        </div>
+        <div class="click-hint"><span class="fr">Cliquer pour détailler</span><span class="en">Click for details</span><span class="ar">انقر للتفاصيل</span></div>
       </div>
     </div>
 
-    <div class="sae-card" onclick="openModal('sae2')">
+    <!-- SAE 2 -->
+    <div class="sae-card reveal" onclick="openModal('sae2')">
       <div class="sae-top">
-        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-          <rect x="12" y="8" width="48" height="54" rx="5" fill="var(--beige)" stroke="var(--mocha)" stroke-width="1.2"/>
-          <line x1="22" y1="22" x2="50" y2="22" stroke="var(--mocha)" stroke-width="1" opacity="0.5"/>
-          <line x1="22" y1="30" x2="50" y2="30" stroke="var(--mocha)" stroke-width="1" opacity="0.5"/>
-          <line x1="22" y1="38" x2="42" y2="38" stroke="var(--mocha)" stroke-width="1" opacity="0.5"/>
-          <rect x="40" y="34" width="14" height="12" rx="2" fill="var(--mocha)" opacity="0.25"/>
-          <circle cx="52" cy="54" r="11" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1.2"/>
-          <path d="M 48 54 L 51 57 L 56 51" stroke="var(--brown)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <!-- document comptable -->
+          <rect x="14" y="8" width="46" height="56" rx="5" fill="var(--beige)" stroke="var(--mocha)" stroke-width="1.3"/>
+          <line x1="22" y1="22" x2="52" y2="22" stroke="var(--mocha)" stroke-width="1" opacity=".5"/>
+          <line x1="22" y1="30" x2="52" y2="30" stroke="var(--mocha)" stroke-width="1" opacity=".5"/>
+          <line x1="22" y1="38" x2="44" y2="38" stroke="var(--mocha)" stroke-width="1" opacity=".5"/>
+          <!-- montants -->
+          <rect x="38" y="42" width="18" height="8" rx="2" fill="var(--mocha)" opacity=".2"/>
+          <!-- TVA badge -->
+          <circle cx="56" cy="62" r="12" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1.3"/>
+          <text x="51" y="66" font-size="7" fill="var(--brown)" font-family="Georgia,serif" font-weight="bold">TVA</text>
+          <!-- coche -->
+          <path d="M 50 62 L 53 65 L 60 56" stroke="var(--brown)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="sae-body">
-        <div class="sae-cat">
-          <span class="fr">Comptabilité · Logiciels · TVA</span>
-          <span class="en">Accounting · Software · VAT</span>
-          <span class="ar">محاسبة · برمجيات · ضريبة القيمة المضافة</span>
-        </div>
+        <div class="sae-cat"><span class="fr">SAÉ 2 · Comptabilité · SI · TVA</span><span class="en">Project 2 · Accounting · IS · VAT</span><span class="ar">مشروع 2 · محاسبة · ضريبة القيمة المضافة</span></div>
         <h3 class="fr">SI Comptable — Tenue de comptabilité</h3>
         <h3 class="en">Accounting IS — Bookkeeping</h3>
         <h3 class="ar">نظام المعلومات المحاسبي</h3>
-        <p class="fr">Comptabilité complète d'une entreprise fictive sur 3 mois : factures journaux déclarations de TVA et gestion d'un salarié sur Sage.</p>
-        <p class="en">Complete accounting of a fictitious company over 3 months: invoices journals VAT returns and employee management on Sage.</p>
-        <p class="ar">محاسبة كاملة لشركة وهمية على مدى 3 أشهر الفواتير المجلات المحاسبية إقرارات الضريبة على البرمجيات.</p>
+        <p class="fr">Comptabilité complète d'une entreprise fictive sur 3 mois : factures, journaux, déclarations de TVA et gestion d'un salarié sur Sage.</p>
+        <p class="en">Complete accounting of a fictitious company over 3 months: invoices, journals, VAT returns and employee management on Sage.</p>
+        <p class="ar">محاسبة كاملة لشركة وهمية على مدى 3 أشهر، الفواتير، المجلات المحاسبية وإقرارات ضريبة القيمة المضافة.</p>
         <div class="tags">
-          <span class="tag"><span class="fr">Sage</span><span class="en">Sage</span><span class="ar">Sage</span></span>
-          <span class="tag"><span class="fr">TVA</span><span class="en">VAT</span><span class="ar">ضريبة القيمة المضافة</span></span>
-          <span class="tag"><span class="fr">Paie</span><span class="en">Payroll</span><span class="ar">الرواتب</span></span>
+          <span class="tag">Sage</span>
+          <span class="tag fr">TVA</span><span class="tag en">VAT</span><span class="tag ar">ضريبة القيمة المضافة</span>
+          <span class="tag fr">Paie</span><span class="tag en">Payroll</span><span class="tag ar">الرواتب</span>
+          <span class="tag fr">Journaux</span><span class="tag en">Ledgers</span><span class="tag ar">دفاتر اليومية</span>
         </div>
-        <div class="click-hint">
-          <span class="fr">+ Cliquer pour les détails</span>
-          <span class="en">+ Click for details</span>
-          <span class="ar">+ انقر للتفاصيل</span>
-        </div>
+        <div class="click-hint"><span class="fr">Cliquer pour détailler</span><span class="en">Click for details</span><span class="ar">انقر للتفاصيل</span></div>
       </div>
     </div>
 
-    <div class="sae-card" onclick="openModal('sae3')">
+    <!-- SAE 3 -->
+    <div class="sae-card reveal" onclick="openModal('sae3')">
       <div class="sae-top">
-        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-          <rect x="28" y="8" width="16" height="28" rx="8" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1.2"/>
-          <path d="M 16 32 C 16 43 56 43 56 32" stroke="var(--mocha)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-          <line x1="36" y1="43" x2="36" y2="56" stroke="var(--mocha)" stroke-width="1.4" stroke-linecap="round"/>
-          <line x1="26" y1="56" x2="46" y2="56" stroke="var(--mocha)" stroke-width="1.4" stroke-linecap="round"/>
-          <circle cx="36" cy="22" r="3.5" fill="var(--mocha)" opacity="0.3"/>
-          <path d="M 10 28 Q 14 24 18 28" stroke="var(--latte)" stroke-width="1" fill="none" stroke-linecap="round"/>
-          <path d="M 54 28 Q 58 24 62 28" stroke="var(--latte)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <!-- micro -->
+          <rect x="30" y="8" width="20" height="30" rx="10" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1.3"/>
+          <path d="M 18 36 C 18 50 62 50 62 36" stroke="var(--mocha)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <line x1="40" y1="50" x2="40" y2="64" stroke="var(--mocha)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="30" y1="64" x2="50" y2="64" stroke="var(--mocha)" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="40" cy="24" r="4" fill="var(--mocha)" opacity=".3"/>
+          <!-- ondes sonores -->
+          <path d="M 10 30 Q 14 24 18 30" stroke="var(--latte)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M 4 26 Q 10 16 18 26" stroke="var(--latte)" stroke-width="1" fill="none" stroke-linecap="round" opacity=".6"/>
+          <path d="M 62 30 Q 66 24 70 30" stroke="var(--latte)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M 62 26 Q 70 16 76 26" stroke="var(--latte)" stroke-width="1" fill="none" stroke-linecap="round" opacity=".6"/>
+          <!-- caméra -->
+          <rect x="54" y="52" width="18" height="14" rx="3" fill="var(--beige)" stroke="var(--mocha)" stroke-width="1"/>
+          <polygon points="72,55 78,52 78,66 72,63" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1"/>
+          <circle cx="63" cy="59" r="3" fill="var(--mocha)" opacity=".4"/>
         </svg>
       </div>
       <div class="sae-body">
-        <div class="sae-cat">
-          <span class="fr">Communication · Oral · Pitch</span>
-          <span class="en">Communication · Oral · Pitch</span>
-          <span class="ar">تواصل · شفهي · عرض</span>
-        </div>
+        <div class="sae-cat"><span class="fr">SAÉ 3 · Communication · Oral · Pitch</span><span class="en">Project 3 · Communication · Oral · Pitch</span><span class="ar">مشروع 3 · تواصل · شفهي · عرض</span></div>
         <h3 class="fr">Pitch Pro — Demande de stage filmée</h3>
         <h3 class="en">Pro Pitch — Filmed internship request</h3>
         <h3 class="ar">عرض احترافي — طلب تدريب مصور</h3>
         <p class="fr">Présentation orale de 3 minutes filmée au CEMU. Discours structuré pour une demande de stage comme face à un vrai recruteur.</p>
         <p class="en">3-minute oral presentation filmed at the CEMU. Structured speech for an internship request as if facing a real recruiter.</p>
-        <p class="ar">عرض شفهي مدته 3 دقائق تم تصويره في المركز. خطاب منظم لطلب تدريب كما لو كان أمام مسؤول توظيف حقيقي.</p>
+        <p class="ar">عرض شفهي مدته 3 دقائق تم تصويره في المركز. خطاب منظم لطلب تدريب أمام مسؤول توظيف.</p>
         <div class="tags">
-          <span class="tag"><span class="fr">Oral pro</span><span class="en">Pro Oral</span><span class="ar">شفهي احترافي</span></span>
-          <span class="tag"><span class="fr">Rédaction</span><span class="en">Writing</span><span class="ar">كتابة</span></span>
-          <span class="tag"><span class="fr">Posture</span><span class="en">Posture</span><span class="ar">موقف</span></span>
+          <span class="tag fr">Oral pro</span><span class="tag en">Pro Oral</span><span class="tag ar">شفهي احترافي</span>
+          <span class="tag fr">Rédaction</span><span class="tag en">Writing</span><span class="tag ar">كتابة</span>
+          <span class="tag fr">Posture</span><span class="tag en">Posture</span><span class="tag ar">موقف</span>
+          <span class="tag">CEMU</span>
         </div>
-        <div class="click-hint">
-          <span class="fr">+ Cliquer pour les détails</span>
-          <span class="en">+ Click for details</span>
-          <span class="ar">+ انقر للتفاصيل</span>
-        </div>
+        <div class="click-hint"><span class="fr">Cliquer pour détailler</span><span class="en">Click for details</span><span class="ar">انقر للتفاصيل</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="modal-overlay" id="modal-sae1">
+<!-- ═══════════ MODAL SAE 1 ═══════════ -->
+<div class="modal-overlay" id="modal-sae1" role="dialog" aria-modal="true">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('sae1')">✕</button>
-    <div class="sae-cat">
-      <span class="fr">SAÉ · Analyse · RSE</span>
-      <span class="en">Project · Analysis · CSR</span>
-      <span class="ar">مشروع · تحليل · مسؤولية اجتماعية</span>
+    <button class="modal-close" onclick="closeModal('sae1')" aria-label="Fermer">✕</button>
+    <div class="sae-cat" style="margin-bottom:6px;">
+      <span class="fr">SAÉ 1 · Analyse · RSE · Territoire</span>
+      <span class="en">Project 1 · Analysis · CSR · Territory</span>
+      <span class="ar">مشروع 1 · تحليل · مسؤولية اجتماعية</span>
     </div>
     <h3 class="fr">Situer une organisation dans son environnement</h3>
     <h3 class="en">Positioning an organization in its environment</h3>
     <h3 class="ar">تحديد موقع منظمة في بيئتها</h3>
     <div class="modal-sub">
-      <span class="fr">Biscuiterie de l'Abbaye · Groupe de 4 · 1 journée + temps libre</span>
-      <span class="en">Biscuiterie de l'Abbaye · Group of 4 · 1 day + free time</span>
-      <span class="ar">شركة البسكويت · مجموعة من 4 · يوم واحد + وقت فراغ</span>
+      <span class="fr">Biscuiterie de l'Abbaye · Groupe de 4 · 1 journée + temps libre · Diaporama sonorisé</span>
+      <span class="en">Biscuiterie de l'Abbaye · Group of 4 · 1 day + free time · Sound slideshow</span>
+      <span class="ar">شركة البسكويت · مجموعة من 4 · يوم واحد + وقت فراغ · عرض صوتي</span>
     </div>
-    
+
+    <!-- FR -->
     <div class="fr">
-      <p>Cette SAE avait pour but de nous apprendre à analyser une organisation à partir de documents déjà fournis et à mieux comprendre son fonctionnement dans son environnement. Nous avons travaillé sur une entreprise réelle la biscuiterie de l'Abbaye ce qui nous a permis de développer notre capacité à exploiter des ressources à repérer des informations importantes et à les organiser de manière structurée. Les parties prenantes de cette SAE sont principalement les étudiants les enseignants et l’entreprise étudiée.</p>
-      <p>Le travail s’est déroulé en groupe de quatre personnes avec une journée pour répondre à un questionnaire. Puis sur notre temps libre nous avons créé un diaporama avec un angle de vue spécifique. Les apprentissages mobilisés dans cette SAE sont de sélectionner les informations et les sources pour documenter un sujet.</p>
-      <h4>Ma contribution et Bilan</h4>
-      <p>Dans cette activité j’ai participé à la rédaction du texte en choisissant les informations les plus importantes sur l’entreprise et son lien avec le territoire normand. J’ai aussi aidé à la réalisation du diaporama notamment pour organiser les diapositives et rendre la présentation claire pour l’oral. La principale difficulté a été la quantité d’information à traiter pour une présentation de cinq minutes. Nous avons trié les informations et simplifié le contenu afin d’aller à l’essentiel. Ces compétences me seront très utiles pour analyser une entreprise pendant mon futur stage.</p>
+      <div class="modal-section">
+        <div class="modal-section-title">Présentation de la SAÉ</div>
+        <p>Cette SAÉ avait pour but de nous apprendre à analyser une organisation à partir de documents déjà fournis et à mieux comprendre son fonctionnement dans son environnement. Nous avons travaillé sur une entreprise réelle — la Biscuiterie de l'Abbaye — ce qui nous a permis de développer notre capacité à exploiter des ressources, à repérer des informations importantes et à les organiser de manière structurée.</p>
+        <p>Les parties prenantes de cette SAÉ sont principalement les étudiants, les enseignants et l'entreprise étudiée. L'objectif était d'essayer de comprendre comment fonctionne l'entreprise, comment elle est ancrée dans son territoire et quelles actions sont mises en place face aux enjeux environnementaux et sociétaux.</p>
+        <p>Le travail s'est déroulé en groupe de quatre personnes avec une journée pour répondre à un questionnaire. Puis, sur notre temps libre, nous avons créé un diaporama avec un angle de vue spécifique. Pour mener à bien cette SAÉ, nous avons utilisé des outils numériques, des connaissances en analyse d'entreprise et des compétences de synthèse et de communication.</p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Compétences mobilisées</div>
+        <div class="comp-grid">
+          <div class="comp-item"><strong>Apprentissage critique 1</strong>Sélectionner les informations et leurs sources pour documenter un sujet, notamment à l'aide des technologies émergentes</div>
+          <div class="comp-item"><strong>Apprentissage critique 2</strong>Déterminer les éléments constitutifs d'un processus</div>
+          <div class="comp-item"><strong>Apprentissage critique 3</strong>Situer une organisation dans son environnement</div>
+          <div class="comp-item"><strong>Apprentissage critique 4</strong>Identifier les actions RSE des organisations dans une approche systémique</div>
+        </div>
+        <div class="composantes-block">
+          <p><strong>Composante essentielle — Diagnostiquer les processus de l'organisation dans son environnement :</strong></p>
+          <ul>
+            <li>En s'adaptant aux caractéristiques de l'organisation et de son environnement</li>
+            <li>En répondant aux attentes des parties prenantes</li>
+            <li>En intégrant les enjeux règlementaires, environnementaux, sociaux et sociétaux</li>
+            <li>En exerçant une pensée critique</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Ma contribution (Preuve)</div>
+        <p>Cette preuve se situe à la fin de la SAÉ — c'est le travail final réalisé après le questionnaire sur la Biscuiterie de l'Abbaye, qui nous a permis de rassembler des informations avant de les utiliser pour le diaporama sonorisé.</p>
+        <p>Dans cette activité, j'ai participé à la rédaction du texte en choisissant les informations les plus importantes sur l'entreprise et son lien avec le territoire normand. J'ai aussi aidé à la réalisation du diaporama, notamment pour organiser les diapositives et rendre la présentation claire pour l'oral. Pour ce travail, j'ai utilisé des connaissances liées à l'analyse d'information et à l'étude d'une entreprise.</p>
+        <p>Il a fallu exploiter les documents fournis par les enseignants, comprendre le fonctionnement de la biscuiterie et expliquer comment elle s'inscrit dans son environnement local. J'ai également mobilisé des notions en lien avec les enjeux environnementaux et sociaux ainsi que des compétences numériques pour créer le diaporama.</p>
+        <p>Cette preuve montre que je sais sélectionner des informations pertinentes et comprendre le fonctionnement d'une entreprise dans son environnement. Elle montre aussi ma capacité à analyser ses actions en lien avec le territoire et les enjeux actuels.</p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Bilan d'activité</div>
+        <div class="bilan-block">
+          <p>Lors de cette activité, la principale difficulté a été la quantité d'information à traiter : il y avait beaucoup de choses à dire sur la Biscuiterie de l'Abbaye, mais la présentation devait durer cinq minutes. Il a donc fallu faire des choix et garder uniquement les informations les plus importantes. Une autre difficulté a été de réaliser un diaporama clair, sans mettre trop de texte sur les diapositives.</p>
+          <p>Pour y parvenir, nous avons trié les informations et simplifié le contenu afin d'aller à l'essentiel. Certaines informations ont été utilisées à l'oral, tandis que d'autres n'ont pas été retenues afin de respecter le temps imparti. Nous avons travaillé la mise en page du diaporama pour qu'il soit lisible et facile à comprendre, avec des diapositives simples et bien organisées.</p>
+          <p>Les compétences acquises lors de cette activité pourront être utilisées dans différents contextes, notamment pendant mon stage. Cette SAÉ m'a appris à traiter et utiliser des informations de manière pertinente en fonction d'un objectif précis. Elle m'a aussi permis de mieux comprendre l'environnement d'une entreprise afin de mieux l'analyser. Enfin, les compétences de mise en page et de réalisation de support de présentation me seront utiles pour les futures présentations en entreprise.</p>
+        </div>
+      </div>
+
+      <video controls preload="metadata" playsinline>
+        <source src="diaporama-sonorise.mp4" type="video/mp4">
+      </video>
+      <a class="video-fallback" href="diaporama-sonorise.mp4" target="_blank">Cliquez ici pour regarder la vidéo dans un nouvel onglet</a>
     </div>
+
+    <!-- EN -->
     <div class="en">
-      <p>This project aimed to teach us how to analyze an organization based on provided documents and to better understand its operation in its environment. We worked on a real company the Biscuiterie de l'Abbaye which allowed us to develop our ability to exploit resources spot important information and organize them in a structured way.</p>
-      <h4>My Contribution & Assessment</h4>
-      <p>In this activity I participated in drafting the text by selecting the most important information about the company and its link with the Normandy territory. I also helped create the slideshow particularly to organize the slides and make the presentation clear for the oral exam. The main difficulty was the amount of information to process for a five-minute presentation. We sorted the information and simplified the content to get straight to the point.</p>
+      <div class="modal-section">
+        <div class="modal-section-title">Project Presentation</div>
+        <p>This project aimed to teach us how to analyze an organization based on provided documents and to better understand its operation in its environment. We worked on a real company — the Biscuiterie de l'Abbaye — which allowed us to develop our ability to exploit resources, spot important information and organize it in a structured way. The objective was to understand how the company operates, how it is rooted in its territory and what actions are implemented to address environmental and societal challenges.</p>
+        <p>The work took place in groups of four people with one day to answer a questionnaire. Then, in our free time, we created a slideshow with a specific angle. To carry out this project, we used digital tools, business analysis knowledge, and synthesis and communication skills.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Skills Mobilized</div>
+        <div class="comp-grid">
+          <div class="comp-item"><strong>Critical Learning 1</strong>Select information and sources to document a subject, using emerging technologies</div>
+          <div class="comp-item"><strong>Critical Learning 2</strong>Determine the constituent elements of a process</div>
+          <div class="comp-item"><strong>Critical Learning 3</strong>Position an organization in its environment</div>
+          <div class="comp-item"><strong>Critical Learning 4</strong>Identify CSR actions of organizations in a systemic approach</div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">My Contribution & Assessment</div>
+        <p>I participated in drafting the text by selecting the most important information about the company and its link with the Normandy territory. I also helped create the slideshow, particularly to organize the slides and make the presentation clear for the oral exam.</p>
+        <p>The main difficulty was the amount of information to process for a five-minute presentation. We sorted the information and simplified the content to get straight to the point. These skills will be very useful for analyzing a company during my future internship.</p>
+      </div>
+      <video controls preload="metadata" playsinline>
+        <source src="diaporama-sonorise.mp4" type="video/mp4">
+      </video>
     </div>
+
+    <!-- AR -->
     <div class="ar">
-      <p>كان الهدف من هذا المشروع هو تعليمنا كيفية تحليل منظمة بناء على الوثائق المقدمة وفهم عملها في بيئتها بشكل أفضل. عملنا على شركة حقيقية مما سمح لنا بتطوير قدرتنا على استغلال الموارد وتحديد المعلومات المهمة وتنظيمها بطريقة منظمة.</p>
-      <h4>مساهمتي والتقييم</h4>
-      <p>في هذا النشاط شاركت في صياغة النص من خلال تحديد أهم المعلومات عن الشركة وارتباطها بمنطقة نورماندي. كما ساعدت في إنشاء عرض الشرائح خاصة لتنظيم الشرائح وجعل العرض التقديمي واضحا للامتحان الشفوي. كانت الصعوبة الرئيسية هي كمية المعلومات التي يجب معالجتها لعرض مدته خمس دقائق. قمنا بفرز المعلومات وتبسيط المحتوى للوصول مباشرة إلى صلب الموضوع.</p>
+      <div class="modal-section">
+        <div class="modal-section-title">تقديم المشروع</div>
+        <p>كان الهدف من هذا المشروع تعليمنا كيفية تحليل منظمة بناءً على الوثائق المقدمة وفهم عملها في بيئتها بشكل أفضل. عملنا على شركة حقيقية — شركة البسكويت — مما سمح لنا بتطوير قدرتنا على استغلال الموارد وتحديد المعلومات المهمة وتنظيمها بطريقة منظمة.</p>
+        <p>كان الهدف فهم كيفية عمل الشركة، كيفية ارتباطها بمنطقتها والإجراءات المتخذة لمعالجة التحديات البيئية والاجتماعية. العمل جرى في مجموعات من أربعة أشخاص خلال يوم واحد للإجابة على استبيان، ثم أنشأنا عرضاً صوتياً.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">مساهمتي والتقييم</div>
+        <p>شاركت في صياغة النص من خلال تحديد أهم المعلومات عن الشركة وارتباطها بمنطقة نورماندي. كما ساعدت في إنشاء عرض الشرائح لتنظيم الشرائح وجعل العرض التقديمي واضحاً.</p>
+        <p>كانت الصعوبة الرئيسية هي كمية المعلومات التي يجب معالجتها لعرض مدته خمس دقائق. قمنا بفرز المعلومات وتبسيط المحتوى للوصول مباشرةً إلى صلب الموضوع. ستكون هذه المهارات مفيدة جداً لتحليل شركة خلال تدريبي المستقبلي.</p>
+      </div>
+      <video controls preload="metadata" playsinline>
+        <source src="diaporama-sonorise.mp4" type="video/mp4">
+      </video>
     </div>
-    
-    <video controls preload="metadata" playsinline>
-      <source src="diaporama-sonorise.mp4" type="video/mp4">
-    </video>
-    <a class="video-fallback" href="diaporama-sonorise.mp4" target="_blank">
-      <span class="fr">Cliquez ici pour regarder la vidéo dans un nouvel onglet si elle ne s'affiche pas correctement</span>
-      <span class="en">Click here to watch the video in a new tab if it doesn't display correctly</span>
-      <span class="ar">انقر هنا لمشاهدة الفيديو في علامة تبويب جديدة إذا لم يتم عرضه بشكل صحيح</span>
-    </a>
-    
+
     <button class="btn-close-bottom" onclick="closeModal('sae1')">
       <span class="fr">Fermer cette présentation</span>
       <span class="en">Close this presentation</span>
@@ -673,48 +751,115 @@
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-sae2">
+<!-- ═══════════ MODAL SAE 2 ═══════════ -->
+<div class="modal-overlay" id="modal-sae2" role="dialog" aria-modal="true">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('sae2')">✕</button>
-    <div class="sae-cat">
-      <span class="fr">SAÉ · Comptabilité · SI</span>
-      <span class="en">Project · Accounting · IS</span>
-      <span class="ar">مشروع · محاسبة · نظام المعلومات</span>
+    <button class="modal-close" onclick="closeModal('sae2')" aria-label="Fermer">✕</button>
+    <div class="sae-cat" style="margin-bottom:6px;">
+      <span class="fr">SAÉ 2 · Comptabilité · SI · TVA</span>
+      <span class="en">Project 2 · Accounting · IS · VAT</span>
+      <span class="ar">مشروع 2 · محاسبة · نظام المعلومات</span>
     </div>
-    <h3 class="fr">SI Comptable</h3>
-    <h3 class="en">Accounting IS</h3>
+    <h3 class="fr">SI Comptable — Tenue de comptabilité</h3>
+    <h3 class="en">Accounting Information System — Bookkeeping</h3>
     <h3 class="ar">نظام المعلومات المحاسبي</h3>
     <div class="modal-sub">
-      <span class="fr">Entreprise fictive · 3 jours · Logiciel Sage</span>
-      <span class="en">Fictitious company · 3 days · Sage Software</span>
-      <span class="ar">شركة وهمية · 3 أيام · برنامج Sage</span>
+      <span class="fr">Entreprise fictive · 3 jours de travail · Logiciel Sage · Déclarations de TVA mensuelles</span>
+      <span class="en">Fictitious company · 3 working days · Sage Software · Monthly VAT returns</span>
+      <span class="ar">شركة وهمية · 3 أيام · برنامج Sage · إقرارات ضريبة القيمة المضافة الشهرية</span>
     </div>
-    
+
+    <!-- FR -->
     <div class="fr">
-      <p>Cette SAE a été réalisée afin d’étudier concrètement la comptabilité d’une entreprise sur une période de trois mois. L’objectif était de mettre en pratique les notions vues en cours et de comprendre le fonctionnement réel de la comptabilité au sein d’une entreprise en se rapprochant au maximum des conditions professionnelles.</p>
-      <p>L’entreprise étudiée était fictive mais basée sur des documents réels. Les enjeux principaux étaient d’enregistrer correctement les opérations comptables sur plusieurs mois de respecter les règles comptables et fiscales notamment la TVA et de produire des documents comptables fiables. La SAE s’est déroulée sur trois jours de travail durant lesquels nous avons tenu la comptabilité complète de l’entreprise sur trois mois. Nous avons utilisé des logiciels de comptabilité et de gestion commerciale afin de créer l’entreprise d’émettre des factures clients et de suivre les opérations.</p>
-      <h4>Ma contribution et Bilan</h4>
-      <p>Ma contribution à cette activité a consisté à générer la déclaration de TVA sur le logiciel puis à vérifier l’exactitude des données produites. J’ai contrôlé les montants en comparant la déclaration avec les comptes de TVA afin de m’assurer que toutes les opérations avaient bien été prises en compte. J’ai également participé à l’analyse des résultats pour déterminer s’il s’agissait d’un crédit de TVA ou d’un décaissement avant de vider les comptes de TVA.</p>
+      <div class="modal-section">
+        <div class="modal-section-title">Présentation de la SAÉ</div>
+        <p>Cette SAÉ a été réalisée afin d'étudier concrètement la comptabilité d'une entreprise sur une période de trois mois. L'objectif était de mettre en pratique les notions vues en cours et de comprendre le fonctionnement réel de la comptabilité au sein d'une entreprise, en se rapprochant au maximum des conditions professionnelles.</p>
+        <p>Les parties prenantes de cette SAÉ sont les étudiants, qui ont réalisé l'ensemble des travaux comptables, et les enseignants, qui ont encadré et évalué l'activité. L'entreprise étudiée était fictive mais basée sur des documents réels. Les enjeux principaux étaient d'enregistrer correctement les opérations comptables sur plusieurs mois, de respecter les règles comptables et fiscales — notamment la TVA — et de produire des documents comptables fiables.</p>
+        <p>La SAÉ s'est déroulée sur trois jours de travail, durant lesquels nous avons tenu la comptabilité complète de l'entreprise sur trois mois. Nous avons enregistré toutes les factures reçues et envoyées dans les journaux comptables, utilisé des logiciels de comptabilité et de gestion commerciale afin de créer l'entreprise, d'émettre des factures clients et de suivre les opérations. Il fallait également réaliser les déclarations de TVA mensuelles et enregistrer toutes les opérations liées à la gestion d'un salarié. À la fin de chaque journée, nous devions transmettre les journaux des opérations, les déclarations de TVA, la balance de l'exercice ainsi que les factures envoyées aux clients.</p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Compétences mobilisées</div>
+        <div class="comp-grid">
+          <div class="comp-item"><strong>Apprentissage critique 1</strong>Traiter les données qualitatives et quantitatives brutes, notamment à l'aide des technologies émergentes</div>
+          <div class="comp-item"><strong>Apprentissage critique 2</strong>Présenter les résultats des traitements de données de gestion</div>
+          <div class="comp-item"><strong>Apprentissage critique 3</strong>Commenter les résultats des traitements de données</div>
+          <div class="comp-item"><strong>Outils utilisés</strong>Logiciels de comptabilité Sage, gestion commerciale, journaux comptables, plans de comptes</div>
+        </div>
+        <div class="composantes-block">
+          <p><strong>Composante essentielle — Contribuer à la prise de décision durable :</strong></p>
+          <ul>
+            <li>En s'adaptant au système d'information de l'organisation</li>
+            <li>En sélectionnant les méthodes et les outils pertinents</li>
+            <li>En s'assurant de la fiabilité de l'information produite</li>
+            <li>En intégrant les enjeux règlementaires, environnementaux, sociaux et sociétaux</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Ma contribution (Preuve — Déclaration de TVA)</div>
+        <p>Cette preuve se situe à la fin de chaque journée de travail, au moment de la réalisation de la déclaration de TVA mensuelle correspondant aux opérations comptables enregistrées durant la journée. Une fois toutes les factures saisies et les écritures comptables enregistrées, nous devions générer la déclaration de TVA à l'aide du logiciel de comptabilité.</p>
+        <p>Ma contribution a consisté à générer la déclaration de TVA sur le logiciel, puis à vérifier l'exactitude des données produites. J'ai contrôlé les montants en comparant la déclaration avec les comptes de TVA afin de m'assurer que toutes les opérations avaient bien été prises en compte. J'ai également participé à l'analyse des résultats pour déterminer s'il s'agissait d'un crédit de TVA ou d'un décaissement, avant de vider les comptes de TVA.</p>
+        <p>Pour réaliser cette activité, des compétences informatiques pour utiliser le logiciel de comptabilité étaient nécessaires, ainsi que des connaissances comptables : comprendre le fonctionnement d'une déclaration de TVA, effectuer les calculs préparatoires, connaître les comptes de TVA et réaliser leur régularisation. Cette preuve montre ma capacité à traiter des données réelles à l'aide de logiciels de comptabilité utilisés en entreprise.</p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Bilan d'activité</div>
+        <div class="bilan-block">
+          <p>Lors de cette activité, peu de difficultés ont été rencontrées. La déclaration de TVA générée par le logiciel était correcte, car les opérations comptables avaient été correctement enregistrées en amont. Le travail réalisé tout au long de la journée a permis d'éviter les erreurs au moment de la génération de la déclaration.</p>
+          <p>La principale solution a donc été la rigueur dans la saisie des données et la vérification régulière des écritures comptables, ce qui a facilité la réalisation finale de la déclaration de TVA. Cette activité m'a permis de gagner en autonomie, notamment sur la réalisation d'une déclaration de TVA dans un contexte comptable réel.</p>
+          <p>Je suis désormais capable de réaliser une déclaration de TVA pour une activité comptable en utilisant un logiciel professionnel, tout en vérifiant la cohérence des résultats obtenus et en les interprétant. Ces compétences sont transversales et pourront être utilisées dans de nombreuses situations professionnelles, notamment pour aider à la prise de décision.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:10px;">
+        <a href="declaration-tva.pdf" target="_blank" class="btn-download">📄 Consulter ma déclaration de TVA (PDF)</a>
+      </div>
     </div>
+
+    <!-- EN -->
     <div class="en">
-      <p>This project was carried out in order to concretely study the accounting of a company over a period of three months. The objective was to put into practice the concepts seen in class and to understand the real functioning of accounting within a company getting as close as possible to professional conditions.</p>
-      <h4>My Contribution & Assessment</h4>
-      <p>My contribution to this activity consisted of generating the VAT return on the software then verifying the accuracy of the data produced. I checked the amounts by comparing the declaration with the VAT accounts to ensure that all operations had been taken into account. I am now able to carry out a VAT declaration using professional software while checking the consistency of the results obtained.</p>
+      <div class="modal-section">
+        <div class="modal-section-title">Project Presentation</div>
+        <p>This project was carried out in order to concretely study the accounting of a company over a period of three months. The objective was to put into practice the concepts seen in class and to understand the real functioning of accounting within a company, getting as close as possible to professional conditions.</p>
+        <p>The project took place over three working days, during which we maintained the complete accounting of the company over three months. We recorded all invoices received and sent in the accounting journals, used accounting and commercial management software to create the company, issue customer invoices and track operations. We also had to produce monthly VAT returns and record all operations related to the management of an employee.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Skills Mobilized</div>
+        <div class="comp-grid">
+          <div class="comp-item"><strong>Critical Learning 1</strong>Process raw qualitative and quantitative data, using emerging technologies</div>
+          <div class="comp-item"><strong>Critical Learning 2</strong>Present the results of management data processing</div>
+          <div class="comp-item"><strong>Critical Learning 3</strong>Comment on data processing results</div>
+          <div class="comp-item"><strong>Tools used</strong>Sage accounting software, commercial management, accounting journals, chart of accounts</div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">My Contribution & Assessment</div>
+        <p>My contribution consisted of generating the VAT return on the software, then verifying the accuracy of the data produced. I checked the amounts by comparing the declaration with the VAT accounts to ensure that all operations had been taken into account. I also participated in analyzing the results to determine whether it was a VAT credit or a disbursement, before clearing the VAT accounts.</p>
+        <p>I am now able to carry out a VAT declaration using professional software while checking the consistency of the results obtained and interpreting them. These skills will be useful in many professional situations, particularly to assist in decision-making.</p>
+      </div>
+      <div style="text-align:center;margin-top:10px;">
+        <a href="declaration-tva.pdf" target="_blank" class="btn-download">📄 View my VAT declaration (PDF)</a>
+      </div>
     </div>
+
+    <!-- AR -->
     <div class="ar">
-      <p>تم تنفيذ هذا المشروع من أجل دراسة محاسبة شركة بشكل ملموس على مدى ثلاثة أشهر. كان الهدف هو وضع المفاهيم التي شوهدت في الفصل موضع التنفيذ وفهم الأداء الحقيقي للمحاسبة داخل الشركة والاقتراب قدر الإمكان من الظروف المهنية.</p>
-      <h4>مساهمتي والتقييم</h4>
-      <p>تألفت مساهمتي في هذا النشاط من إنشاء إقرار ضريبة القيمة المضافة على البرنامج ثم التحقق من دقة البيانات المنتجة. لقد تحققت من المبالغ من خلال مقارنة الإقرار بحسابات ضريبة القيمة المضافة للتأكد من أخذ جميع العمليات في الاعتبار. أنا الآن قادرة على تنفيذ إقرار ضريبة القيمة المضافة باستخدام البرامج المهنية مع التحقق من اتساق النتائج التي تم الحصول عليها.</p>
+      <div class="modal-section">
+        <div class="modal-section-title">تقديم المشروع</div>
+        <p>تم تنفيذ هذا المشروع لدراسة محاسبة شركة بشكل ملموس على مدى ثلاثة أشهر. كان الهدف وضع المفاهيم التي شوهدت في الفصل موضع التنفيذ وفهم الأداء الحقيقي للمحاسبة داخل شركة والاقتراب قدر الإمكان من الظروف المهنية.</p>
+        <p>جرى المشروع على مدى ثلاثة أيام عمل، خلالها احتفظنا بالمحاسبة الكاملة للشركة لمدة ثلاثة أشهر: تسجيل الفواتير، استخدام برامج المحاسبة والإدارة التجارية، إصدار فواتير العملاء، تتبع العمليات، وإنجاز إقرارات ضريبة القيمة المضافة الشهرية وإدارة الرواتب.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">مساهمتي والتقييم</div>
+        <p>تألفت مساهمتي في إنشاء إقرار ضريبة القيمة المضافة على البرنامج ثم التحقق من دقة البيانات المنتجة. تحققت من المبالغ بمقارنة الإقرار بحسابات ضريبة القيمة المضافة للتأكد من أخذ جميع العمليات في الاعتبار. أنا الآن قادرة على تنفيذ إقرار ضريبة القيمة المضافة باستخدام البرامج المهنية مع التحقق من اتساق النتائج.</p>
+      </div>
+      <div style="text-align:center;margin-top:10px;">
+        <a href="declaration-tva.pdf" target="_blank" class="btn-download">📄 عرض إقرار ضريبة القيمة المضافة (PDF)</a>
+      </div>
     </div>
-    
-    <div style="text-align:center;">
-      <a href="declaration-tva.pdf" target="_blank" class="btn-download">
-        <span class="fr">📄 Consulter ma déclaration de TVA (PDF)</span>
-        <span class="en">📄 View my VAT declaration (PDF)</span>
-        <span class="ar">📄 عرض إقرار ضريبة القيمة المضافة (PDF)</span>
-      </a>
-    </div>
-    
+
     <button class="btn-close-bottom" onclick="closeModal('sae2')">
       <span class="fr">Fermer cette présentation</span>
       <span class="en">Close this presentation</span>
@@ -723,48 +868,113 @@
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-sae3">
+<!-- ═══════════ MODAL SAE 3 ═══════════ -->
+<div class="modal-overlay" id="modal-sae3" role="dialog" aria-modal="true">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('sae3')">✕</button>
-    <div class="sae-cat">
-      <span class="fr">SAÉ · Communication</span>
-      <span class="en">Project · Communication</span>
-      <span class="ar">مشروع · تواصل</span>
+    <button class="modal-close" onclick="closeModal('sae3')" aria-label="Fermer">✕</button>
+    <div class="sae-cat" style="margin-bottom:6px;">
+      <span class="fr">SAÉ 3 · Communication · Oral · Pitch</span>
+      <span class="en">Project 3 · Communication · Oral · Pitch</span>
+      <span class="ar">مشروع 3 · تواصل · شفهي · عرض</span>
     </div>
-    <h3 class="fr">Pitch Pro</h3>
-    <h3 class="en">Pro Pitch</h3>
-    <h3 class="ar">عرض احترافي</h3>
+    <h3 class="fr">Pitch Pro — Demande de stage filmée</h3>
+    <h3 class="en">Pro Pitch — Filmed internship request</h3>
+    <h3 class="ar">عرض احترافي — طلب تدريب مصور</h3>
     <div class="modal-sub">
-      <span class="fr">Filmé au CEMU · 3 minutes · 3 séances de préparation</span>
-      <span class="en">Filmed at CEMU · 3 minutes · 3 preparation sessions</span>
-      <span class="ar">تم تصويره في المركز · 3 دقائق · 3 جلسات تحضيرية</span>
+      <span class="fr">Filmé au CEMU · 3 minutes · 3 séances de préparation · Travail individuel</span>
+      <span class="en">Filmed at CEMU · 3 minutes · 3 preparation sessions · Individual work</span>
+      <span class="ar">تم تصويره في المركز · 3 دقائق · 3 جلسات تحضيرية · عمل فردي</span>
     </div>
-    
+
+    <!-- FR -->
     <div class="fr">
-      <p>Cette SAE avait pour but de nous préparer à la recherche d’un stage dès la première année. L’idée était de nous mettre dans une situation concrète proche de la réalité afin de travailler notre manière de nous présenter et de gagner en aisance à l’oral. Pour cela nous avons été filmés au CEMU pendant trois minutes le temps de faire une demande de stage comme si nous étions face à un recruteur.</p>
-      <p>L’enjeu principal était de réussir à tenir un discours clair et professionnel tout en adoptant une posture adaptée et crédible. Il s’agissait aussi de prendre conscience de l’importance de la communication dans le cadre professionnel. La préparation s’est faite sur trois séances avec l’enseignant. Ces séances nous ont permis de construire notre discours de nous entraîner à l’oral et de nous corriger entre nous.</p>
-      <h4>Ma contribution et Bilan</h4>
-      <p>J’ai rédigé moi-même ma demande de stage en construisant un fil conducteur cohérent qui mettait en avant à la fois ma motivation mon projet professionnel et certains traits de ma personnalité. Le but était de proposer un discours clair et structuré tout en restant naturel et crédible. La principale difficulté a été la gestion du temps. J’avais beaucoup d’informations à faire passer en seulement trois minutes ce qui m’a obligé à faire des choix. Ces compétences seront transversales et pourront être utilisées dans de nombreuses situations professionnelles.</p>
+      <div class="modal-section">
+        <div class="modal-section-title">Présentation de la SAÉ</div>
+        <p>Cette SAÉ avait pour but de nous préparer à la recherche d'un stage dès la première année. L'idée était de nous mettre dans une situation concrète, proche de la réalité, afin de travailler notre manière de nous présenter et de gagner en aisance à l'oral. Pour cela, nous avons été filmés au CEMU pendant trois minutes, le temps de faire une demande de stage comme si nous étions face à un recruteur.</p>
+        <p>Plusieurs acteurs étaient impliqués dans cette SAÉ : les étudiants, notre professeur qui nous a accompagnés tout au long du projet, ainsi que les personnes du CEMU chargées de l'enregistrement. L'enjeu principal était de réussir à tenir un discours clair et professionnel, tout en adoptant une posture adaptée et crédible. Il s'agissait aussi de prendre conscience de l'importance de la communication dans le cadre professionnel.</p>
+        <p>La préparation s'est faite sur trois séances avec l'enseignant. Ces séances nous ont permis de construire notre discours, de nous entraîner à l'oral et de nous corriger entre nous. En dehors des cours, nous avons également beaucoup travaillé en autonomie, surtout sur la partie écrite.</p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Compétences mobilisées</div>
+        <div class="comp-grid">
+          <div class="comp-item"><strong>Apprentissage critique 1</strong>S'approprier les postures professionnelles nécessaires à l'exercice des métiers de la gestion</div>
+          <div class="comp-item"><strong>Apprentissage critique 2</strong>Appliquer les outils d'organisation et méthodes dédiés au travail collaboratif</div>
+          <div class="comp-item"><strong>Apprentissage critique 3</strong>Utiliser les techniques de communication au service des relations entre les acteurs, notamment à l'aide des technologies émergentes</div>
+          <div class="comp-item"><strong>Apprentissage critique 4</strong>Rendre compte à l'encadrement</div>
+        </div>
+        <div class="composantes-block">
+          <p><strong>Composante essentielle — Assurer la coordination des acteurs :</strong></p>
+          <ul>
+            <li>En mobilisant des outils et techniques adaptés au contexte de la situation professionnelle</li>
+            <li>En intégrant la diversité des relations individuelles ou collectives</li>
+            <li>En adoptant une posture responsable et éthique</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Ma contribution (Preuve — Trace écrite du Pitch Pro)</div>
+        <p>Cette preuve se situe à la fin de la phase de préparation de la SAÉ, au moment où j'ai terminé la rédaction du texte que je devais présenter lors de l'enregistrement au CEMU. Il s'agit de l'écrit que j'ai transmis à l'enseignant afin qu'il soit évalué, avant le passage à l'oral. Cette étape était essentielle, car elle servait de base à mon intervention filmée.</p>
+        <p>Ma contribution a été principalement individuelle. J'ai rédigé moi-même ma demande de stage en construisant un fil conducteur cohérent, qui mettait en avant à la fois ma motivation, mon projet professionnel et certains traits de ma personnalité. Le but était de proposer un discours clair et structuré, tout en restant naturelle et crédible. J'ai également pris en compte les retours faits en classe et les échanges avec les autres étudiants pour améliorer mon écrit avant de le rendre.</p>
+        <p>Pour réaliser cette activité, j'ai mobilisé des connaissances en rédaction et en syntaxe, afin que le texte soit fluide, compréhensible et adapté à un contexte professionnel. Des compétences en communication étaient nécessaires pour adapter le message à la situation et aux attentes de l'évaluation. Cette preuve montre ma capacité à adopter une posture professionnelle, notamment dans la manière de formuler une demande et de me présenter.</p>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Bilan d'activité</div>
+        <div class="bilan-block">
+          <p>Le bilan de cette activité est globalement positif, même si elle a présenté certaines difficultés. La principale a été la gestion du temps : j'avais beaucoup d'informations à faire passer en seulement trois minutes, ce qui m'a obligée à faire des choix. Il a fallu supprimer certaines idées et en condenser d'autres afin de garder l'essentiel, sans perdre le sens de ma demande ni la cohérence de mon discours.</p>
+          <p>Pour faire face à cette difficulté, j'ai retravaillé plusieurs fois mon texte, en réorganisant les idées et en simplifiant certaines phrases. Les entraînements en classe et les échanges avec les autres étudiants m'ont également aidée à repérer ce qui était vraiment important et ce qui pouvait être retiré. Cela m'a permis d'avoir un discours plus clair, plus fluide et mieux adapté au format imposé.</p>
+          <p>Les apprentissages mobilisés lors de cette SAÉ pourront être réutilisés dans de nombreux contextes : lors des entretiens d'embauche ou de stage, où il faut savoir se présenter efficacement, expliquer son parcours et défendre sa motivation en peu de temps. Ils seront aussi importants dans toutes les situations où je devrai prendre la parole devant un public — présentation orale, réunion, projet professionnel. Ces compétences sont transversales et pourront être utilisées dans de nombreuses situations professionnelles.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:10px;">
+        <a href="texte-pitch.pdf" target="_blank" class="btn-download">📝 Lire mon texte de Pitch (PDF)</a>
+      </div>
     </div>
+
+    <!-- EN -->
     <div class="en">
-      <p>This project aimed to prepare us for finding an internship right from the first year. The idea was to put us in a concrete situation close to reality in order to work on our way of introducing ourselves and gain ease in speaking. For this we were filmed at the CEMU for three minutes the time to make an internship request as if we were facing a recruiter.</p>
-      <h4>My Contribution & Assessment</h4>
-      <p>I wrote my internship request myself by building a coherent common thread that highlighted both my motivation my professional project and certain personality traits. The goal was to offer a clear and structured speech while remaining natural and credible. The main difficulty was time management. I had a lot of information to convey in just three minutes which forced me to make choices.</p>
+      <div class="modal-section">
+        <div class="modal-section-title">Project Presentation</div>
+        <p>This project aimed to prepare us for finding an internship right from the first year. The idea was to put us in a concrete situation close to reality in order to work on our way of introducing ourselves and gain ease in speaking. For this we were filmed at the CEMU for three minutes to make an internship request as if we were facing a recruiter.</p>
+        <p>Several actors were involved: students, our teacher who accompanied us throughout the project, and the CEMU staff in charge of recording. The main challenge was to deliver a clear and professional speech while adopting an appropriate and credible posture. The preparation took place over three sessions with the teacher — these sessions allowed us to build our speech, practice speaking and correct each other.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Skills Mobilized</div>
+        <div class="comp-grid">
+          <div class="comp-item"><strong>Critical Learning 1</strong>Adopt the professional postures necessary for management professions</div>
+          <div class="comp-item"><strong>Critical Learning 2</strong>Apply organizational tools and methods for collaborative work</div>
+          <div class="comp-item"><strong>Critical Learning 3</strong>Use communication techniques to serve relations between actors</div>
+          <div class="comp-item"><strong>Critical Learning 4</strong>Report to management</div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">My Contribution & Assessment</div>
+        <p>I wrote my internship request myself by building a coherent common thread that highlighted my motivation, professional project and certain personality traits. The goal was to offer a clear and structured speech while remaining natural and credible.</p>
+        <p>The main difficulty was time management — I had a lot of information to convey in just three minutes which forced me to make choices. I reworked my text several times, reorganizing ideas and simplifying sentences. These skills will be particularly useful during job interviews where you need to present yourself effectively in a short time.</p>
+      </div>
+      <div style="text-align:center;margin-top:10px;">
+        <a href="texte-pitch.pdf" target="_blank" class="btn-download">📝 Read my Pitch text (PDF)</a>
+      </div>
     </div>
+
+    <!-- AR -->
     <div class="ar">
-      <p>يهدف هذا المشروع إلى إعدادنا للبحث عن تدريب داخلي من السنة الأولى. كانت الفكرة هي وضعنا في موقف ملموس قريب من الواقع من أجل العمل على طريقة تقديم أنفسنا واكتساب السهولة في التحدث. لهذا تم تصويرنا في المركز لمدة ثلاث دقائق وهو الوقت المناسب لتقديم طلب تدريب داخلي كما لو كنا نواجه مسؤول توظيف حقيقي.</p>
-      <h4>مساهمتي والتقييم</h4>
-      <p>كتبت طلب التدريب الخاص بي بنفسي من خلال بناء خيط مشترك متماسك يبرز دافعي ومشروعي المهني وبعض السمات الشخصية. كان الهدف هو تقديم خطاب واضح ومنظم مع البقاء طبيعية وذات مصداقية. كانت الصعوبة الرئيسية هي إدارة الوقت. كان لدي الكثير من المعلومات لأنقلها في ثلاث دقائق فقط مما أجبرني على اتخاذ خيارات.</p>
+      <div class="modal-section">
+        <div class="modal-section-title">تقديم المشروع</div>
+        <p>يهدف هذا المشروع إلى إعدادنا للبحث عن تدريب داخلي من السنة الأولى. كانت الفكرة وضعنا في موقف ملموس قريب من الواقع للعمل على طريقة تقديم أنفسنا واكتساب السهولة في التحدث. لهذا تم تصويرنا في المركز لمدة ثلاث دقائق لتقديم طلب تدريب كما لو كنا نواجه مسؤول توظيف حقيقي.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">مساهمتي والتقييم</div>
+        <p>كتبت طلب التدريب الخاص بي بنفسي من خلال بناء خيط مشترك متماسك يبرز دافعي ومشروعي المهني وبعض السمات الشخصية. كان الهدف تقديم خطاب واضح ومنظم مع البقاء طبيعية وذات مصداقية. كانت الصعوبة الرئيسية إدارة الوقت — كان لدي الكثير من المعلومات في ثلاث دقائق فقط مما أجبرني على اتخاذ خيارات. هذه المهارات ستكون مفيدة جداً في المقابلات المهنية المستقبلية.</p>
+      </div>
+      <div style="text-align:center;margin-top:10px;">
+        <a href="texte-pitch.pdf" target="_blank" class="btn-download">📝 قراءة نص العرض الخاص بي (PDF)</a>
+      </div>
     </div>
-    
-    <div style="text-align:center;">
-      <a href="texte-pitch.pdf" target="_blank" class="btn-download">
-        <span class="fr">📝 Lire mon texte de Pitch (PDF)</span>
-        <span class="en">📝 Read my Pitch text (PDF)</span>
-        <span class="ar">📝 قراءة نص العرض الخاص بي (PDF)</span>
-      </a>
-    </div>
-    
+
     <button class="btn-close-bottom" onclick="closeModal('sae3')">
       <span class="fr">Fermer cette présentation</span>
       <span class="en">Close this presentation</span>
@@ -773,266 +983,158 @@
   </div>
 </div>
 
+<!-- ═══════════ SKILLS ═══════════ -->
 <section class="skills" id="competences">
-  <svg class="float-slow" style="position:absolute;top:50px;right:60px;opacity:0.15;pointer-events:none;" width="90" height="30" viewBox="0 0 90 30">
+  <svg class="float-slow" style="position:absolute;top:50px;right:60px;opacity:.15;pointer-events:none;" width="90" height="30" viewBox="0 0 90 30">
     <path d="M 0 15 Q 22 0 45 15 Q 68 30 90 15" stroke="var(--mocha)" stroke-width="1.5" fill="none"/>
-    <path d="M 0 15 Q 22 5 45 15 Q 68 25 90 15" stroke="var(--latte)" stroke-width="0.8" fill="none"/>
+    <path d="M 0 15 Q 22 5 45 15 Q 68 25 90 15" stroke="var(--latte)" stroke-width=".8" fill="none"/>
   </svg>
-  <svg class="float-slower" style="position:absolute;bottom:20%;right:5%;opacity:0.1;pointer-events:none;" width="50" height="50" viewBox="0 0 50 50">
-    <rect x="10" y="10" width="30" height="30" fill="none" stroke="var(--mocha)" stroke-width="2"/>
+  <!-- Balance / justice -->
+  <svg class="float-slower" style="position:absolute;bottom:10%;right:6%;opacity:.1;pointer-events:none;" width="60" height="60" viewBox="0 0 60 60">
+    <line x1="30" y1="4" x2="30" y2="56" stroke="var(--brown)" stroke-width="2"/>
+    <line x1="10" y1="14" x2="50" y2="14" stroke="var(--brown)" stroke-width="2"/>
+    <path d="M 10 14 Q 8 22 14 28 Q 20 22 18 14" fill="none" stroke="var(--brown)" stroke-width="1.5"/>
+    <path d="M 42 14 Q 40 22 46 28 Q 52 22 50 14" fill="none" stroke="var(--brown)" stroke-width="1.5"/>
+    <line x1="24" y1="56" x2="36" y2="56" stroke="var(--brown)" stroke-width="2"/>
   </svg>
 
-  <div class="section-tag">
-    <span class="fr">Savoir-faire</span>
-    <span class="en">Expertise</span>
-    <span class="ar">خبرة</span>
-  </div>
-  <h2>
-    <span class="fr">Compétences <em>développées</em></span>
-    <span class="en">Developed <em>Skills</em></span>
-    <span class="ar">المهارات <em>المطورة</em></span>
-  </h2>
-  
+  <div class="section-tag"><span class="fr">Savoir-faire</span><span class="en">Expertise</span><span class="ar">خبرة</span></div>
+  <h2><span class="fr">Compétences <em>développées</em></span><span class="en">Developed <em>Skills</em></span><span class="ar">المهارات <em>المطورة</em></span></h2>
+
   <div class="skills-grid">
-    <div class="skill-card">
-      <div class="sk-top">
-        <span class="sk-icon">📒</span>
-        <h3 class="fr">Comptabilité</h3>
-        <h3 class="en">Accounting</h3>
-        <h3 class="ar">المحاسبة</h3>
-      </div>
-      <p class="fr">Enregistrement des opérations tenue des journaux déclarations de TVA lettrage et équilibre des comptes sur logiciel professionnel.</p>
-      <p class="en">Recording of operations keeping of journals VAT declarations matching and balancing of accounts on professional software.</p>
-      <p class="ar">تسجيل العمليات الاحتفاظ بالمجلات المحاسبية إقرارات ضريبة القيمة المضافة مطابقة وموازنة الحسابات على البرامج المهنية.</p>
+    <div class="skill-card reveal">
+      <div class="sk-top"><span class="sk-icon">📒</span><h3 class="fr">Comptabilité</h3><h3 class="en">Accounting</h3><h3 class="ar">المحاسبة</h3></div>
+      <p class="fr">Enregistrement des opérations, tenue des journaux, déclarations de TVA, lettrage et équilibre des comptes sur logiciel professionnel (Sage).</p>
+      <p class="en">Recording of operations, keeping of journals, VAT declarations, matching and balancing of accounts on professional software (Sage).</p>
+      <p class="ar">تسجيل العمليات، الاحتفاظ بالمجلات المحاسبية، إقرارات ضريبة القيمة المضافة، مطابقة وموازنة الحسابات على البرامج المهنية.</p>
     </div>
-    <div class="skill-card">
-      <div class="sk-top">
-        <span class="sk-icon">💹</span>
-        <h3 class="fr">Finance &amp; Analyse</h3>
-        <h3 class="en">Finance &amp; Analysis</h3>
-        <h3 class="ar">التمويل والتحليل</h3>
-      </div>
-      <p class="fr">Analyse de documents financiers identification des éléments constitutifs d'un processus interprétation des résultats de gestion.</p>
-      <p class="en">Analysis of financial documents identification of the constituent elements of a process interpretation of management results.</p>
-      <p class="ar">تحليل الوثائق المالية تحديد العناصر المكونة للعملية وتفسير نتائج الإدارة.</p>
+    <div class="skill-card reveal">
+      <div class="sk-top"><span class="sk-icon">💹</span><h3 class="fr">Finance &amp; Analyse</h3><h3 class="en">Finance &amp; Analysis</h3><h3 class="ar">التمويل والتحليل</h3></div>
+      <p class="fr">Analyse de documents financiers, identification des éléments constitutifs d'un processus, interprétation des résultats de gestion.</p>
+      <p class="en">Analysis of financial documents, identification of the constituent elements of a process, interpretation of management results.</p>
+      <p class="ar">تحليل الوثائق المالية، تحديد العناصر المكونة للعملية وتفسير نتائج الإدارة.</p>
     </div>
-    <div class="skill-card">
-      <div class="sk-top">
-        <span class="sk-icon">🏢</span>
-        <h3 class="fr">Gestion d'entreprise</h3>
-        <h3 class="en">Business Management</h3>
-        <h3 class="ar">إدارة الأعمال</h3>
-      </div>
-      <p class="fr">Situer une organisation dans son environnement analyser les parties prenantes identifier les enjeux RSE et processus internes.</p>
-      <p class="en">Position an organization in its environment analyze stakeholders identify CSR issues and internal processes.</p>
-      <p class="ar">تحديد موقع منظمة في بيئتها تحليل أصحاب المصلحة وتحديد قضايا المسؤولية الاجتماعية والعمليات الداخلية.</p>
+    <div class="skill-card reveal">
+      <div class="sk-top"><span class="sk-icon">🏢</span><h3 class="fr">Gestion d'entreprise</h3><h3 class="en">Business Management</h3><h3 class="ar">إدارة الأعمال</h3></div>
+      <p class="fr">Situer une organisation dans son environnement, analyser les parties prenantes, identifier les enjeux RSE et les processus internes.</p>
+      <p class="en">Position an organization in its environment, analyze stakeholders, identify CSR issues and internal processes.</p>
+      <p class="ar">تحديد موقع منظمة في بيئتها، تحليل أصحاب المصلحة وتحديد قضايا المسؤولية الاجتماعية والعمليات الداخلية.</p>
     </div>
-    <div class="skill-card">
-      <div class="sk-top">
-        <span class="sk-icon">🎤</span>
-        <h3 class="fr">Communication pro</h3>
-        <h3 class="en">Pro Communication</h3>
-        <h3 class="ar">تواصل مهني</h3>
-      </div>
-      <p class="fr">Présentation orale structurée rédaction professionnelle travail collaboratif. Participation au débat S2 au CEMU.</p>
-      <p class="en">Structured oral presentation professional writing collaborative work. Participation in the S2 debate at the CEMU.</p>
-      <p class="ar">عرض شفهي منظم كتابة مهنية وعمل تعاوني. المشاركة في المناظرة في المركز الجامعي.</p>
+    <div class="skill-card reveal">
+      <div class="sk-top"><span class="sk-icon">🎤</span><h3 class="fr">Communication pro</h3><h3 class="en">Pro Communication</h3><h3 class="ar">تواصل مهني</h3></div>
+      <p class="fr">Présentation orale structurée, rédaction professionnelle, travail collaboratif. Pitch filmé et participation au débat S2 au CEMU.</p>
+      <p class="en">Structured oral presentation, professional writing, collaborative work. Filmed pitch and participation in the S2 debate at the CEMU.</p>
+      <p class="ar">عرض شفهي منظم، كتابة مهنية وعمل تعاوني. عرض مصور والمشاركة في المناظرة في المركز الجامعي.</p>
     </div>
-    <div class="skill-card">
-      <div class="sk-top">
-        <span class="sk-icon">💻</span>
-        <h3 class="fr">Outils numériques</h3>
-        <h3 class="en">Digital Tools</h3>
-        <h3 class="ar">الأدوات الرقمية</h3>
-      </div>
-      <p class="fr">Suite Office logiciels comptables professionnels outils de présentation et environnements numériques collaboratifs.</p>
-      <p class="en">Office suite professional accounting software presentation tools and collaborative digital environments.</p>
-      <p class="ar">مجموعة أوفيس برامج المحاسبة المهنية أدوات العرض التقديمي والبيئات الرقمية التعاونية.</p>
+    <div class="skill-card reveal">
+      <div class="sk-top"><span class="sk-icon">💻</span><h3 class="fr">Outils numériques</h3><h3 class="en">Digital Tools</h3><h3 class="ar">الأدوات الرقمية</h3></div>
+      <p class="fr">Suite Office, logiciels comptables professionnels (Sage), outils de présentation et environnements numériques collaboratifs.</p>
+      <p class="en">Office suite, professional accounting software (Sage), presentation tools and collaborative digital environments.</p>
+      <p class="ar">مجموعة أوفيس، برامج المحاسبة المهنية (Sage)، أدوات العرض التقديمي والبيئات الرقمية التعاونية.</p>
     </div>
-    <div class="skill-card">
-      <div class="sk-top">
-        <span class="sk-icon">🌍</span>
-        <h3 class="fr">Langues</h3>
-        <h3 class="en">Languages</h3>
-        <h3 class="ar">اللغات</h3>
-      </div>
-      <p class="fr">Bilingue Français et Arabe (Franco-tunisienne). Anglais niveau B1 (compréhension et expression écrite ou orale de base).</p>
-      <p class="en">Bilingual French and Arabic (French-Tunisian). English level B1 (basic written and oral comprehension and expression).</p>
-      <p class="ar">ثنائية اللغة الفرنسية والعربية. مستوى اللغة الإنجليزية متوسط (الفهم والتعبير الكتابي والشفهي الأساسي).</p>
+    <div class="skill-card reveal">
+      <div class="sk-top"><span class="sk-icon">🌍</span><h3 class="fr">Langues</h3><h3 class="en">Languages</h3><h3 class="ar">اللغات</h3></div>
+      <p class="fr">Bilingue Français / Arabe (Franco-tunisienne). Anglais niveau B1 (compréhension et expression écrite et orale de base).</p>
+      <p class="en">Bilingual French / Arabic (French-Tunisian). English level B1 (basic written and oral comprehension and expression).</p>
+      <p class="ar">ثنائية اللغة الفرنسية والعربية (فرنسية-تونسية). مستوى اللغة الإنجليزية B1 (الفهم والتعبير الكتابي والشفهي الأساسي).</p>
     </div>
   </div>
 </section>
 
+<!-- ═══════════ PARCOURS ═══════════ -->
 <section class="parcours" id="parcours">
-  <svg class="pulse-slow" style="position:absolute;bottom:50px;left:50px;opacity:0.15;pointer-events:none;" width="80" height="80" viewBox="0 0 80 80">
+  <svg class="pulse-slow" style="position:absolute;bottom:50px;left:50px;opacity:.12;pointer-events:none;" width="80" height="80" viewBox="0 0 80 80">
     <g fill="var(--brown)">
       <circle cx="10" cy="10" r="2"/><circle cx="30" cy="10" r="2"/><circle cx="50" cy="10" r="2"/>
       <circle cx="10" cy="30" r="2"/><circle cx="30" cy="30" r="2"/><circle cx="50" cy="30" r="2"/>
       <circle cx="10" cy="50" r="2"/><circle cx="30" cy="50" r="2"/><circle cx="50" cy="50" r="2"/>
     </g>
   </svg>
+  <!-- diplôme déco -->
+  <svg class="float-slow" style="position:absolute;top:40px;right:80px;opacity:.1;pointer-events:none;" width="60" height="50" viewBox="0 0 60 50">
+    <rect x="4" y="8" width="52" height="36" rx="4" fill="none" stroke="var(--brown)" stroke-width="2"/>
+    <circle cx="30" cy="26" r="10" fill="none" stroke="var(--mocha)" stroke-width="1.5"/>
+    <path d="M 20 40 L 30 36 L 40 40 L 37 50 L 30 46 L 23 50 Z" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1"/>
+    <line x1="12" y1="14" x2="22" y2="14" stroke="var(--brown)" stroke-width="1"/>
+    <line x1="12" y1="18" x2="22" y2="18" stroke="var(--brown)" stroke-width="1"/>
+  </svg>
 
-  <div class="section-tag">
-    <span class="fr">Mon parcours</span>
-    <span class="en">My background</span>
-    <span class="ar">مساري</span>
-  </div>
-  <h2>
-    <span class="fr">Formation &amp; <em>Engagements</em></span>
-    <span class="en">Education &amp; <em>Commitments</em></span>
-    <span class="ar">تعليم <em>والتزامات</em></span>
-  </h2>
-  
+  <div class="section-tag"><span class="fr">Mon parcours</span><span class="en">My background</span><span class="ar">مساري</span></div>
+  <h2><span class="fr">Formation &amp; <em>Engagements</em></span><span class="en">Education &amp; <em>Commitments</em></span><span class="ar">تعليم <em>والتزامات</em></span></h2>
+
   <div class="parcours-grid">
     <div>
-      <div class="tl-heading">
-        <span class="fr">🎓 Formation</span>
-        <span class="en">🎓 Education</span>
-        <span class="ar">🎓 التعليم</span>
-      </div>
+      <div class="tl-heading"><span class="fr">🎓 Formation</span><span class="en">🎓 Education</span><span class="ar">🎓 التعليم</span></div>
       <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-date">
-            <span class="fr">Sept. 2025 — Présent</span>
-            <span class="en">Sept. 2025 — Present</span>
-            <span class="ar">سبتمبر 2025 — الحاضر</span>
-          </div>
+        <div class="tl-item reveal">
+          <div class="tl-date"><span class="fr">Sept. 2025 — Présent</span><span class="en">Sept. 2025 — Present</span><span class="ar">سبتمبر 2025 — الحاضر</span></div>
           <div class="tl-title">BUT GEA</div>
-          <div class="tl-sub">
-            <span class="fr">IUT Grand Ouest Normandie · Caen</span>
-            <span class="en">IUT Grand Ouest Normandy · Caen</span>
-            <span class="ar">المعهد الجامعي للتكنولوجيا نورماندي · كان</span>
-          </div>
-          <div class="tl-desc">
-            <span class="fr">Gestion des Entreprises et des Administrations. Orientation souhaitée vers le parcours GC2F (Gestion Comptable Fiscale &amp; Financière) avec alternance en 3ᵉ année.</span>
-            <span class="en">Business and Administration Management. Desired orientation towards the GC2F path (Accounting Tax &amp; Financial Management) with work-study in the 3rd year.</span>
-            <span class="ar">إدارة الأعمال والإدارات. التوجه المطلوب نحو مسار الإدارة المحاسبية والضريبية والمالية مع دراسة وعمل في السنة الثالثة.</span>
-          </div>
+          <div class="tl-sub"><span class="fr">IUT Grand Ouest Normandie · Caen</span><span class="en">IUT Grand Ouest Normandy · Caen</span><span class="ar">المعهد الجامعي للتكنولوجيا نورماندي · كان</span></div>
+          <div class="tl-desc"><span class="fr">Gestion des Entreprises et des Administrations. Orientation souhaitée vers le parcours GC2F (Gestion Comptable Fiscale &amp; Financière) avec alternance en 3ᵉ année.</span><span class="en">Business and Administration Management. Desired orientation towards the GC2F path with work-study in the 3rd year.</span><span class="ar">إدارة الأعمال والإدارات. التوجه المطلوب نحو مسار الإدارة المحاسبية والضريبية والمالية مع دراسة وعمل في السنة الثالثة.</span></div>
         </div>
-        <div class="tl-item">
-          <div class="tl-date">
-            <span class="fr">Sept. 2022 — Juil. 2025</span>
-            <span class="en">Sept. 2022 — July 2025</span>
-            <span class="ar">سبتمبر 2022 — يوليو 2025</span>
-          </div>
-          <div class="tl-title">
-            <span class="fr">Baccalauréat Général</span>
-            <span class="en">General High School Diploma</span>
-            <span class="ar">بكالوريا عامة</span>
-          </div>
-          <div class="tl-sub">
-            <span class="fr">Lycée Robert de Mortain</span>
-            <span class="en">Robert de Mortain High School</span>
-            <span class="ar">ثانوية روبرت دي مورتان</span>
-          </div>
-          <div class="tl-desc">
-            <span class="fr">Spécialités Mathématiques et Physique-Chimie. Mention Assez-Bien.</span>
-            <span class="en">Mathematics and Physics-Chemistry specialties. Passed with honors.</span>
-            <span class="ar">تخصصات الرياضيات والفيزياء والكيمياء. نجاح مع مرتبة الشرف.</span>
-          </div>
+        <div class="tl-item reveal">
+          <div class="tl-date"><span class="fr">Sept. 2022 — Juil. 2025</span><span class="en">Sept. 2022 — July 2025</span><span class="ar">سبتمبر 2022 — يوليو 2025</span></div>
+          <div class="tl-title"><span class="fr">Baccalauréat Général</span><span class="en">General High School Diploma</span><span class="ar">بكالوريا عامة</span></div>
+          <div class="tl-sub"><span class="fr">Lycée Robert de Mortain</span><span class="en">Robert de Mortain High School</span><span class="ar">ثانوية روبرت دي مورتان</span></div>
+          <div class="tl-desc"><span class="fr">Spécialités Mathématiques et Physique-Chimie. Mention Assez-Bien.</span><span class="en">Mathematics and Physics-Chemistry specialties. Passed with honors.</span><span class="ar">تخصصات الرياضيات والفيزياء والكيمياء. نجاح مع مرتبة الشرف.</span></div>
         </div>
       </div>
     </div>
     <div>
-      <div class="tl-heading">
-        <span class="fr">⭐ Engagements &amp; Certifications</span>
-        <span class="en">⭐ Commitments &amp; Certifications</span>
-        <span class="ar">⭐ التزامات وشهادات</span>
-      </div>
+      <div class="tl-heading"><span class="fr">⭐ Engagements &amp; Certifications</span><span class="en">⭐ Commitments &amp; Certifications</span><span class="ar">⭐ التزامات وشهادات</span></div>
       <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-date">
-            <span class="fr">Nov. 2025</span>
-            <span class="en">Nov. 2025</span>
-            <span class="ar">نوفمبر 2025</span>
-          </div>
-          <div class="tl-title">
-            <span class="fr">Certification Orthographe</span>
-            <span class="en">Spelling Certification</span>
-            <span class="ar">شهادة الإملاء</span>
-          </div>
-          <div class="tl-sub">
-            <span class="fr">France Université Numérique · Univ. de Caen</span>
-            <span class="en">France Digital University · Univ. of Caen</span>
-            <span class="ar">جامعة فرنسا الرقمية · جامعة كان</span>
-          </div>
+        <div class="tl-item reveal">
+          <div class="tl-date"><span class="fr">Nov. 2025</span><span class="en">Nov. 2025</span><span class="ar">نوفمبر 2025</span></div>
+          <div class="tl-title"><span class="fr">Certification Orthographe</span><span class="en">Spelling Certification</span><span class="ar">شهادة الإملاء</span></div>
+          <div class="tl-sub"><span class="fr">France Université Numérique · Univ. de Caen</span><span class="en">France Digital University · Univ. of Caen</span><span class="ar">جامعة فرنسا الرقمية · جامعة كان</span></div>
         </div>
-        <div class="tl-item">
-          <div class="tl-date">
-            <span class="fr">2025 — Présent</span>
-            <span class="en">2025 — Present</span>
-            <span class="ar">2025 — الحاضر</span>
-          </div>
-          <div class="tl-title">
-            <span class="fr">Débat S2 au CEMU</span>
-            <span class="en">S2 Debate at CEMU</span>
-            <span class="ar">مناظرة في المركز الجامعي</span>
-          </div>
-          <div class="tl-desc">
-            <span class="fr">Préparation pour apprendre à animer un débat défendre un point de vue et écouter autrui — compétence clé en environnement professionnel.</span>
-            <span class="en">Preparation to learn how to moderate a debate defend a point of view and listen to others — a key skill in a professional environment.</span>
-            <span class="ar">التحضير لتعلم كيفية إدارة نقاش والدفاع عن وجهة نظر والاستماع للآخرين — مهارة رئيسية في بيئة مهنية.</span>
-          </div>
+        <div class="tl-item reveal">
+          <div class="tl-date"><span class="fr">2025 — Présent</span><span class="en">2025 — Present</span><span class="ar">2025 — الحاضر</span></div>
+          <div class="tl-title"><span class="fr">Débat S2 au CEMU</span><span class="en">S2 Debate at CEMU</span><span class="ar">مناظرة في المركز الجامعي</span></div>
+          <div class="tl-desc"><span class="fr">Préparation pour apprendre à animer un débat, défendre un point de vue et écouter autrui — compétence clé en environnement professionnel.</span><span class="en">Preparation to learn how to moderate a debate, defend a point of view and listen to others — a key skill in a professional environment.</span><span class="ar">التحضير لتعلم كيفية إدارة نقاش والدفاع عن وجهة نظر والاستماع للآخرين — مهارة رئيسية في بيئة مهنية.</span></div>
         </div>
-        <div class="tl-item">
+        <div class="tl-item reveal">
           <div class="tl-date">2022 — 2025</div>
-          <div class="tl-title">
-            <span class="fr">Engagement lycéen</span>
-            <span class="en">High school commitment</span>
-            <span class="ar">التزام مدرسي</span>
-          </div>
-          <div class="tl-sub">
-            <span class="fr">Lycée Robert de Mortain</span>
-            <span class="en">Robert de Mortain High School</span>
-            <span class="ar">ثانوية روبرت دي مورتان</span>
-          </div>
-          <div class="tl-desc">
-            <span class="fr">Membre du Conseil d'Administration et du CVL. Déléguée de classe pendant 2 ans. Organisation de journées à thème.</span>
-            <span class="en">Member of the Board of Directors and the CVL. Class representative for 2 years. Organization of theme days.</span>
-            <span class="ar">عضو في مجلس الإدارة ومندوبة الصف لمدة عامين. تنظيم أيام دراسية بمواضيع محددة.</span>
-          </div>
+          <div class="tl-title"><span class="fr">Engagement lycéen</span><span class="en">High school commitment</span><span class="ar">التزام مدرسي</span></div>
+          <div class="tl-sub"><span class="fr">Lycée Robert de Mortain</span><span class="en">Robert de Mortain High School</span><span class="ar">ثانوية روبرت دي مورتان</span></div>
+          <div class="tl-desc"><span class="fr">Membre du Conseil d'Administration et du CVL. Déléguée de classe pendant 2 ans. Organisation de journées à thème.</span><span class="en">Member of the Board of Directors and the CVL. Class representative for 2 years. Organization of theme days.</span><span class="ar">عضو في مجلس الإدارة ومندوبة الصف لمدة عامين. تنظيم أيام دراسية بمواضيع محددة.</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══════════ CONTACT ═══════════ -->
 <section class="contact" id="contact">
-  <svg style="position:absolute;top:30px;left:80px;opacity:0.1;pointer-events:none;" width="48" height="48" viewBox="0 0 48 48"><path d="M 24 3 L 27 19 L 43 24 L 27 29 L 24 45 L 21 29 L 5 24 L 21 19 Z" fill="white"/></svg>
-  <svg style="position:absolute;bottom:36px;right:90px;opacity:0.1;pointer-events:none;" width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="14" fill="none" stroke="white" stroke-width="1"/><circle cx="17" cy="17" r="7" fill="none" stroke="white" stroke-width="1"/><circle cx="17" cy="17" r="2.5" fill="white"/></svg>
+  <svg style="position:absolute;top:30px;left:80px;opacity:.1;pointer-events:none;" width="48" height="48" viewBox="0 0 48 48"><path d="M 24 3 L 27 19 L 43 24 L 27 29 L 24 45 L 21 29 L 5 24 L 21 19 Z" fill="white"/></svg>
+  <svg style="position:absolute;bottom:36px;right:90px;opacity:.1;pointer-events:none;" width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="14" fill="none" stroke="white" stroke-width="1"/><circle cx="17" cy="17" r="7" fill="none" stroke="white" stroke-width="1"/><circle cx="17" cy="17" r="2.5" fill="white"/></svg>
+  <!-- enveloppe déco -->
+  <svg style="position:absolute;top:50%;right:8%;opacity:.07;pointer-events:none;" width="70" height="50" viewBox="0 0 70 50"><rect x="2" y="2" width="66" height="46" rx="4" fill="none" stroke="white" stroke-width="2"/><path d="M 2 8 L 35 28 L 68 8" fill="none" stroke="white" stroke-width="2"/></svg>
 
-  <div class="section-tag">
-    <span class="fr">Travaillons ensemble</span>
-    <span class="en">Let's work together</span>
-    <span class="ar">دعونا نعمل معا</span>
-  </div>
+  <div class="section-tag"><span class="fr">Travaillons ensemble</span><span class="en">Let's work together</span><span class="ar">دعونا نعمل معا</span></div>
   <h2>
     <span class="fr">Open à une<br/><em>alternance 3ᵉ année</em></span>
     <span class="en">Open to a<br/><em>3rd year work-study</em></span>
     <span class="ar">متاحة لبرنامج<br/><em>دراسة وعمل للسنة الثالثة</em></span>
   </h2>
   <p class="contact-desc">
-    <span class="fr">Je recherche une alternance à partir de la rentrée <strong style="color:var(--blush);">2027</strong> dans les domaines de la comptabilité de la finance ou du contrôle de gestion. N'hésitez pas à me contacter !</span>
-    <span class="en">I am looking for a work-study program starting in <strong style="color:var(--blush);">2027</strong> in the fields of accounting finance or management control. Feel free to contact me!</span>
+    <span class="fr">Je recherche une alternance à partir de la rentrée <strong style="color:var(--blush);">2027</strong> dans les domaines de la comptabilité, de la finance ou du contrôle de gestion. N'hésitez pas à me contacter !</span>
+    <span class="en">I am looking for a work-study program starting in <strong style="color:var(--blush);">2027</strong> in the fields of accounting, finance or management control. Feel free to contact me!</span>
     <span class="ar">أبحث عن برنامج دراسة وعمل يبدأ في <strong style="color:var(--blush);">2027</strong> في مجالات المحاسبة أو التمويل أو مراقبة الإدارة. لا تتردد في الاتصال بي!</span>
   </p>
   <div class="contact-links">
     <a href="https://www.linkedin.com/in/haninelandais/" target="_blank" class="clink">💼 LinkedIn</a>
     <a href="mailto:hanine.landais50@gmail.com" class="clink">✉️ Email</a>
-    <a href="#" class="clink">📍 <span class="fr">Caen Normandie</span><span class="en">Caen Normandy</span><span class="ar">كان نورماندي</span></a>
+    <a href="#" class="clink">📍 <span class="fr">Caen, Normandie</span><span class="en">Caen, Normandy</span><span class="ar">كان، نورماندي</span></a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-left">
     <span>© 2026 Hanine Landais — Portfolio BUT GEA</span>
-    <span>
-      <span class="fr">IUT Grand Ouest Normandie · Caen</span>
-      <span class="en">IUT Grand Ouest Normandy · Caen</span>
-      <span class="ar">المعهد الجامعي للتكنولوجيا نورماندي · كان</span>
-    </span>
+    <span><span class="fr">IUT Grand Ouest Normandie · Caen</span><span class="en">IUT Grand Ouest Normandy · Caen</span><span class="ar">المعهد الجامعي للتكنولوجيا نورماندي · كان</span></span>
   </div>
-  
   <div id="lang-switcher">
     <button class="lang-btn" onclick="document.documentElement.dataset.lang='fr'" title="Français">🇫🇷</button>
     <button class="lang-btn" onclick="document.documentElement.dataset.lang='en'" title="English">🇬🇧</button>
@@ -1041,34 +1143,69 @@
 </footer>
 
 <script>
+  /* ── MODALES : correction du bug ── */
   function openModal(id) {
-    const m = document.getElementById('modal-' + id);
-    m.style.display = 'flex';
+    var overlay = document.getElementById('modal-' + id);
+    if (!overlay) return;
+    // Forcer display:flex avant l'animation
+    overlay.style.display = 'flex';
+    // Double RAF pour que le navigateur prenne en compte le display avant la transition
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
-        m.classList.add('open');
+        overlay.classList.add('open');
       });
     });
     document.body.style.overflow = 'hidden';
   }
+
   function closeModal(id) {
-    const m = document.getElementById('modal-' + id);
-    m.classList.remove('open');
+    var overlay = document.getElementById('modal-' + id);
+    if (!overlay) return;
+    overlay.classList.remove('open');
     document.body.style.overflow = '';
-    m.ontransitionend = function() {
-      if(!m.classList.contains('open')) {
-        m.style.display = 'none';
+    // Cacher après la transition (350ms)
+    setTimeout(function() {
+      if (!overlay.classList.contains('open')) {
+        overlay.style.display = 'none';
       }
-    };
+    }, 400);
   }
-  window.onkeydown = function(e) {
+
+  // Fermer avec Escape
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      const modals = document.querySelectorAll('.modal-overlay.open');
-      for (let i = 0; i < modals.length; i++) {
-        closeModal(modals[i].id.replace('modal-' ''));
-      }
+      document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+        closeModal(m.id.replace('modal-', ''));
+      });
     }
-  };
+  });
+
+  // Fermer en cliquant sur l'overlay (hors modal)
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        closeModal(overlay.id.replace('modal-', ''));
+      }
+    });
+  });
+
+  /* ── SCROLL REVEAL ── */
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+  /* ── ANIMATION DELAYS pour les grilles ── */
+  document.querySelectorAll('.sae-grid .sae-card, .skills-grid .skill-card').forEach(function(el, i) {
+    el.style.transitionDelay = (i * 0.1) + 's';
+  });
 </script>
 </body>
 </html>
