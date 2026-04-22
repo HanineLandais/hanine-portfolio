@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width"/>
+  <meta name="viewport" content="width=device-width initial-scale=1.0"/>
   <title>Hanine Landais — Portfolio BUT GEA</title>
   
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" href="fleur.png">
   
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Jost&display=swap" rel="stylesheet"/>
   <style>
@@ -17,12 +17,19 @@
     *{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;}
     body{background:var(--cream);color:var(--espresso);font-family:'Jost';font-weight:300;overflow-x:hidden;}
+    
+    #welcome-screen{position:fixed;inset:0;background:var(--cream);z-index:9999;display:flex;align-items:center;justify-content:center;animation:hideWelcome 1s ease 2.5s forwards;}
+    .welcome-text{font-family:'Playfair Display';font-size:36px;color:var(--mocha);text-align:center;animation:textPop 1.5s ease forwards;padding:20px;}
+    @keyframes hideWelcome{to{opacity:0;visibility:hidden;pointer-events:none;display:none;}}
+    @keyframes textPop{0%{opacity:0;transform:scale(0.8);}100%{opacity:1;transform:scale(1);}}
 
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgb(247 243 236 / 90%);backdrop-filter:blur(14px);border-bottom:1px solid var(--sand); transition: all 0.3s ease;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgb(247 243 236 / 90%);backdrop-filter:blur(14px);border-bottom:1px solid var(--sand);transition:all 0.3s ease;}
     .nav-logo{font-family:'Playfair Display';font-size:19px;letter-spacing:.04em;color:var(--espresso);}
     .nav-links{display:flex;gap:30px;list-style:none;}
-    .nav-links a{text-decoration:none;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mocha);transition:color .3s ease;}
+    .nav-links a{text-decoration:none;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mocha);transition:all 0.3s ease;}
     .nav-links a:hover{color:var(--espresso);}
+
+    .bg-pattern{position:fixed;inset:0;background-image:radial-gradient(var(--latte) 1px transparent 1px);background-size:30px 30px;opacity:0.15;pointer-events:none;z-index:0;}
 
     .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:76px;overflow:hidden;position:relative;}
     .hero-bg-right{position:absolute;top:0;right:0;width:50%;height:100%;background:var(--blush);z-index:0;}
@@ -35,9 +42,9 @@
     .hero-school{font-size:13px;color:var(--latte);margin-bottom:36px;letter-spacing:.05em;}
     .hero-desc{font-size:15px;line-height:1.9;color:var(--brown);max-width:400px;margin-bottom:44px;}
     .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
-    .btn-dark{display:inline-block;padding:14px 34px;background:var(--espresso);color:var(--cream);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:all .3s ease;}
+    .btn-dark{display:inline-block;padding:14px 34px;background:var(--espresso);color:var(--cream);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:all 0.3s ease;}
     .btn-dark:hover{background:var(--brown);transform:translateY(-4px);box-shadow:0 12px 25px rgb(58 39 24 / 25%);}
-    .btn-light{display:inline-block;padding:13px 34px;border:1.5px solid var(--mocha);color:var(--mocha);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:all .3s ease;}
+    .btn-light{display:inline-block;padding:13px 34px;border:1.5px solid var(--mocha);color:var(--mocha);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:all 0.3s ease;}
     .btn-light:hover{background:var(--mocha);color:var(--cream);transform:translateY(-4px);box-shadow:0 12px 25px rgb(158 123 94 / 25%);}
 
     .hero-right{display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
@@ -45,18 +52,20 @@
     .ring2{position:absolute;width:320px;height:320px;animation:spin 30s linear infinite reverse;pointer-events:none;}
     @keyframes spin{to{transform:rotate(360deg);}}
     
-    .photo-wrap{position:relative;z-index:3;width:290px;height:350px;border-radius:175px 175px 140px 140px;overflow:hidden;border:3px solid rgb(255 255 255 / 70%);box-shadow:0 30px 80px rgb(58 39 24 / 18%); transition: transform 0.4s ease;}
-    .photo-wrap:hover{transform: scale(1.03);}
+    .photo-wrap{position:relative;z-index:3;width:290px;height:350px;border-radius:175px 175px 140px 140px;overflow:hidden;border:3px solid rgb(255 255 255 / 70%);box-shadow:0 30px 80px rgb(58 39 24 / 18%);transition:all 0.4s ease;}
+    .photo-wrap:hover{transform:scale(1.03);}
     .photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
     
     .badge-float{position:absolute;z-index:4;background:var(--white);border:1px solid var(--sand);border-radius:16px;padding:10px 16px;font-size:12px;color:var(--espresso);box-shadow:0 8px 28px rgb(58 39 24 / 10%);display:flex;align-items:center;gap:8px;white-space:nowrap;}
     .b1{bottom:20%;left:-10px;animation:f1 4s ease-in-out infinite;}
     .b2{top:18%;right:10px;animation:f2 5s ease-in-out infinite;}
     .b3{top:55%;left:-20px;animation:f1 6s ease-in-out infinite;}
-    @keyframes f1{0% {transform:translateY(0);} 50% {transform:translateY(-10px);} 100% {transform:translateY(0);}}
-    @keyframes f2{0% {transform:translateY(0);} 50% {transform:translateY(10px);} 100% {transform:translateY(0);}}
+    .b4{top:10%;left:20px;animation:f2 7s ease-in-out infinite;}
+    .b5{bottom:15%;right:-20px;animation:f1 5s ease-in-out infinite;}
+    @keyframes f1{0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);}}
+    @keyframes f2{0%{transform:translateY(0);}50%{transform:translateY(10px);}100%{transform:translateY(0);}}
 
-    section{padding:100px 80px;position:relative;}
+    section{padding:100px 80px;position:relative;z-index:2;}
     .section-tag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mocha);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
     .section-tag::after{content:'';width:36px;height:1px;background:var(--sand);}
     h2{font-family:'Playfair Display';font-size:40px;font-weight:400;line-height:1.1;color:var(--espresso);margin-bottom:48px;}
@@ -65,61 +74,61 @@
     .about{background:var(--white);}
     .about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:start;}
     .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
-    .stat-card{background:var(--cream);border:1px solid var(--sand);border-radius:16px;padding:20px;text-align:center;transition:all .4s ease;}
-    .stat-card:hover{transform:translateY(-8px) scale(1.05); box-shadow:0 15px 30px rgb(58 39 24 / 8%);}
+    .stat-card{background:var(--cream);border:1px solid var(--sand);border-radius:16px;padding:20px;text-align:center;transition:all 0.4s ease;}
+    .stat-card:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 15px 30px rgb(58 39 24 / 8%);}
     .stat-num{font-family:'Playfair Display';font-size:36px;font-weight:400;color:var(--mocha);}
     .stat-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--brown);margin-top:4px;}
     .about-text p{font-size:15px;line-height:1.9;color:var(--brown);margin-bottom:18px;}
-    .quote-block{border-left:3px solid var(--rose);padding:18px 24px;margin:28px 0;background:var(--beige);border-radius:0 12px 12px 0; transition: transform 0.3s ease;}
-    .quote-block:hover{transform: translateX(10px);}
+    .quote-block{border-left:3px solid var(--rose);padding:18px 24px;margin:28px 0;background:var(--beige);border-radius:0 12px 12px 0;transition:all 0.3s ease;}
+    .quote-block:hover{transform:translateX(10px);}
     .quote-block p{font-family:'Playfair Display';font-size:19px;font-style:italic;color:var(--espresso);line-height:1.5;}
     .pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px;}
-    .pill{padding:7px 16px;border-radius:24px;background:var(--cream);border:1px solid var(--sand);font-size:12px;color:var(--brown); transition: all 0.3s ease;}
-    .pill:hover{background:var(--beige); transform: translateY(-2px);}
+    .pill{padding:7px 16px;border-radius:24px;background:var(--cream);border:1px solid var(--sand);font-size:12px;color:var(--brown);transition:all 0.3s ease;}
+    .pill:hover{background:var(--beige);transform:translateY(-2px);}
     .pill.active{background:var(--mocha);color:var(--cream);border-color:var(--mocha);}
 
     .sae-section{background:var(--beige);overflow:hidden;}
     .sae-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;}
-    .sae-card{background:var(--white);border-radius:20px;border:1px solid var(--sand);overflow:hidden;transition:all .4s ease;cursor:pointer;}
+    .sae-card{background:var(--white);border-radius:20px;border:1px solid var(--sand);overflow:hidden;transition:all 0.4s ease;cursor:pointer;}
     .sae-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 35px 65px rgb(58 39 24 / 18%);}
-    .sae-top{height:140px;display:flex;align-items:center;justify-content:center;position:relative; transition: all 0.5s ease; background: var(--sand);}
-    .sae-card:hover .sae-top{filter: brightness(0.95);}
+    .sae-top{height:140px;display:flex;align-items:center;justify-content:center;position:relative;transition:all 0.5s ease;background:var(--sand);}
+    .sae-card:hover .sae-top{filter:brightness(0.95);}
     .sae-body{padding:24px 22px 28px;}
     .sae-cat{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:8px;}
-    .sae-card h3{font-family:'Playfair Display';font-size:19px;font-weight:400;color:var(--espresso);margin-bottom:10px; transition: color 0.3s ease;}
+    .sae-card h3{font-family:'Playfair Display';font-size:19px;font-weight:400;color:var(--espresso);margin-bottom:10px;transition:all 0.3s ease;}
     .sae-card:hover h3{color:var(--mocha);}
     .sae-card p{font-size:13px;line-height:1.7;color:var(--brown);}
     .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
     .tag{font-size:10px;padding:4px 11px;border-radius:20px;background:var(--beige);color:var(--brown);letter-spacing:.06em;border:1px solid var(--sand);}
-    .click-hint{font-size:10px;color:var(--latte);letter-spacing:.08em;margin-top:14px; transition: transform 0.3s ease;}
-    .sae-card:hover .click-hint{transform: translateX(5px); color: var(--mocha);}
+    .click-hint{font-size:10px;color:var(--latte);letter-spacing:.08em;margin-top:14px;transition:all 0.3s ease;}
+    .sae-card:hover .click-hint{transform:translateX(5px);color:var(--mocha);}
 
-    .modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgb(58 39 24 / 45%);backdrop-filter:blur(6px);align-items:center;justify-content:center; opacity: 0; transition: opacity 0.3s ease;}
-    .modal-overlay.open{display:flex; opacity: 1;}
-    .modal{background:var(--white);border-radius:24px;max-width:640px;width:92%;max-height:82vh;overflow-y:auto;padding:42px;position:relative;box-shadow:0 40px 100px rgb(58 39 24 / 25%); transform: scale(0.95) translateY(20px); opacity: 0; transition: all 0.4s ease;}
-    .modal-overlay.open .modal{transform: scale(1) translateY(0); opacity: 1;}
-    .modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--mocha); transition: transform 0.3s ease;}
-    .modal-close:hover{transform: rotate(90deg);}
+    .modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgb(58 39 24 / 45%);backdrop-filter:blur(6px);align-items:center;justify-content:center;opacity:0;transition:all 0.3s ease;}
+    .modal-overlay.open{display:flex;opacity:1;}
+    .modal{background:var(--white);border-radius:24px;max-width:740px;width:92%;max-height:82vh;overflow-y:auto;padding:42px;position:relative;box-shadow:0 40px 100px rgb(58 39 24 / 25%);transform:scale(0.95) translateY(20px);opacity:0;transition:all 0.4s ease;}
+    .modal-overlay.open .modal{transform:scale(1) translateY(0);opacity:1;}
+    .modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--mocha);transition:all 0.3s ease;}
+    .modal-close:hover{transform:rotate(90deg);}
     .modal h3{font-family:'Playfair Display';font-size:26px;font-weight:400;color:var(--espresso);margin-bottom:6px;}
     .modal-sub{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:22px;}
-    .modal p{font-size:14px;line-height:1.85;color:var(--brown);margin-bottom:14px;}
+    .modal p{font-size:14px;line-height:1.85;color:var(--brown);margin-bottom:14px;text-align:justify;}
     .modal h4{font-family:'Playfair Display';font-size:17px;font-weight:400;color:var(--espresso);margin:20px 0 8px;}
     .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;}
-    .comp-item{font-size:12px;padding:8px 14px;background:var(--cream);border-radius:8px;border:1px solid var(--sand);color:var(--brown); transition: transform 0.3s ease;}
-    .comp-item:hover{transform: scale(1.03); background: var(--beige);}
+    .comp-item{font-size:12px;padding:8px 14px;background:var(--cream);border-radius:8px;border:1px solid var(--sand);color:var(--brown);transition:all 0.3s ease;}
+    .comp-item:hover{transform:scale(1.03);background:var(--beige);}
     
-    .btn-download{display:inline-block; margin: 15px 0 10px 0; padding: 12px 24px; background: var(--mocha); color: var(--cream); text-decoration: none; border-radius: 8px; font-size: 13px; font-weight: 500; transition: all 0.3s ease; text-align: center; box-shadow: 0 4px 15px rgb(158 123 94 / 30%);}
-    .btn-download:hover{background: var(--brown); transform: translateY(-3px); box-shadow: 0 8px 20px rgb(107 79 56 / 40%);}
-    video { width: 100%; border-radius: 12px; margin-top: 15px; background: #000; box-shadow: 0 10px 25px rgb(58 39 24 / 15%); transition: transform 0.3s ease; }
-    video:hover { transform: scale(1.01); }
+    .btn-download{display:inline-block;margin:15px 0 10px 0;padding:12px 24px;background:var(--mocha);color:var(--cream);text-decoration:none;border-radius:8px;font-size:13px;font-weight:500;transition:all 0.3s ease;text-align:center;box-shadow:0 4px 15px rgb(158 123 94 / 30%);}
+    .btn-download:hover{background:var(--brown);transform:translateY(-3px);box-shadow:0 8px 20px rgb(107 79 56 / 40%);}
+    video{width:100%;border-radius:12px;margin-top:15px;background:#000;box-shadow:0 10px 25px rgb(58 39 24 / 15%);transition:all 0.3s ease;}
+    video:hover{transform:scale(1.01);}
 
     .skills{background:var(--cream);}
     .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-    .skill-card{background:var(--white);border-radius:18px;padding:26px 24px;border:1px solid var(--sand);transition:all .4s ease;position:relative;overflow:hidden;}
+    .skill-card{background:var(--white);border-radius:18px;padding:26px 24px;border:1px solid var(--sand);transition:all 0.4s ease;position:relative;overflow:hidden;}
     .skill-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 45px rgb(58 39 24 / 12%);}
     .sk-top{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
-    .sk-icon{font-size:24px; transition: transform 0.3s ease;}
-    .skill-card:hover .sk-icon{transform: scale(1.2) rotate(5deg);}
+    .sk-icon{font-size:24px;transition:all 0.3s ease;}
+    .skill-card:hover .sk-icon{transform:scale(1.2) rotate(5deg);}
     .skill-card h3{font-family:'Playfair Display';font-size:19px;font-weight:400;color:var(--espresso);}
     .skill-card p{font-size:13px;line-height:1.7;color:var(--brown);}
 
@@ -127,8 +136,8 @@
     .parcours-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
     .tl-heading{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:28px;display:flex;align-items:center;gap:8px;}
     .timeline{position:relative;padding-left:28px;}
-    .tl-item{position:relative;margin-bottom:38px;padding-left:24px; transition: transform 0.3s ease;}
-    .tl-item:hover{transform: translateX(8px);}
+    .tl-item{position:relative;margin-bottom:38px;padding-left:24px;transition:all 0.3s ease;}
+    .tl-item:hover{transform:translateX(8px);}
     .tl-date{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mocha);margin-bottom:5px;}
     .tl-title{font-family:'Playfair Display';font-size:20px;font-weight:400;color:var(--espresso);margin-bottom:3px;}
     .tl-sub{font-size:13px;font-style:italic;color:var(--brown);margin-bottom:8px;}
@@ -141,19 +150,22 @@
     .contact h2 em{color:var(--blush);}
     .contact-desc{font-size:15px;color:var(--latte);max-width:440px;margin:0 auto 44px;line-height:1.8;}
     .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-    .clink{display:flex;align-items:center;gap:9px;padding:13px 28px;border:1px solid rgb(255 255 255 / 13%);border-radius:40px;color:var(--cream);text-decoration:none;font-size:12px;letter-spacing:.1em;transition:all .3s ease;}
-    .clink:hover{background:rgb(255 255 255 / 8%);border-color:var(--blush);transform:translateY(-4px); box-shadow: 0 10px 20px rgb(0 0 0 / 20%);}
+    .clink{display:flex;align-items:center;gap:9px;padding:13px 28px;border:1px solid rgb(255 255 255 / 13%);border-radius:40px;color:var(--cream);text-decoration:none;font-size:12px;letter-spacing:.1em;transition:all 0.3s ease;}
+    .clink:hover{background:rgb(255 255 255 / 8%);border-color:var(--blush);transform:translateY(-4px);box-shadow:0 10px 20px rgb(0 0 0 / 20%);}
 
     footer{background:var(--espresso);border-top:1px solid rgb(255 255 255 / 7%);padding:22px 80px;display:flex;justify-content:space-between;align-items:center;}
     footer span{font-size:11px;color:var(--mocha);letter-spacing:.08em;}
 
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-    .hero-left>*{animation:fadeUp .8s ease forwards;opacity:0;}
-    .hero-right{animation:fadeUp 1s ease .5s forwards;opacity:0;}
+    .hero-left>*{animation:fadeUp 0.8s ease forwards;opacity:0;}
+    .hero-right{animation:fadeUp 1s ease 0.5s forwards;opacity:0;}
 
     @media(max-width:900px){
-      nav{padding:16px 20px;}.nav-links{display:none;}
-      .hero{grid-template-columns:1fr;min-height:auto;}.hero-bg-right{width:100%;height:50%;}.hero-right{height:380px;}
+      nav{padding:16px 20px;}
+      .nav-links{display:none;}
+      .hero{grid-template-columns:1fr;min-height:auto;}
+      .hero-bg-right{width:100%;height:50%;}
+      .hero-right{height:380px;}
       section{padding:64px 24px;}
       .about-grid{grid-template-columns:1fr;gap:40px;}
       .parcours-grid{grid-template-columns:1fr;gap:40px;}
@@ -161,11 +173,17 @@
       .skills-grid{grid-template-columns:1fr;}
       footer{padding:20px 24px;flex-direction:column;gap:8px;text-align:center;}
       .hero-left{padding:56px 24px 40px;}
-      .modal{padding:24px; width:95%;}
+      .modal{padding:24px;width:95%;}
     }
   </style>
 </head>
 <body>
+
+<div id="welcome-screen">
+  <h2 class="welcome-text">Bienvenue sur le portfolio de Hanine Landais</h2>
+</div>
+
+<div class="bg-pattern"></div>
 
 <nav>
   <div class="nav-logo">Hanine Landais</div>
@@ -181,12 +199,16 @@
 <section class="hero" id="accueil">
   <div class="hero-bg-right"></div>
 
-  <svg style="position:absolute;top:14%;left:4%;opacity:.18;pointer-events:none;" width="110" height="110" viewBox="0 0 110 110">
+  <svg style="position:absolute;top:14%;left:4%;opacity:0.18;pointer-events:none;" width="110" height="110" viewBox="0 0 110 110">
     <g fill="var(--mocha)">
       <circle cx="10" cy="10" r="2.2"/><circle cx="30" cy="10" r="2.2"/><circle cx="50" cy="10" r="2.2"/><circle cx="70" cy="10" r="2.2"/>
       <circle cx="10" cy="30" r="2.2"/><circle cx="30" cy="30" r="2.2"/><circle cx="50" cy="30" r="2.2"/><circle cx="70" cy="30" r="2.2"/>
       <circle cx="10" cy="50" r="2.2"/><circle cx="30" cy="50" r="2.2"/><circle cx="50" cy="50" r="2.2"/><circle cx="70" cy="50" r="2.2"/>
     </g>
+  </svg>
+
+  <svg style="position:absolute;top:40%;left:20%;opacity:0.1;pointer-events:none;" width="40" height="40" viewBox="0 0 40 40">
+    <path d="M20 0 L20 40 M0 20 L40 20" stroke="var(--mocha)" stroke-width="2"/>
   </svg>
 
   <div class="hero-left">
@@ -205,29 +227,35 @@
     <svg class="ring1" viewBox="0 0 440 440"><circle cx="220" cy="220" r="210" fill="none" stroke="var(--sand)" stroke-width="1" stroke-dasharray="8 14"/></svg>
     <svg class="ring2" viewBox="0 0 320 320"><circle cx="160" cy="160" r="152" fill="none" stroke="var(--latte)" stroke-width="1"/></svg>
 
-    <svg style="position:absolute;top:16%;right:16%;width:36px;height:36px;opacity:.3;pointer-events:none;" viewBox="0 0 36 36">
-      <path d="M18 2L20 14L32 18L20 22L18 34L16 22L4 18L16 14Z" fill="var(--mocha)"/>
+    <svg style="position:absolute;top:16%;right:16%;width:36px;height:36px;opacity:0.3;pointer-events:none;" viewBox="0 0 36 36">
+      <path d="M18 2 L20 14 L32 18 L20 22 L18 34 L16 22 L4 18 L16 14 Z" fill="var(--mocha)"/>
     </svg>
-    <svg style="position:absolute;bottom:19%;left:19%;width:22px;height:22px;opacity:.25;pointer-events:none;" viewBox="0 0 22 22">
+    <svg style="position:absolute;bottom:19%;left:19%;width:22px;height:22px;opacity:0.25;pointer-events:none;" viewBox="0 0 22 22">
       <circle cx="11" cy="11" r="9" fill="none" stroke="var(--brown)" stroke-width="1.2"/>
       <circle cx="11" cy="11" r="4" fill="none" stroke="var(--brown)" stroke-width="1.2"/>
       <circle cx="11" cy="11" r="1.5" fill="var(--brown)"/>
     </svg>
 
     <div class="photo-wrap">
-      <img src="hanine.jpeg" alt="Hanine Landais" style="width:100%; height:100%; object-fit:cover; display:block;"/>
+      <img src="hanine.jpeg" alt="Hanine Landais" style="width:100%;height:100%;object-fit:cover;display:block;"/>
     </div>
 
     <div class="badge-float b1">📍 Caen Normandie</div>
     <div class="badge-float b2">✨ Alternance 3ᵉ année</div>
     <div class="badge-float b3">📊 BUT GEA · 2025–2028</div>
+    <div class="badge-float b4">💡 Gestion d'entreprise</div>
+    <div class="badge-float b5">📈 Finance</div>
   </div>
 </section>
 
 <section class="about" id="apropos">
-  <svg style="position:absolute;bottom:-70px;right:-70px;width:260px;height:260px;opacity:.1;pointer-events:none;" viewBox="0 0 260 260">
+  <svg style="position:absolute;bottom:-70px;right:-70px;width:260px;height:260px;opacity:0.1;pointer-events:none;" viewBox="0 0 260 260">
     <circle cx="130" cy="130" r="120" fill="none" stroke="var(--mocha)" stroke-width="1.5"/>
-    <circle cx="130" cy="130" r="90" fill="none" stroke="var(--mocha)" stroke-width=".8"/>
+    <circle cx="130" cy="130" r="90" fill="none" stroke="var(--mocha)" stroke-width="0.8"/>
+  </svg>
+
+  <svg style="position:absolute;top:20px;left:40px;opacity:0.15;pointer-events:none;" width="40" height="40" viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="15" fill="none" stroke="var(--brown)" stroke-dasharray="2 4" stroke-width="2"/>
   </svg>
 
   <div class="about-grid">
@@ -259,11 +287,7 @@
 </section>
 
 <section class="sae-section" id="sae">
-  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.08;" viewBox="0 0 1400 600" preserveAspectRatio="none">
-    <line x1="0" y1="200" x2="1400" y2="0" stroke="var(--brown)" stroke-width="1"/>
-    <line x1="0" y1="600" x2="1400" y2="300" stroke="var(--brown)" stroke-width="1"/>
-  </svg>
-  <svg style="position:absolute;top:-80px;right:6%;width:190px;height:190px;opacity:.12;pointer-events:none;" viewBox="0 0 190 190">
+  <svg style="position:absolute;top:-80px;right:6%;width:190px;height:190px;opacity:0.12;pointer-events:none;" viewBox="0 0 190 190">
     <circle cx="95" cy="95" r="87" fill="none" stroke="var(--mocha)" stroke-width="1" stroke-dasharray="4 8"/>
   </svg>
 
@@ -276,11 +300,11 @@
         <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
           <rect x="10" y="30" width="52" height="30" rx="4" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1.2"/>
           <rect x="18" y="14" width="32" height="18" rx="3" fill="var(--beige)" stroke="var(--mocha)" stroke-width="1.2"/>
-          <rect x="28" y="44" width="16" height="16" rx="2" fill="var(--mocha)" opacity=".35"/>
-          <circle cx="22" cy="24" r="2" fill="var(--mocha)" opacity=".5"/>
-          <circle cx="34" cy="22" r="2" fill="var(--mocha)" opacity=".5"/>
-          <circle cx="46" cy="24" r="2" fill="var(--mocha)" opacity=".5"/>
-          <path d="M8 38 Q36 28 64 38" stroke="var(--mocha)" stroke-width=".8" fill="none" opacity=".3"/>
+          <rect x="28" y="44" width="16" height="16" rx="2" fill="var(--mocha)" opacity="0.35"/>
+          <circle cx="22" cy="24" r="2" fill="var(--mocha)" opacity="0.5"/>
+          <circle cx="34" cy="22" r="2" fill="var(--mocha)" opacity="0.5"/>
+          <circle cx="46" cy="24" r="2" fill="var(--mocha)" opacity="0.5"/>
+          <path d="M 8 38 Q 36 28 64 38" stroke="var(--mocha)" stroke-width="0.8" fill="none" opacity="0.3"/>
         </svg>
       </div>
       <div class="sae-body">
@@ -296,12 +320,12 @@
       <div class="sae-top">
         <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
           <rect x="12" y="8" width="48" height="54" rx="5" fill="var(--beige)" stroke="var(--mocha)" stroke-width="1.2"/>
-          <line x1="22" y1="22" x2="50" y2="22" stroke="var(--mocha)" stroke-width="1" opacity=".5"/>
-          <line x1="22" y1="30" x2="50" y2="30" stroke="var(--mocha)" stroke-width="1" opacity=".5"/>
-          <line x1="22" y1="38" x2="42" y2="38" stroke="var(--mocha)" stroke-width="1" opacity=".5"/>
-          <rect x="40" y="34" width="14" height="12" rx="2" fill="var(--mocha)" opacity=".25"/>
+          <line x1="22" y1="22" x2="50" y2="22" stroke="var(--mocha)" stroke-width="1" opacity="0.5"/>
+          <line x1="22" y1="30" x2="50" y2="30" stroke="var(--mocha)" stroke-width="1" opacity="0.5"/>
+          <line x1="22" y1="38" x2="42" y2="38" stroke="var(--mocha)" stroke-width="1" opacity="0.5"/>
+          <rect x="40" y="34" width="14" height="12" rx="2" fill="var(--mocha)" opacity="0.25"/>
           <circle cx="52" cy="54" r="11" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1.2"/>
-          <path d="M48 54l3 3 5-6" stroke="var(--brown)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 48 54 L 51 57 L 56 51" stroke="var(--brown)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="sae-body">
@@ -317,12 +341,12 @@
       <div class="sae-top">
         <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
           <rect x="28" y="8" width="16" height="28" rx="8" fill="var(--sand)" stroke="var(--mocha)" stroke-width="1.2"/>
-          <path d="M16 32c0 11 40 11 40 0" stroke="var(--mocha)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+          <path d="M 16 32 C 16 43 56 43 56 32" stroke="var(--mocha)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
           <line x1="36" y1="43" x2="36" y2="56" stroke="var(--mocha)" stroke-width="1.4" stroke-linecap="round"/>
           <line x1="26" y1="56" x2="46" y2="56" stroke="var(--mocha)" stroke-width="1.4" stroke-linecap="round"/>
-          <circle cx="36" cy="22" r="3.5" fill="var(--mocha)" opacity=".3"/>
-          <path d="M10 28 Q14 24 18 28" stroke="var(--latte)" stroke-width="1" fill="none" stroke-linecap="round"/>
-          <path d="M54 28 Q58 24 62 28" stroke="var(--latte)" stroke-width="1" fill="none" stroke-linecap="round"/>
+          <circle cx="36" cy="22" r="3.5" fill="var(--mocha)" opacity="0.3"/>
+          <path d="M 10 28 Q 14 24 18 28" stroke="var(--latte)" stroke-width="1" fill="none" stroke-linecap="round"/>
+          <path d="M 54 28 Q 58 24 62 28" stroke="var(--latte)" stroke-width="1" fill="none" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="sae-body">
@@ -336,17 +360,16 @@
   </div>
 </section>
 
-<div class="modal-overlay" id="modal-sae1" onclick="closeModal('sae1')">
-  <div class="modal" onclick="event.stopPropagation()">
+<div class="modal-overlay" id="modal-sae1">
+  <div class="modal">
     <button class="modal-close" onclick="closeModal('sae1')">✕</button>
     <div class="sae-cat">SAÉ S1 · Analyse · RSE</div>
     <h3>Situer une organisation dans son environnement</h3>
     <div class="modal-sub">Biscuiterie de l'Abbaye · Groupe de 4 · 1 journée + temps libre</div>
-    <p>Cette SAÉ avait pour but d'analyser une organisation réelle à partir de documents fournis et de mieux comprendre son fonctionnement dans son environnement. Nous avons travaillé sur la Biscuiterie de l'Abbaye ce qui nous a permis de développer notre capacité à exploiter des ressources et à comprendre les actions mises en place face aux enjeux environnementaux et sociétaux.</p>
-    <h4>Ma contribution</h4>
-    <p>J'ai participé à la rédaction du texte en sélectionnant les informations les plus importantes sur l'entreprise et son lien avec le territoire normand. J'ai aussi contribué à la réalisation du diaporama notamment pour organiser les diapositives et rendre la présentation claire pour l'oral.</p>
-    <h4>Bilan d'activité</h4>
-    <p>La principale difficulté a été la quantité d’information à traiter pour une présentation de cinq minutes. Nous avons trié les informations et simplifié le contenu afin d’aller à l’essentiel. Ces compétences me seront très utiles pour analyser une entreprise pendant mon futur stage.</p>
+    <p>Cette SAE avait pour but de nous apprendre à analyser une organisation à partir de documents déjà fournis et à mieux comprendre son fonctionnement dans son environnement. Nous avons travaillé sur une entreprise réelle la biscuiterie de l'Abbaye ce qui nous a permis de développer notre capacité à exploiter des ressources à repérer des informations importantes et à les organiser de manière structurée. Les parties prenantes de cette SAE sont principalement les étudiants les enseignants et l’entreprise étudiée. Essayer de comprendre comment fonctionne l’entreprise comment elle est ancrée dans son territoire et quelles actions sont mises en place face aux enjeux environnementaux et sociétaux.</p>
+    <p>Le travail s’est déroulé en groupe de quatre personnes avec une journée pour répondre à un questionnaire. Puis sur notre temps libre nous avons créé un diaporama avec un angle de vue spécifique. Les apprentissages mobilisés dans cette SAE sont de sélectionner les informations et les sources pour documenter un sujet notamment à l’aide des technologies émergentes de déterminer des éléments constitutifs d’un processus de situer une organisation dans son environnement et enfin d’identifier les actions RSE des organisations dans une approche systématique.</p>
+    <h4>Ma contribution et Bilan</h4>
+    <p>Dans cette activité j’ai participé à la rédaction du texte en choisissant les informations les plus importantes sur l’entreprise et son lien avec le territoire normand. J’ai aussi aidé à la réalisation du diaporama notamment pour organiser les diapositives et rendre la présentation claire pour l’oral. Les outils numériques ont été nécessaires pour exploiter ces ressources et réaliser le questionnaire et le diaporama sonorisé. Nous avons également mobilisé des connaissances en analyse d’entreprise pour comprendre son environnement économique social et territorial ainsi que des notions liées aux enjeux environnementaux et sociétaux.</p>
     
     <video controls preload="metadata">
       <source src="diaporama-sonorise.mp4" type="video/mp4">
@@ -363,19 +386,18 @@
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-sae2" onclick="closeModal('sae2')">
-  <div class="modal" onclick="event.stopPropagation()">
+<div class="modal-overlay" id="modal-sae2">
+  <div class="modal">
     <button class="modal-close" onclick="closeModal('sae2')">✕</button>
     <div class="sae-cat">SAÉ S1 · Comptabilité · SI</div>
     <h3>SI Comptable</h3>
     <div class="modal-sub">Entreprise fictive · 3 jours · Logiciel Sage</div>
-    <p>Cette SAE a été réalisée afin d’étudier concrètement la comptabilité d’une entreprise sur une période de trois mois. Nous avons enregistré toutes les factures reçues et envoyées dans les journaux comptables à l'aide de logiciels professionnels. Il fallait également réaliser les déclarations de TVA mensuelles et enregistrer les opérations liées à un salarié.</p>
-    <h4>Ma contribution</h4>
-    <p>Ma contribution à cette activité a consisté à générer la déclaration de TVA sur le logiciel puis à vérifier l’exactitude des données produites en comparant la déclaration avec les comptes de TVA. J’ai également participé à l’analyse des résultats pour déterminer s’il s’agissait d’un crédit de TVA ou d’un décaissement.</p>
-    <h4>Bilan d'activité</h4>
-    <p>La déclaration de TVA générée par le logiciel était correcte car les opérations comptables avaient été correctement enregistrées en amont grâce à notre rigueur. Je suis désormais capable de réaliser une déclaration de TVA en utilisant un logiciel professionnel tout en vérifiant la cohérence des résultats obtenus.</p>
+    <p>Cette SAE a été réalisée afin d’étudier concrètement la comptabilité d’une entreprise sur une période de trois mois. L’objectif était de mettre en pratique les notions vues en cours et de comprendre le fonctionnement réel de la comptabilité au sein d’une entreprise en se rapprochant au maximum des conditions professionnelles. Les parties prenantes de cette SAE sont les étudiants qui ont réalisé l’ensemble des travaux comptables et les enseignants qui ont encadré et évalué l’activité.</p>
+    <p>L’entreprise étudiée était fictive mais basée sur des documents réels. Les enjeux principaux étaient d’enregistrer correctement les opérations comptables sur plusieurs mois de respecter les règles comptables et fiscales notamment la TVA et de produire des documents comptables fiables. La SAE s’est déroulée sur trois jours de travail durant lesquels nous avons tenu la comptabilité complète de l’entreprise sur trois mois. Nous avons enregistré toutes les factures reçues et envoyées dans les journaux comptables. Nous avons utilisé des logiciels de comptabilité et de gestion commerciale afin de créer l’entreprise d’émettre des factures clients et de suivre les opérations.</p>
+    <h4>Ma contribution et Bilan</h4>
+    <p>Ma contribution à cette activité a consisté à générer la déclaration de TVA sur le logiciel puis à vérifier l’exactitude des données produites. J’ai contrôlé les montants en comparant la déclaration avec les comptes de TVA afin de m’assurer que toutes les opérations avaient bien été prises en compte. J’ai également participé à l’analyse des résultats pour déterminer s’il s’agissait d’un crédit de TVA ou d’un décaissement avant de vider les comptes de TVA.</p>
     
-    <div style="text-align: center;">
+    <div style="text-align:center;">
       <a href="declaration-tva.pdf" target="_blank" class="btn-download">📄 Consulter ma déclaration de TVA (PDF)</a>
     </div>
     
@@ -389,19 +411,18 @@
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-sae3" onclick="closeModal('sae3')">
-  <div class="modal" onclick="event.stopPropagation()">
+<div class="modal-overlay" id="modal-sae3">
+  <div class="modal">
     <button class="modal-close" onclick="closeModal('sae3')">✕</button>
     <div class="sae-cat">SAÉ S1 · Communication</div>
     <h3>Pitch Pro</h3>
     <div class="modal-sub">Filmé au CEMU · 3 minutes · 3 séances de préparation</div>
-    <p>Cette SAE avait pour but de nous préparer à la recherche d’un stage dès la première année afin de travailler notre manière de nous présenter et de gagner en aisance à l’oral. Nous avons été filmés au CEMU pendant trois minutes pour faire une demande de stage comme si nous étions face à un recruteur.</p>
-    <h4>Ma contribution</h4>
-    <p>J’ai rédigé moi-même ma demande de stage en construisant un fil conducteur cohérent qui mettait en avant ma motivation mon projet professionnel et certains traits de ma personnalité. Le but était de proposer un discours clair et structuré tout en restant naturel et crédible.</p>
-    <h4>Bilan d'activité</h4>
-    <p>La principale difficulté a été la gestion du temps. J’avais beaucoup d’informations à faire passer en seulement trois minutes ce qui m’a obligé à faire des choix et à simplifier certaines phrases. Ces apprentissages seront particulièrement utiles lors de mes futurs entretiens d’embauche.</p>
+    <p>Cette SAE avait pour but de nous préparer à la recherche d’un stage dès la première année. L’idée était de nous mettre dans une situation concrète proche de la réalité afin de travailler notre manière de nous présenter et de gagner en aisance à l’oral. Pour cela nous avons été filmés au CEMU pendant trois minutes le temps de faire une demande de stage comme si nous étions face à un recruteur. Plusieurs acteurs étaient impliqués dans cette SAE : les étudiants notre professeur qui nous a accompagnés tout au long du projet ainsi que les personnes du CEMU chargées de l’enregistrement.</p>
+    <p>L’enjeu principal était de réussir à tenir un discours clair et professionnel tout en adoptant une posture adaptée et crédible. Il s’agissait aussi de prendre conscience de l’importance de la communication dans le cadre professionnel. La préparation s’est faite sur trois séances avec l’enseignant. Ces séances nous ont permis de construire notre discours de nous entraîner à l’oral et de nous corriger entre nous.</p>
+    <h4>Ma contribution et Bilan</h4>
+    <p>J’ai rédigé moi-même ma demande de stage en construisant un fil conducteur cohérent qui mettait en avant à la fois ma motivation mon projet professionnel et certains traits de ma personnalité. Le but était de proposer un discours clair et structuré tout en restant naturel et crédible. La principale difficulté a été la gestion du temps. J’avais beaucoup d’informations à faire passer en seulement trois minutes ce qui m’a obligé à faire des choix. Ces compétences seront transversales et pourront être utilisées dans de nombreuses situations professionnelles.</p>
     
-    <div style="text-align: center;">
+    <div style="text-align:center;">
       <a href="texte-pitch.pdf" target="_blank" class="btn-download">📝 Lire mon texte de Pitch (PDF)</a>
     </div>
     
@@ -416,6 +437,11 @@
 </div>
 
 <section class="skills" id="competences">
+  <svg style="position:absolute;top:50px;right:60px;opacity:0.15;pointer-events:none;" width="90" height="30" viewBox="0 0 90 30">
+    <path d="M 0 15 Q 22 0 45 15 Q 68 30 90 15" stroke="var(--mocha)" stroke-width="1.5" fill="none"/>
+    <path d="M 0 15 Q 22 5 45 15 Q 68 25 90 15" stroke="var(--latte)" stroke-width="0.8" fill="none"/>
+  </svg>
+
   <div class="section-tag">Savoir-faire</div>
   <h2>Compétences <em>développées</em></h2>
   <div class="skills-grid">
@@ -453,6 +479,14 @@
 </section>
 
 <section class="parcours" id="parcours">
+  <svg style="position:absolute;bottom:50px;left:50px;opacity:0.15;pointer-events:none;" width="80" height="80" viewBox="0 0 80 80">
+    <g fill="var(--brown)">
+      <circle cx="10" cy="10" r="2"/><circle cx="30" cy="10" r="2"/><circle cx="50" cy="10" r="2"/>
+      <circle cx="10" cy="30" r="2"/><circle cx="30" cy="30" r="2"/><circle cx="50" cy="30" r="2"/>
+      <circle cx="10" cy="50" r="2"/><circle cx="30" cy="50" r="2"/><circle cx="50" cy="50" r="2"/>
+    </g>
+  </svg>
+
   <div class="section-tag">Mon parcours</div>
   <h2>Formation &amp; <em>Engagements</em></h2>
   <div class="parcours-grid">
@@ -504,6 +538,9 @@
 </section>
 
 <section class="contact" id="contact">
+  <svg style="position:absolute;top:30px;left:80px;opacity:0.1;pointer-events:none;" width="48" height="48" viewBox="0 0 48 48"><path d="M 24 3 L 27 19 L 43 24 L 27 29 L 24 45 L 21 29 L 5 24 L 21 19 Z" fill="white"/></svg>
+  <svg style="position:absolute;bottom:36px;right:90px;opacity:0.1;pointer-events:none;" width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="14" fill="none" stroke="white" stroke-width="1"/><circle cx="17" cy="17" r="7" fill="none" stroke="white" stroke-width="1"/><circle cx="17" cy="17" r="2.5" fill="white"/></svg>
+
   <div class="section-tag">Travaillons ensemble</div>
   <h2>Open à une<br/><em>alternance 3ᵉ année</em></h2>
   <p class="contact-desc">Je recherche une alternance à partir de la rentrée <strong style="color:var(--blush);">2027</strong> dans les domaines de la comptabilité de la finance ou du contrôle de gestion. N'hésitez pas à me contacter !</p>
@@ -530,21 +567,23 @@
       });
     });
     document.body.style.overflow = 'hidden';
-    modal.ontransitionend = null;
   }
   function closeModal(id) {
     const modal = document.getElementById('modal-' + id);
     modal.classList.remove('open');
     document.body.style.overflow = '';
-    modal.ontransitionend = function() {
-      modal.style.display = 'none';
-    };
+    modal.addEventListener('transitionend' function() {
+      if(!modal.classList.contains('open')) {
+        modal.style.display = 'none';
+      }
+    } {once:true});
   }
   window.onkeydown = function(e) {
     if (e.key === 'Escape') {
-      document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
-        closeModal(m.id.substring(6));
-      });
+      const modals = document.querySelectorAll('.modal-overlay.open');
+      for (let i = 0; i < modals.length; i++) {
+        closeModal(modals[i].id.replace('modal-' ''));
+      }
     }
   };
 </script>
