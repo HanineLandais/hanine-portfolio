@@ -2,7 +2,7 @@
 <html lang="fr" data-lang="fr">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width"/>
   <title>Hanine Landais — Portfolio BUT GEA</title>
   
   <link rel="icon" href="fleur.png">
@@ -78,7 +78,7 @@
     .b5{top:50%;right:-80px;animation:f1 5s ease-in-out infinite;}
     .b6{top:20%;left:-80px;animation:f2 6.5s ease-in-out infinite;}
     .b7{bottom:10%;right:-60px;animation:f1 5.5s ease-in-out infinite;}
-    .b8{top:85%;left:-40px;animation:f2 5.2s ease-in-out infinite;}
+    .b8{top:42%;left:-45px;animation:f2 5.2s ease-in-out infinite;}
     .b9{bottom:-15%;left:40px;animation:f1 6.2s ease-in-out infinite;}
     .b10{top:-5%;right:90px;animation:f2 4.8s ease-in-out infinite;}
     
@@ -99,6 +99,9 @@
     .stat-num{font-family:'Playfair Display';font-size:36px;font-weight:400;color:var(--mocha);}
     .stat-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--brown);margin-top:4px;}
     .about-text p{font-size:15px;line-height:1.9;color:var(--brown);margin-bottom:18px;}
+    .quote-block{border-left:3px solid var(--rose);padding:18px 24px;margin:28px 0;background:var(--beige);border-radius:0 12px 12px 0;transition:all 0.3s ease;}
+    .quote-block:hover{transform:translateX(10px);}
+    .quote-block p{font-family:'Playfair Display';font-size:19px;font-style:italic;color:var(--espresso);line-height:1.5;}
     .pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px;}
     .pill{padding:7px 16px;border-radius:24px;background:var(--cream);border:1px solid var(--sand);font-size:12px;color:var(--brown);transition:all 0.3s ease;}
     .pill:hover{background:var(--beige);transform:translateY(-2px);}
@@ -190,7 +193,6 @@
     .hero-left>*{animation:fadeUp 0.8s ease forwards;opacity:0;}
     .hero-right{animation:fadeUp 1s ease 0.5s forwards;opacity:0;}
 
-    /* TELEPHONE AJUSTEMENTS */
     @media(max-width:900px){
       nav{padding:16px 20px;}
       .nav-links{display:none;}
