@@ -277,7 +277,7 @@
         <span class="pill">Contrôle de gestion</span>
         <span class="pill">Communication pro</span>
       </div>
-      <p>Je m'appelle Hanine Landais étudiante en 1ʳᵉ année de BUT GEA à l'IUT Grand Ouest Normandie de Caen. Avant cette formation j'ai obtenu un baccalauréat général mention Assez-Bien avec les spécialités <strong>Mathématiques et Physique-Chimie</strong>.</p>
+      <p>Je m'appelle Hanine Landais j'ai 18 ans et je suis étudiante en 1ʳᵉ année de BUT GEA à l'IUT Grand Ouest Normandie de Caen. Avant cette formation j'ai obtenu un baccalauréat général mention Assez-Bien avec les spécialités <strong>Mathématiques et Physique-Chimie</strong>.</p>
       <div class="quote-block">
         <p>« Les chiffres racontent des histoires — j'apprends à les lire. »</p>
       </div>
@@ -546,7 +546,7 @@
   <p class="contact-desc">Je recherche une alternance à partir de la rentrée <strong style="color:var(--blush);">2027</strong> dans les domaines de la comptabilité de la finance ou du contrôle de gestion. N'hésitez pas à me contacter !</p>
   <div class="contact-links">
     <a href="https://www.linkedin.com/in/haninelandais/" target="_blank" class="clink">💼 LinkedIn</a>
-    <a href="mailto:hanine.landais@etudiant.unicaen.fr" class="clink">✉️ Email</a>
+    <a href="mailto:hanine.landais50@gmail.com" class="clink">✉️ Email</a>
     <a href="#" class="clink">📄 Mon CV</a>
     <a href="#" class="clink">📍 Caen Normandie</a>
   </div>
@@ -572,20 +572,20 @@
     const modal = document.getElementById('modal-' + id);
     modal.classList.remove('open');
     document.body.style.overflow = '';
-    modal.addEventListener('transitionend' function() {
+    setTimeout(function(){
       if(!modal.classList.contains('open')) {
         modal.style.display = 'none';
       }
-    } {once:true});
+    }, 400);
   }
-  window.onkeydown = function(e) {
+  window.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       const modals = document.querySelectorAll('.modal-overlay.open');
-      for (let i = 0; i < modals.length; i++) {
-        closeModal(modals[i].id.replace('modal-' ''));
-      }
+      modals.forEach(function(m) {
+        closeModal(m.id.replace('modal-', ''));
+      });
     }
-  };
+  });
 </script>
 </body>
 </html>
